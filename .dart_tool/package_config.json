@@ -44,6 +44,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "dough",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/dough-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "equatable",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/equatable-2.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "fake_async",
       "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0",
       "packageUri": "lib/",
@@ -74,8 +86,26 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "nested",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/nested-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path",
       "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "provider",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/provider-5.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "sensors",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/sensors-2.0.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -140,7 +170,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-08-31T04:57:44.874504Z",
+  "generated": "2021-08-31T05:00:19.194715Z",
   "generator": "pub",
   "generatorVersion": "2.13.4"
 }
