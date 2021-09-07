@@ -2,6 +2,12 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "app_tracking_transparency",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/app_tracking_transparency-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "async",
       "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.6.1",
       "packageUri": "lib/",
@@ -140,7 +146,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-09-07T04:21:20.663015Z",
+  "generated": "2021-09-07T18:40:07.704728Z",
   "generator": "pub",
   "generatorVersion": "2.13.4"
 }
