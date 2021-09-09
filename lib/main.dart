@@ -13,12 +13,27 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Demo'),
+          title: Text('In App Purchase 1.0.8'),
         ),
-        body: Center(
-          child: Text('Body'),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: double.infinity,
+              child: Text(
+                'You are not subscribed to Trey-Flix.',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18),
+              ),
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  print('TODO: Subscribe...');
+                },
+                child: Text('Subscribe'))
+          ],
         ),
-      );
+      ),
     );
   }
 }
