@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         body: Center(
           child: Text('Body'),
         ),
-      );
+      ),
     );
   }
 }
