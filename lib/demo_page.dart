@@ -229,13 +229,12 @@ class _DemoPageState extends State<DemoPage> {
                   ),
                 ),
               ),
+              //SAVE
               Positioned(
                 right: 10,
                 bottom: 10,
                 child: IconButton(
-                  onPressed: () {
-                    print('Go to shopping cart.');
-                  },
+                  onPressed: () {},
                   icon: Icon(
                     Icons.shopping_cart,
                     color: Colors.black,
@@ -243,6 +242,7 @@ class _DemoPageState extends State<DemoPage> {
                   ),
                 ),
               ),
+              //SAVE
               Positioned(
                 left: 70,
                 bottom: 30,
@@ -251,30 +251,35 @@ class _DemoPageState extends State<DemoPage> {
                   style: TextStyle(color: Colors.grey),
                 ),
               ),
+              //SAVE
               Positioned(
-                  left: 70,
-                  bottom: 8,
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.location_searching,
-                        size: 20,
+                left: 70,
+                bottom: 8,
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.location_searching,
+                      size: 20,
+                    ),
+                    //SAVE
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      '2080 Valley Forge',
+                      style: TextStyle(
+                        color: Colors.grey[800],
+                        fontWeight: FontWeight.bold,
                       ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        '2080 Valley Forge',
-                        style: TextStyle(
-                          color: Colors.grey[800],
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ))
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
+          //SAVE
           Divider(),
+          //SAVE
           Expanded(
             child: MediaQuery.removePadding(
               removeTop: true,
@@ -290,14 +295,19 @@ class _DemoPageState extends State<DemoPage> {
                       children: [
                         _buildCategoryWidget(
                             title: 'Produce', iconData: Icons.food_bank),
+                        //SAVE
                         _buildCategoryWidget(
                             title: 'Meat', iconData: Icons.food_bank),
+                        //SAVE
                         _buildCategoryWidget(
                             title: 'Dairy', iconData: Icons.food_bank),
+                        //SAVE
                         _buildCategoryWidget(
                             title: 'Bread', iconData: Icons.food_bank),
+                        //SAVE
                         _buildCategoryWidget(
                             title: 'Juice & Water', iconData: Icons.food_bank),
+                        //SAVE
                       ],
                     ),
                   ),
@@ -309,9 +319,13 @@ class _DemoPageState extends State<DemoPage> {
                       scrollDirection: Axis.horizontal,
                       children: [
                         _buildOptionWidget(title: 'Over 4.5'),
+                        //SAVE
                         _buildOptionWidget(title: 'Under 30'),
+                        //SAVE
                         _buildOptionWidget(title: 'Pickup'),
+                        //SAVE
                         _buildOptionWidget(title: 'Cheap'),
+                        //SAVE
                       ],
                     ),
                   ),
@@ -329,6 +343,7 @@ class _DemoPageState extends State<DemoPage> {
                       )
                     ],
                   ),
+                  //SAVE
                   Container(
                     width: screenWidth,
                     height: 120,
@@ -337,9 +352,13 @@ class _DemoPageState extends State<DemoPage> {
                       scrollDirection: Axis.horizontal,
                       children: [
                         _buildStoreWidget(store: _stores[0]),
+                        //SAVE
                         _buildStoreWidget(store: _stores[1]),
+                        //SAVE
                         _buildStoreWidget(store: _stores[2]),
+                        //SAVE
                         _buildStoreWidget(store: _stores[3]),
+                        //SAVE
                       ],
                     ),
                   ),
@@ -354,6 +373,7 @@ class _DemoPageState extends State<DemoPage> {
                       controller: ScrollController(keepScrollOffset: false),
                     ),
                   ),
+                  //SAVE
                 ],
               ),
             ),
