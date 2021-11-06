@@ -38,6 +38,19 @@ class _DemoPageState extends State<DemoPage> {
     return _peopleBox.add(value);
   }
 
+  //Clear key/value input fields.
+  void _clearKVFields() {
+    _keyController.clear();
+    _valueController.clear();
+  }
+
+  //Clear person input fields.
+  void _clearPersonFields() {
+    _nameController.clear();
+    _ageController.clear();
+    _genderController.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,13 +96,14 @@ class _DemoPageState extends State<DemoPage> {
                       Colors.green,
                     ),
                   ),
-                  onPressed: () {
+                  onPressed: () async {
                     if (_keyController.text.isNotEmpty &&
                         _valueController.text.isNotEmpty) {
-                      _put(
+                      await _put(
                         key: _keyController.text,
                         value: _valueController.text,
                       );
+                      _clearKVFields();
                     }
                   },
                   child: Icon(Icons.save),
@@ -197,17 +211,18 @@ class _DemoPageState extends State<DemoPage> {
                       Colors.green,
                     ),
                   ),
-                  onPressed: () {
+                  onPressed: () async {
                     if (_nameController.text.isNotEmpty &&
                         _ageController.text.isNotEmpty &&
                         _genderController.text.isNotEmpty) {
-                      _add(
+                      await _add(
                         value: Person(
                           name: _nameController.text,
                           age: int.parse(_ageController.text),
                           gender: _genderController.text,
                         ),
                       );
+                      _clearPersonFields();
                     }
                   },
                   child: Icon(Icons.save),
@@ -279,17 +294,14 @@ class _DemoPageState extends State<DemoPage> {
                 ElevatedButton(
                   onPressed: () {
                     _keyValueBox.clear();
-                    _keyController.clear();
-                    _valueController.clear();
+                    _clearKVFields();
                   },
                   child: Text('Clear Key Value'),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     _peopleBox.clear();
-                    _nameController.clear();
-                    _ageController.clear();
-                    _genderController.clear();
+                    _clearPersonFields();
                   },
                   child: Text('Clear People'),
                 ),

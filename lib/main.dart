@@ -14,7 +14,7 @@ void main() async {
   //Initialize Hive.
   await Hive.initFlutter();
 
-  //Register the person object.
+  //Register the person adapter.
   Hive.registerAdapter(PersonAdapter());
 
   //Open both boxes for database use.

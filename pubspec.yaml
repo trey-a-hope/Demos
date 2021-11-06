@@ -12,7 +12,6 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   hive: ^2.0.4
-  path_provider: ^2.0.6
   hive_flutter: ^1.1.0
   hive_generator: ^1.1.1
 
