@@ -266,12 +266,16 @@ class _DemoPageState extends State<DemoPage> {
                 ElevatedButton(
                   onPressed: () {
                     _keyValueBox.clear();
+                    _keyController.clear();
+                    _valueController.clear();
                   },
                   child: Text('Clear Key Value'),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     _peopleBox.clear();
+                    _nameController.clear();
+                    _ageController.clear();
                   },
                   child: Text('Clear People'),
                 ),
