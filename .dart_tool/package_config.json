@@ -38,6 +38,48 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "build_config",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/build_config-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "build_daemon",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/build_daemon-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "build_resolvers",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/build_resolvers-2.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "build_runner",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/build_runner-2.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "build_runner_core",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/build_runner_core-7.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "built_collection",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/built_collection-5.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "built_value",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/built_value-8.1.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "characters",
       "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.1.0",
       "packageUri": "lib/",
@@ -50,6 +92,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "checked_yaml",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/checked_yaml-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "cli_util",
       "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/cli_util-0.3.5",
       "packageUri": "lib/",
@@ -58,6 +106,12 @@
     {
       "name": "clock",
       "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/clock-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "code_builder",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/code_builder-4.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -110,6 +164,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "fixnum",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/fixnum-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter",
       "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/packages/flutter",
       "packageUri": "lib/",
@@ -122,10 +182,22 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "frontend_server_client",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/frontend_server_client-2.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "glob",
       "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/glob-2.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.14"
+    },
+    {
+      "name": "graphs",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/graphs-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "hive",
@@ -146,6 +218,36 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "http_multi_server",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/http_multi_server-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "http_parser",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-4.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "io",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/io-1.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "js",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "json_annotation",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/json_annotation-4.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "logging",
       "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/logging-1.0.2",
       "packageUri": "lib/",
@@ -160,6 +262,12 @@
     {
       "name": "meta",
       "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "mime",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/mime-1.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -218,6 +326,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "pool",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/pool-1.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "process",
       "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/process-4.2.4",
       "packageUri": "lib/",
@@ -226,6 +340,24 @@
     {
       "name": "pub_semver",
       "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/pub_semver-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "pubspec_parse",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/pubspec_parse-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "shelf",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/shelf-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "shelf_web_socket",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/shelf_web_socket-1.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -266,6 +398,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "stream_transform",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/stream_transform-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "string_scanner",
       "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/string_scanner-1.1.0",
       "packageUri": "lib/",
@@ -280,6 +418,12 @@
     {
       "name": "test_api",
       "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/test_api-0.4.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "timing",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/timing-1.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -300,6 +444,12 @@
       "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/watcher-1.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.14"
+    },
+    {
+      "name": "web_socket_channel",
+      "rootUri": "file:///Users/treyhope/Desktop/Development/flutter/.pub-cache/hosted/pub.dartlang.org/web_socket_channel-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "win32",
@@ -326,7 +476,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-11-06T03:09:12.256181Z",
+  "generated": "2021-11-06T17:25:46.477842Z",
   "generator": "pub",
   "generatorVersion": "2.14.0"
 }

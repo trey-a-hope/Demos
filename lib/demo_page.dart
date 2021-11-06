@@ -15,7 +15,9 @@ class _DemoPageState extends State<DemoPage> {
   TextEditingController _valueController = TextEditingController();
   TextEditingController _nameController = TextEditingController();
   TextEditingController _ageController = TextEditingController();
+  TextEditingController _genderController = TextEditingController();
 
+  //Database tables, aka "Boxes"
   late Box<dynamic> _keyValueBox;
   late Box<dynamic> _peopleBox;
 
@@ -44,7 +46,6 @@ class _DemoPageState extends State<DemoPage> {
       ),
       body: SafeArea(
         child: ListView(
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: EdgeInsets.all(10),
@@ -83,8 +84,8 @@ class _DemoPageState extends State<DemoPage> {
                     ),
                   ),
                   onPressed: () {
-                    if (_keyController.text != '' &&
-                        _valueController.text != '') {
+                    if (_keyController.text.isNotEmpty &&
+                        _valueController.text.isNotEmpty) {
                       _put(
                         key: _keyController.text,
                         value: _valueController.text,
@@ -181,6 +182,15 @@ class _DemoPageState extends State<DemoPage> {
                     ),
                   ),
                 ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: TextField(
+                      controller: _genderController,
+                      decoration: InputDecoration(hintText: 'Gender'),
+                    ),
+                  ),
+                ),
                 ElevatedButton(
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
@@ -188,12 +198,14 @@ class _DemoPageState extends State<DemoPage> {
                     ),
                   ),
                   onPressed: () {
-                    if (_nameController.text != null &&
-                        _ageController.text != null) {
+                    if (_nameController.text.isNotEmpty &&
+                        _ageController.text.isNotEmpty &&
+                        _genderController.text.isNotEmpty) {
                       _add(
                         value: Person(
                           name: _nameController.text,
                           age: int.parse(_ageController.text),
+                          gender: _genderController.text,
                         ),
                       );
                     }
@@ -233,7 +245,8 @@ class _DemoPageState extends State<DemoPage> {
                           cells: <DataCell>[
                             DataCell(Text('${entry.key}')),
                             DataCell(
-                              Text('${entry.value.name}, ${entry.value.age}'),
+                              Text(
+                                  '${entry.value.name}, ${entry.value.age}, ${entry.value.gender}'),
                             ),
                             DataCell(
                               ElevatedButton(
@@ -276,6 +289,7 @@ class _DemoPageState extends State<DemoPage> {
                     _peopleBox.clear();
                     _nameController.clear();
                     _ageController.clear();
+                    _genderController.clear();
                   },
                   child: Text('Clear People'),
                 ),

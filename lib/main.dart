@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:patreon/demo_page.dart';
-import 'package:patreon/person_adapter.dart';
+import 'package:patreon/person_model.dart';
 
 const String HIVE_BOX_KVP = 'HIVE_BOX_KVP';
 const String HIVE_BOX_PEOPLE = 'HIVE_BOX_PEOPLE';
