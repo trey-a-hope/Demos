@@ -12,12 +12,14 @@ class DemoPage extends StatefulWidget {
 
 class _DemoPageState extends State<DemoPage> {
   final FirebaseMessaging _fcm = FirebaseMessaging.instance;
+  final TextEditingController _tokenController = TextEditingController();
   String? _token;
 
   @override
   void initState() {
     super.initState();
 
+    //Request permisson from user.
     if (Platform.isIOS) {
       _fcm.requestPermission();
     }
@@ -25,7 +27,9 @@ class _DemoPageState extends State<DemoPage> {
     //Update user's fcm token.
     _fcm.getToken().then((token) {
       assert(token != null);
-      _token = token;
+      setState(() {
+        _token = token;
+      });
     });
   }
 
@@ -43,13 +47,18 @@ class _DemoPageState extends State<DemoPage> {
               'Token - $_token',
               textAlign: TextAlign.center,
             ),
+            TextField(
+              controller: _tokenController,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton.icon(
                   icon: Icon(Icons.send),
                   label: Text('Send Notification'),
-                  onPressed: () {},
+                  onPressed: () {
+                    print(_tokenController.text);
+                  },
                 ),
                 ElevatedButton.icon(
                   icon: Icon(Icons.copy),
