@@ -1,0 +1,417 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:1:1-41:12
+INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:1:1-41:12
+INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:1:1-41:12
+INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:1:1-41:12
+MERGED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:1:1-41:12
+MERGED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-46:12
+MERGED from [:firebase_core] /Users/treyhope/Desktop/Development/patreon/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
+MERGED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:17:1-58:12
+MERGED from [com.google.firebase:firebase-datatransport:18.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/f3c873c755e203057b76686840ab40d2/jetified-firebase-datatransport-18.0.0/AndroidManifest.xml:15:1-34:12
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/d505102d802196baf48f57dd07927d29/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:15:1-38:12
+MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/3de9b98863cd05292ddc5bb76dbb2818/jetified-firebase-encoders-json-18.0.0/AndroidManifest.xml:15:1-23:12
+MERGED from [com.google.firebase:firebase-installations:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:2:1-24:12
+MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e8c12af64c0d197211b7d090cb61cdf8/jetified-firebase-common-20.0.0/AndroidManifest.xml:15:1-40:12
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/1d87f6fa3b9ca7dba4820929f7068ad0/jetified-play-services-stats-17.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/b501a4de79069b6f0f7e19e89b9b1dda/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/491bbb875d3deba872bb29adb6f841f9/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5dc772982f81d32ebb40d7d2857f836/jetified-play-services-cloud-messaging-17.0.0/AndroidManifest.xml:2:1-13:12
+MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/642709a288a5d7b607e2a92f2d945178/jetified-firebase-iid-interop-17.1.0/AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.firebase:firebase-installations-interop:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/ae256830a68ea5423e1b08b23ae8ac25/jetified-firebase-installations-interop-17.0.0/AndroidManifest.xml:15:1-23:12
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/da614d13d040eef48ad74ecd5566831c/jetified-play-services-tasks-17.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/51313c0ad4a1b443202a75e27094a8a3/jetified-firebase-measurement-connector-19.0.0/AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e31537fb3ca3accaea0d4d9ddb9631cc/jetified-play-services-basement-17.0.0/AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/4ead4a41cc8b337b790d86429dcc7418/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/7f810de1d48f35aaf9cad7d49b3dc285/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/40fa03cbf711c9b5abc7c7080df34e94/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/a530992fa67cbeb397fb094b8a1a22dc/jetified-activity-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/8fc41d1d021f97e69fbb6d77f999706d/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/3c8fd1bfddb99a7a7e21faa1397acdb4/core-1.1.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e491a17ea3905cf4e8cc01da5acf5904/lifecycle-runtime-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/dba0871f5234d26df488af8865310f6f/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/af5ac34d8217e841163337c0c136aaf0/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/ad25664bdc2a6562f93cfb70f44807df/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5692f6811ef7c87c9b9d941d59ba249/jetified-transport-runtime-3.0.0/AndroidManifest.xml:15:1-41:12
+MERGED from [com.google.android.datatransport:transport-api:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/5f302aa8aa4cd11e8ccfdfd58f34bb66/jetified-transport-api-3.0.0/AndroidManifest.xml:15:1-22:12
+MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e5f0c7957424a546e9da21a08a739815/jetified-firebase-components-17.0.0/AndroidManifest.xml:15:1-23:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/ae5cd4776f4503a44a7812883c5a3277/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/454fd5669506c3ed5fdcf7b2ff03abe6/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/1d4efdb868696ea36efd004abeb8239d/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/0341135a479a1847e64dc720fa73a9d9/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/8b0cce3f36a1c28e7df6e72849a13547/print-1.0.0/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+	package
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:2:5-34
+		INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/debug/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:1:1-41:12
+		INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/debug/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:1:1-41:12
+		INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/debug/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:1:11-69
+application
+ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:3:4-40:19
+MERGED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-44:19
+MERGED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-44:19
+MERGED from [:firebase_core] /Users/treyhope/Desktop/Development/patreon/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_core] /Users/treyhope/Desktop/Development/patreon/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
+MERGED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:27:5-56:19
+MERGED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:27:5-56:19
+MERGED from [com.google.firebase:firebase-datatransport:18.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/f3c873c755e203057b76686840ab40d2/jetified-firebase-datatransport-18.0.0/AndroidManifest.xml:24:5-32:19
+MERGED from [com.google.firebase:firebase-datatransport:18.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/f3c873c755e203057b76686840ab40d2/jetified-firebase-datatransport-18.0.0/AndroidManifest.xml:24:5-32:19
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/d505102d802196baf48f57dd07927d29/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/d505102d802196baf48f57dd07927d29/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.firebase:firebase-installations:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:14:5-22:19
+MERGED from [com.google.firebase:firebase-installations:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:14:5-22:19
+MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e8c12af64c0d197211b7d090cb61cdf8/jetified-firebase-common-20.0.0/AndroidManifest.xml:25:5-38:19
+MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e8c12af64c0d197211b7d090cb61cdf8/jetified-firebase-common-20.0.0/AndroidManifest.xml:25:5-38:19
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/1d87f6fa3b9ca7dba4820929f7068ad0/jetified-play-services-stats-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/1d87f6fa3b9ca7dba4820929f7068ad0/jetified-play-services-stats-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/642709a288a5d7b607e2a92f2d945178/jetified-firebase-iid-interop-17.1.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/642709a288a5d7b607e2a92f2d945178/jetified-firebase-iid-interop-17.1.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/da614d13d040eef48ad74ecd5566831c/jetified-play-services-tasks-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/da614d13d040eef48ad74ecd5566831c/jetified-play-services-tasks-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/51313c0ad4a1b443202a75e27094a8a3/jetified-firebase-measurement-connector-19.0.0/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/51313c0ad4a1b443202a75e27094a8a3/jetified-firebase-measurement-connector-19.0.0/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e31537fb3ca3accaea0d4d9ddb9631cc/jetified-play-services-basement-17.0.0/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e31537fb3ca3accaea0d4d9ddb9631cc/jetified-play-services-basement-17.0.0/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.core:core:1.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/3c8fd1bfddb99a7a7e21faa1397acdb4/core-1.1.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/3c8fd1bfddb99a7a7e21faa1397acdb4/core-1.1.0/AndroidManifest.xml:24:5-89
+MERGED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5692f6811ef7c87c9b9d941d59ba249/jetified-transport-runtime-3.0.0/AndroidManifest.xml:25:5-39:19
+MERGED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5692f6811ef7c87c9b9d941d59ba249/jetified-transport-runtime-3.0.0/AndroidManifest.xml:25:5-39:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/454fd5669506c3ed5fdcf7b2ff03abe6/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/454fd5669506c3ed5fdcf7b2ff03abe6/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/3c8fd1bfddb99a7a7e21faa1397acdb4/core-1.1.0/AndroidManifest.xml:24:18-86
+	android:label
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:4:9-32
+	android:icon
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:5:9-43
+activity#com.example.patreon.MainActivity
+ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:6:9-34:20
+	android:launchMode
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:8:13-43
+	android:hardwareAccelerated
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:11:13-47
+	android:windowSoftInputMode
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:12:13-55
+	android:configChanges
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:10:13-163
+	android:theme
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:9:13-47
+	android:name
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:7:13-41
+meta-data#io.flutter.embedding.android.NormalTheme
+ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:17:13-20:17
+	android:resource
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:19:15-52
+	android:name
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:18:15-70
+meta-data#io.flutter.embedding.android.SplashScreenDrawable
+ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:26:13-29:17
+	android:resource
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:28:15-61
+	android:name
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:27:15-79
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:30:13-33:29
+action#android.intent.action.MAIN
+ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:31:17-68
+	android:name
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:31:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:32:17-76
+	android:name
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:32:27-74
+meta-data#flutterEmbedding
+ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:37:9-39:33
+	android:value
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:39:13-30
+	android:name
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml:38:13-44
+uses-sdk
+INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml
+MERGED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_core] /Users/treyhope/Desktop/Development/patreon/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_core] /Users/treyhope/Desktop/Development/patreon/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-datatransport:18.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/f3c873c755e203057b76686840ab40d2/jetified-firebase-datatransport-18.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-datatransport:18.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/f3c873c755e203057b76686840ab40d2/jetified-firebase-datatransport-18.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/d505102d802196baf48f57dd07927d29/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/d505102d802196baf48f57dd07927d29/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/3de9b98863cd05292ddc5bb76dbb2818/jetified-firebase-encoders-json-18.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/3de9b98863cd05292ddc5bb76dbb2818/jetified-firebase-encoders-json-18.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-installations:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.google.firebase:firebase-installations:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e8c12af64c0d197211b7d090cb61cdf8/jetified-firebase-common-20.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e8c12af64c0d197211b7d090cb61cdf8/jetified-firebase-common-20.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/1d87f6fa3b9ca7dba4820929f7068ad0/jetified-play-services-stats-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/1d87f6fa3b9ca7dba4820929f7068ad0/jetified-play-services-stats-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/b501a4de79069b6f0f7e19e89b9b1dda/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/b501a4de79069b6f0f7e19e89b9b1dda/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/491bbb875d3deba872bb29adb6f841f9/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/491bbb875d3deba872bb29adb6f841f9/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5dc772982f81d32ebb40d7d2857f836/jetified-play-services-cloud-messaging-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5dc772982f81d32ebb40d7d2857f836/jetified-play-services-cloud-messaging-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/642709a288a5d7b607e2a92f2d945178/jetified-firebase-iid-interop-17.1.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/642709a288a5d7b607e2a92f2d945178/jetified-firebase-iid-interop-17.1.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-installations-interop:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/ae256830a68ea5423e1b08b23ae8ac25/jetified-firebase-installations-interop-17.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-installations-interop:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/ae256830a68ea5423e1b08b23ae8ac25/jetified-firebase-installations-interop-17.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/da614d13d040eef48ad74ecd5566831c/jetified-play-services-tasks-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/da614d13d040eef48ad74ecd5566831c/jetified-play-services-tasks-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/51313c0ad4a1b443202a75e27094a8a3/jetified-firebase-measurement-connector-19.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/51313c0ad4a1b443202a75e27094a8a3/jetified-firebase-measurement-connector-19.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e31537fb3ca3accaea0d4d9ddb9631cc/jetified-play-services-basement-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e31537fb3ca3accaea0d4d9ddb9631cc/jetified-play-services-basement-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/4ead4a41cc8b337b790d86429dcc7418/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/4ead4a41cc8b337b790d86429dcc7418/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/7f810de1d48f35aaf9cad7d49b3dc285/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/7f810de1d48f35aaf9cad7d49b3dc285/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/40fa03cbf711c9b5abc7c7080df34e94/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/40fa03cbf711c9b5abc7c7080df34e94/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/a530992fa67cbeb397fb094b8a1a22dc/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/a530992fa67cbeb397fb094b8a1a22dc/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/8fc41d1d021f97e69fbb6d77f999706d/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/8fc41d1d021f97e69fbb6d77f999706d/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/3c8fd1bfddb99a7a7e21faa1397acdb4/core-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/3c8fd1bfddb99a7a7e21faa1397acdb4/core-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e491a17ea3905cf4e8cc01da5acf5904/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e491a17ea3905cf4e8cc01da5acf5904/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/dba0871f5234d26df488af8865310f6f/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/dba0871f5234d26df488af8865310f6f/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/af5ac34d8217e841163337c0c136aaf0/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/af5ac34d8217e841163337c0c136aaf0/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/ad25664bdc2a6562f93cfb70f44807df/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/ad25664bdc2a6562f93cfb70f44807df/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5692f6811ef7c87c9b9d941d59ba249/jetified-transport-runtime-3.0.0/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5692f6811ef7c87c9b9d941d59ba249/jetified-transport-runtime-3.0.0/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-api:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/5f302aa8aa4cd11e8ccfdfd58f34bb66/jetified-transport-api-3.0.0/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-api:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/5f302aa8aa4cd11e8ccfdfd58f34bb66/jetified-transport-api-3.0.0/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e5f0c7957424a546e9da21a08a739815/jetified-firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-components:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e5f0c7957424a546e9da21a08a739815/jetified-firebase-components-17.0.0/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/ae5cd4776f4503a44a7812883c5a3277/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/ae5cd4776f4503a44a7812883c5a3277/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/454fd5669506c3ed5fdcf7b2ff03abe6/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/454fd5669506c3ed5fdcf7b2ff03abe6/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/1d4efdb868696ea36efd004abeb8239d/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/1d4efdb868696ea36efd004abeb8239d/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/0341135a479a1847e64dc720fa73a9d9/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/0341135a479a1847e64dc720fa73a9d9/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/8b0cce3f36a1c28e7df6e72849a13547/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/8b0cce3f36a1c28e7df6e72849a13547/print-1.0.0/AndroidManifest.xml:20:5-44
+INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/debug/AndroidManifest.xml
+INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/debug/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/debug/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/treyhope/Desktop/Development/patreon/android/app/src/debug/AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/debug/AndroidManifest.xml:6:5-66
+MERGED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-67
+MERGED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-67
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/d505102d802196baf48f57dd07927d29/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:26:5-67
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/d505102d802196baf48f57dd07927d29/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:26:5-67
+MERGED from [com.google.firebase:firebase-installations:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:11:5-67
+MERGED from [com.google.firebase:firebase-installations:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:11:5-67
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5dc772982f81d32ebb40d7d2857f836/jetified-play-services-cloud-messaging-17.0.0/AndroidManifest.xml:8:5-67
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5dc772982f81d32ebb40d7d2857f836/jetified-play-services-cloud-messaging-17.0.0/AndroidManifest.xml:8:5-67
+	android:name
+		ADDED from /Users/treyhope/Desktop/Development/patreon/android/app/src/debug/AndroidManifest.xml:6:22-64
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-68
+MERGED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:23:5-68
+MERGED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:23:5-68
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5dc772982f81d32ebb40d7d2857f836/jetified-play-services-cloud-messaging-17.0.0/AndroidManifest.xml:9:5-68
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5dc772982f81d32ebb40d7d2857f836/jetified-play-services-cloud-messaging-17.0.0/AndroidManifest.xml:9:5-68
+	android:name
+		ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:8:22-65
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-79
+MERGED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:22:5-79
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/d505102d802196baf48f57dd07927d29/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:25:5-79
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/d505102d802196baf48f57dd07927d29/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:25:5-79
+MERGED from [com.google.firebase:firebase-installations:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:10:5-79
+MERGED from [com.google.firebase:firebase-installations:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:10:5-79
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5dc772982f81d32ebb40d7d2857f836/jetified-play-services-cloud-messaging-17.0.0/AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5dc772982f81d32ebb40d7d2857f836/jetified-play-services-cloud-messaging-17.0.0/AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5692f6811ef7c87c9b9d941d59ba249/jetified-transport-runtime-3.0.0/AndroidManifest.xml:22:5-79
+MERGED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5692f6811ef7c87c9b9d941d59ba249/jetified-transport-runtime-3.0.0/AndroidManifest.xml:22:5-79
+	android:name
+		ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:9:22-76
+service#io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingBackgroundService
+ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-15:72
+	android:exported
+		ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-37
+	android:permission
+		ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-69
+	android:name
+		ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-107
+service#io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingService
+ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:16:9-22:19
+	android:exported
+		ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:18:13-37
+	android:name
+		ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-97
+intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
+ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:19:13-21:29
+action#com.google.firebase.MESSAGING_EVENT
+ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:20:17-78
+	android:name
+		ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:20:25-75
+receiver#io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingReceiver
+ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:24:9-31:20
+	android:exported
+		ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-36
+	android:permission
+		ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:27:13-73
+	android:name
+		ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:25:13-98
+intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE
+ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:28:13-30:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:29:17-81
+	android:name
+		ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:29:25-78
+service#com.google.firebase.components.ComponentDiscoveryService
+ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:33:9-37:19
+MERGED from [:firebase_core] /Users/treyhope/Desktop/Development/patreon/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_core] /Users/treyhope/Desktop/Development/patreon/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+MERGED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:49:9-55:19
+MERGED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:49:9-55:19
+MERGED from [com.google.firebase:firebase-datatransport:18.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/f3c873c755e203057b76686840ab40d2/jetified-firebase-datatransport-18.0.0/AndroidManifest.xml:25:9-31:19
+MERGED from [com.google.firebase:firebase-datatransport:18.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/f3c873c755e203057b76686840ab40d2/jetified-firebase-datatransport-18.0.0/AndroidManifest.xml:25:9-31:19
+MERGED from [com.google.firebase:firebase-installations:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:15:9-21:19
+MERGED from [com.google.firebase:firebase-installations:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:15:9-21:19
+MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e8c12af64c0d197211b7d090cb61cdf8/jetified-firebase-common-20.0.0/AndroidManifest.xml:33:9-37:35
+MERGED from [com.google.firebase:firebase-common:20.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e8c12af64c0d197211b7d090cb61cdf8/jetified-firebase-common-20.0.0/AndroidManifest.xml:33:9-37:35
+	android:exported
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:51:13-37
+	tools:targetApi
+		ADDED from [com.google.firebase:firebase-common:20.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e8c12af64c0d197211b7d090cb61cdf8/jetified-firebase-common-20.0.0/AndroidManifest.xml:37:13-32
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-common:20.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e8c12af64c0d197211b7d090cb61cdf8/jetified-firebase-common-20.0.0/AndroidManifest.xml:35:13-43
+	android:name
+		ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:33:18-89
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.messaging.FlutterFirebaseAppRegistrar
+ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:34:13-36:85
+	android:value
+		ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:36:17-82
+	android:name
+		ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:35:17-128
+provider#io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingInitProvider
+ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:39:9-43:38
+	android:authorities
+		ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:41:13-88
+	android:exported
+		ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:42:13-37
+	android:initOrder
+		ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:43:13-35
+	android:name
+		ADDED from [:firebase_messaging] /Users/treyhope/Desktop/Development/patreon/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:40:13-102
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar
+ADDED from [:firebase_core] /Users/treyhope/Desktop/Development/patreon/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:firebase_core] /Users/treyhope/Desktop/Development/patreon/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:firebase_core] /Users/treyhope/Desktop/Development/patreon/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-124
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:25:5-82
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5dc772982f81d32ebb40d7d2857f836/jetified-play-services-cloud-messaging-17.0.0/AndroidManifest.xml:11:5-82
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5dc772982f81d32ebb40d7d2857f836/jetified-play-services-cloud-messaging-17.0.0/AndroidManifest.xml:11:5-82
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:25:22-79
+receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
+ADDED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:28:9-35:20
+	android:exported
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:30:13-36
+	android:permission
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:31:13-73
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:29:13-78
+service#com.google.firebase.messaging.FirebaseMessagingService
+ADDED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:41:9-48:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:44:13-37
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:43:13-43
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:42:13-82
+meta-data#com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar
+ADDED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:52:13-54:85
+	android:value
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:54:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/955be42cb0286a736ff6d4ee15b76099/jetified-firebase-messaging-23.0.0/AndroidManifest.xml:53:17-119
+meta-data#com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar
+ADDED from [com.google.firebase:firebase-datatransport:18.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/f3c873c755e203057b76686840ab40d2/jetified-firebase-datatransport-18.0.0/AndroidManifest.xml:28:13-30:85
+	android:value
+		ADDED from [com.google.firebase:firebase-datatransport:18.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/f3c873c755e203057b76686840ab40d2/jetified-firebase-datatransport-18.0.0/AndroidManifest.xml:30:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-datatransport:18.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/f3c873c755e203057b76686840ab40d2/jetified-firebase-datatransport-18.0.0/AndroidManifest.xml:29:17-115
+service#com.google.android.datatransport.runtime.backends.TransportBackendDiscovery
+ADDED from [com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/d505102d802196baf48f57dd07927d29/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5692f6811ef7c87c9b9d941d59ba249/jetified-transport-runtime-3.0.0/AndroidManifest.xml:36:9-38:40
+MERGED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5692f6811ef7c87c9b9d941d59ba249/jetified-transport-runtime-3.0.0/AndroidManifest.xml:36:9-38:40
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/d505102d802196baf48f57dd07927d29/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:31:13-37
+	android:name
+		ADDED from [com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/d505102d802196baf48f57dd07927d29/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:30:13-103
+meta-data#backend:com.google.android.datatransport.cct.CctBackendFactory
+ADDED from [com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/d505102d802196baf48f57dd07927d29/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:32:13-34:39
+	android:value
+		ADDED from [com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/d505102d802196baf48f57dd07927d29/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:34:17-36
+	android:name
+		ADDED from [com.google.android.datatransport:transport-backend-cct:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/d505102d802196baf48f57dd07927d29/jetified-transport-backend-cct-3.0.0/AndroidManifest.xml:33:17-94
+meta-data#com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar
+ADDED from [com.google.firebase:firebase-installations:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:18:13-20:85
+	android:value
+		ADDED from [com.google.firebase:firebase-installations:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:20:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-installations:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/2b663374f2a3beef67e4fc09532fc190/jetified-firebase-installations-17.0.0/AndroidManifest.xml:19:17-127
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:20.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e8c12af64c0d197211b7d090cb61cdf8/jetified-firebase-common-20.0.0/AndroidManifest.xml:26:9-31:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:20.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e8c12af64c0d197211b7d090cb61cdf8/jetified-firebase-common-20.0.0/AndroidManifest.xml:28:13-72
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:20.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e8c12af64c0d197211b7d090cb61cdf8/jetified-firebase-common-20.0.0/AndroidManifest.xml:30:13-37
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-common:20.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e8c12af64c0d197211b7d090cb61cdf8/jetified-firebase-common-20.0.0/AndroidManifest.xml:29:13-43
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:20.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e8c12af64c0d197211b7d090cb61cdf8/jetified-firebase-common-20.0.0/AndroidManifest.xml:31:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:20.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e8c12af64c0d197211b7d090cb61cdf8/jetified-firebase-common-20.0.0/AndroidManifest.xml:27:13-77
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e31537fb3ca3accaea0d4d9ddb9631cc/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e31537fb3ca3accaea0d4d9ddb9631cc/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:17.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/e31537fb3ca3accaea0d4d9ddb9631cc/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
+service#com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService
+ADDED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5692f6811ef7c87c9b9d941d59ba249/jetified-transport-runtime-3.0.0/AndroidManifest.xml:26:9-30:19
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5692f6811ef7c87c9b9d941d59ba249/jetified-transport-runtime-3.0.0/AndroidManifest.xml:28:13-37
+	android:permission
+		ADDED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5692f6811ef7c87c9b9d941d59ba249/jetified-transport-runtime-3.0.0/AndroidManifest.xml:29:13-69
+	android:name
+		ADDED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5692f6811ef7c87c9b9d941d59ba249/jetified-transport-runtime-3.0.0/AndroidManifest.xml:27:13-117
+receiver#com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver
+ADDED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5692f6811ef7c87c9b9d941d59ba249/jetified-transport-runtime-3.0.0/AndroidManifest.xml:32:9-34:40
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5692f6811ef7c87c9b9d941d59ba249/jetified-transport-runtime-3.0.0/AndroidManifest.xml:34:13-37
+	android:name
+		ADDED from [com.google.android.datatransport:transport-runtime:3.0.0] /Users/treyhope/.gradle/caches/transforms-2/files-2.1/c5692f6811ef7c87c9b9d941d59ba249/jetified-transport-runtime-3.0.0/AndroidManifest.xml:33:13-132
