@@ -43,9 +43,12 @@ class _DemoPageState extends State<DemoPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Token - $_token',
-              textAlign: TextAlign.center,
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Text(
+                'Token - $_token',
+                textAlign: TextAlign.center,
+              ),
             ),
             TextField(
               controller: _tokenController,
