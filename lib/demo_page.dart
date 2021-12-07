@@ -3,7 +3,8 @@ import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:patreon/fcm_notification_service.dart';
 
 class DemoPage extends StatefulWidget {
   @override
@@ -12,25 +13,52 @@ class DemoPage extends StatefulWidget {
 
 class _DemoPageState extends State<DemoPage> {
   final FirebaseMessaging _fcm = FirebaseMessaging.instance;
-  final TextEditingController _tokenController = TextEditingController();
-  String? _token;
+  final TextEditingController _textController = TextEditingController();
+  final CollectionReference _tokensDB =
+      FirebaseFirestore.instance.collection('Tokens');
+  final FCMNotificationService _fcmNotificationService =
+      FCMNotificationService();
+
+  late String _otherDeviceToken;
 
   @override
   void initState() {
     super.initState();
 
-    //Request permisson from user.
+    load();
+  }
+
+  Future<void> load() async {
+    //Request permission from user.
     if (Platform.isIOS) {
       _fcm.requestPermission();
     }
 
-    //Update user's fcm token.
-    _fcm.getToken().then((token) {
-      assert(token != null);
-      setState(() {
-        _token = token;
-      });
-    });
+    //Fetch the fcm token for this device.
+    String? token = await _fcm.getToken();
+
+    //Validate that it's not null.
+    assert(token != null);
+
+    //Determine what device we are on.
+    late String thisDevice;
+    late String otherDevice;
+
+    if (Platform.isIOS) {
+      thisDevice = 'iOS';
+      otherDevice = 'Android';
+    } else {
+      thisDevice = 'Android';
+      otherDevice = 'iOS';
+    }
+
+    //Update fcm token for this device in firebase.
+    DocumentReference docRef = _tokensDB.doc(thisDevice);
+    docRef.set({'token': token});
+
+    //Fetch the fcm token for the other device.
+    DocumentSnapshot docSnapshot = await _tokensDB.doc(otherDevice).get();
+    _otherDeviceToken = docSnapshot['token'];
   }
 
   @override
@@ -45,13 +73,9 @@ class _DemoPageState extends State<DemoPage> {
           children: [
             Padding(
               padding: EdgeInsets.all(20),
-              child: Text(
-                'Token - $_token',
-                textAlign: TextAlign.center,
+              child: TextField(
+                controller: _textController,
               ),
-            ),
-            TextField(
-              controller: _tokenController,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -59,15 +83,25 @@ class _DemoPageState extends State<DemoPage> {
                 ElevatedButton.icon(
                   icon: Icon(Icons.send),
                   label: Text('Send Notification'),
-                  onPressed: () {
-                    print(_tokenController.text);
-                  },
-                ),
-                ElevatedButton.icon(
-                  icon: Icon(Icons.copy),
-                  label: Text('Copy Token'),
-                  onPressed: () {
-                    Clipboard.setData(ClipboardData(text: "your text"));
+                  onPressed: () async {
+                    try {
+                      await _fcmNotificationService.sendNotificationToUser(
+                        title: 'New Notification!',
+                        body: _textController.text,
+                        fcmToken: _otherDeviceToken,
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Notification sent.'),
+                        ),
+                      );
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Error, ${e.toString()}.'),
+                        ),
+                      );
+                    }
                   },
                 ),
               ],

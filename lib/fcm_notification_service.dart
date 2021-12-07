@@ -8,7 +8,6 @@ abstract class IFCMNotificationService {
     required String fcmToken,
     required String title,
     required String body,
-    required NotificationData? notificationData,
   });
   Future<void> sendNotificationToGroup(
       {required String group, required String title, required String body});
@@ -26,20 +25,9 @@ class FCMNotificationService extends IFCMNotificationService {
   Future<http.Response> _sendNotification(
     String to,
     String title,
-    String body, [
-    NotificationData? notificationData,
-  ]) async {
+    String body,
+  ) async {
     try {
-      String message = '';
-      String userID = '';
-      String type = '';
-
-      if (notificationData != null) {
-        message = notificationData.message;
-        userID = notificationData.userID;
-        type = notificationData.type;
-      }
-
       final dynamic data = json.encode(
         {
           'to': to,
@@ -47,11 +35,6 @@ class FCMNotificationService extends IFCMNotificationService {
           'notification': {
             'title': title,
             'body': body,
-          },
-          'data': {
-            'message': message,
-            'userID': userID,
-            'type': type,
           },
           'content_available': true
         },
@@ -86,9 +69,12 @@ class FCMNotificationService extends IFCMNotificationService {
     required String fcmToken,
     required String title,
     required String body,
-    required NotificationData? notificationData,
   }) {
-    return _sendNotification(fcmToken, title, body, notificationData);
+    return _sendNotification(
+      fcmToken,
+      title,
+      body,
+    );
   }
 
   @override
