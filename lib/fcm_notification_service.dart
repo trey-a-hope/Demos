@@ -10,9 +10,9 @@ abstract class IFCMNotificationService {
     required String body,
   });
   Future<void> sendNotificationToGroup(
-      {required String group, required String title, required String body});
-  Future<void> unsubscribeFromTopic({required String topic});
-  Future<void> subscribeToTopic({required String topic});
+      {required String group, required String title, required String body,});
+  Future<void> unsubscribeFromTopic({required String topic,});
+  Future<void> subscribeToTopic({required String topic,});
 }
 
 class FCMNotificationService extends IFCMNotificationService {
@@ -56,7 +56,7 @@ class FCMNotificationService extends IFCMNotificationService {
 
   @override
   Future<void> unsubscribeFromTopic({required String topic}) {
-    return _firebaseMessaging.subscribeToTopic(topic);
+    return _firebaseMessaging.unsubscribeFromTopic(topic);
   }
 
   @override
