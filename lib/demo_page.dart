@@ -25,6 +25,9 @@ class _DemoPageState extends State<DemoPage> {
   void initState() {
     super.initState();
 
+    //Subscribe to the NEWS topic.
+    _fcmNotificationService.subscribeToTopic(topic: 'NEWS');
+
     load();
   }
 

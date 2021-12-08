@@ -9,10 +9,17 @@ abstract class IFCMNotificationService {
     required String title,
     required String body,
   });
-  Future<void> sendNotificationToGroup(
-      {required String group, required String title, required String body,});
-  Future<void> unsubscribeFromTopic({required String topic,});
-  Future<void> subscribeToTopic({required String topic,});
+  Future<void> sendNotificationToGroup({
+    required String group,
+    required String title,
+    required String body,
+  });
+  Future<void> unsubscribeFromTopic({
+    required String topic,
+  });
+  Future<void> subscribeToTopic({
+    required String topic,
+  });
 }
 
 class FCMNotificationService extends IFCMNotificationService {
@@ -82,17 +89,4 @@ class FCMNotificationService extends IFCMNotificationService {
       {required String group, required String title, required String body}) {
     return _sendNotification('/topics/' + group, title, body);
   }
-}
-
-//Simple class to hold the message for a notification and the user ID from the sender.
-class NotificationData {
-  final String message;
-  final String userID;
-  final String type;
-
-  NotificationData({
-    required this.message,
-    required this.userID,
-    required this.type,
-  });
 }
