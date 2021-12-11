@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:patreon/fcm_notification_service.dart';
 
 class DemoPage extends StatefulWidget {
   @override
@@ -13,15 +12,24 @@ class _DemoPageState extends State<DemoPage> {
   final FirebaseMessaging _fcm = FirebaseMessaging.instance;
   final CollectionReference _tokensDB =
       FirebaseFirestore.instance.collection('Tokens');
-  final FCMNotificationService _fcmNotificationService =
-      FCMNotificationService();
 
   @override
   void initState() {
     super.initState();
 
     //Subscribe to the NEWS topic.
-    _fcmNotificationService.subscribeToTopic(topic: 'NEWS');
+    _fcm.subscribeToTopic('NEWS');
+
+    //Add listener for incoming messages.
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      if (message.notification != null) {
+        String title = message.notification!.title!;
+        String body = message.notification!.body!;
+        _showMessage(title: title, body: body);
+      } else {
+        _showMessage(title: 'Error', body: 'No notification body.');
+      }
+    });
 
     load();
   }
@@ -43,20 +51,31 @@ class _DemoPageState extends State<DemoPage> {
     docRef.set({'token': token});
   }
 
+  void _showMessage({required String title, required String body}) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(title),
+        content: Text(body),
+        actions: <Widget>[
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(ctx).pop();
+            },
+            child: Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Push Notifications Demo'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            //TODO: fcm configure in app notifications.
-          ],
-        ),
-      ),
+      body: Container(),
     );
   }
 }
