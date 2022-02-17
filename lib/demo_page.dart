@@ -14,11 +14,27 @@ class _DemoPageState extends State<DemoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Demo'),
-      ),
-      body: Center(
-        child: Text('Demo Page'),
+      body: CustomScrollView(
+        slivers: <Widget>[
+          const SliverAppBar(
+            pinned: true,
+            backgroundColor: Colors.red,
+            expandedHeight: 200.0,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text('CustomScrollView'),
+            ),
+          ),
+          SliverFixedExtentList(
+            itemExtent: 50.0,
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return ListTile(
+                  title: Text('List Tile $index'),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
