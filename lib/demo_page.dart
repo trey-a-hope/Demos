@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +12,21 @@ class _DemoPageState extends State<DemoPage> {
   /// Confetti controller.
   final ConfettiController _confettiController =
       ConfettiController(duration: const Duration(seconds: 10));
+
+  /// Party color set.
+  static const List<Color> _colorSetParty = [
+    Colors.green,
+    Colors.blue,
+    Colors.pink,
+    Colors.orange,
+    Colors.purple
+  ];
+
+  /// Black and white color set.
+  static const List<Color> _colorSetBW = [
+    Colors.black,
+    Colors.grey,
+  ];
 
   @override
   void initState() {
@@ -37,19 +54,52 @@ class _DemoPageState extends State<DemoPage> {
             Align(
               alignment: Alignment.topCenter,
               child: ConfettiWidget(
+                blastDirection: pi,
+                blastDirectionality: BlastDirectionality.explosive,
+                canvas: Size.infinite,
+                child: null,
+                colors: _colorSetParty,
                 confettiController: _confettiController,
-                blastDirectionality: BlastDirectionality
-                    .explosive, // don't specify a direction, blast randomly
-                shouldLoop:
-                    true, // start again as soon as the animation is finished
-                colors: const [
-                  Colors.green,
-                  Colors.blue,
-                  Colors.pink,
-                  Colors.orange,
-                  Colors.purple
-                ], // manually specify the colors to be used
-                // createParticlePath: drawStar, // define a custom shape/path.
+                createParticlePath: (Size size) {
+                  double degToRad(double deg) => deg * (pi / 180.0);
+
+                  const numberOfPoints = 5;
+                  final halfWidth = size.width / 2;
+                  final externalRadius = halfWidth;
+                  final internalRadius = halfWidth / 2.5;
+                  final degreesPerStep = degToRad(360 / numberOfPoints);
+                  final halfDegreesPerStep = degreesPerStep / 2;
+                  final path = Path();
+                  final fullAngle = degToRad(360);
+
+                  path.moveTo(size.width, halfWidth);
+
+                  for (double step = 0;
+                      step < fullAngle;
+                      step += degreesPerStep) {
+                    path.lineTo(halfWidth + externalRadius * cos(step),
+                        halfWidth + externalRadius * sin(step));
+                    path.lineTo(
+                        halfWidth +
+                            internalRadius * cos(step + halfDegreesPerStep),
+                        halfWidth +
+                            internalRadius * sin(step + halfDegreesPerStep));
+                  }
+                  path.close();
+                  return path;
+                },
+                displayTarget: false,
+                emissionFrequency: 0.02,
+                gravity: 0.2,
+                maximumSize: const Size(30, 15),
+                minimumSize: const Size(20, 10),
+                maxBlastForce: 20,
+                minBlastForce: 5,
+                numberOfParticles: 10,
+                particleDrag: 0.05,
+                strokeColor: Colors.black,
+                strokeWidth: 0,
+                shouldLoop: true,
               ),
             ),
             Align(
