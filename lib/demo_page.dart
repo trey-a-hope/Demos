@@ -19,14 +19,15 @@ class _DemoPageState extends State<DemoPage> {
     Colors.blue,
     Colors.pink,
     Colors.orange,
-    Colors.purple
+    Colors.purple,
   ];
 
   /// Black and white color set.
-  static const List<Color> _colorSetBW = [
-    Colors.black,
-    Colors.grey,
-  ];
+  static const List<Color> _colorSetBW = [Colors.black, Colors.grey];
+
+  /// Flag that represents if the confetti is playing.
+  bool get _isPlaying =>
+      _confettiController.state == ConfettiControllerState.playing;
 
   @override
   void initState() {
@@ -39,9 +40,6 @@ class _DemoPageState extends State<DemoPage> {
     super.dispose();
   }
 
-  bool get _isPlaying =>
-      _confettiController.state == ConfettiControllerState.playing;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,12 +49,19 @@ class _DemoPageState extends State<DemoPage> {
       body: SafeArea(
         child: Stack(
           children: [
+            // The confetti widget.
             Align(
-              alignment: Alignment.topCenter,
+              alignment: Alignment.center,
               child: ConfettiWidget(
+                // The [blastDirection] is a radial value to determine the direction of the particle emission.
                 blastDirection: pi,
+
+                // The [blastDirectionality] is an enum that takes one of two values - directional or explosive.
                 blastDirectionality: BlastDirectionality.explosive,
+
+                // An optional parameter to specify the area size where the confetti will be thrown. By default this is set to then screen size.
                 canvas: Size.infinite,
+
                 child: null,
                 colors: _colorSetParty,
                 confettiController: _confettiController,
@@ -102,6 +107,7 @@ class _DemoPageState extends State<DemoPage> {
                 shouldLoop: true,
               ),
             ),
+            // Text displaying 'Confetti is active/deactive'.
             Align(
               alignment: Alignment.center,
               child: Text(
@@ -112,6 +118,7 @@ class _DemoPageState extends State<DemoPage> {
                 ),
               ),
             ),
+            // Play and Stop buttons for the confetti.
             Align(
               alignment: Alignment.bottomCenter,
               child: Row(
