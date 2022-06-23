@@ -1,5 +1,6 @@
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class DemoPage extends StatefulWidget {
   @override
@@ -7,10 +8,8 @@ class DemoPage extends StatefulWidget {
 }
 
 class _DemoPageState extends State<DemoPage> {
-  // Color for the picker shown in Card on the screen.
-  late Color screenPickerColor;
-  // Color for the picker in a dialog using onChanged.
-  late Color dialogPickerColor;
+  /// Default color for the picker in a dialog using onChanged.
+  Color _selectedColor = Colors.red;
 
   // Define custom colors. The 'guide' color values are from
   // https://material.io/design/color/the-color-system.html#color-theme-creation
@@ -22,22 +21,8 @@ class _DemoPageState extends State<DemoPage> {
   static const Color guideErrorDark = Color(0xFFCF6679);
   static const Color blueBlues = Color(0xFF174378);
 
-  /// Make a custom ColorSwatch to name map from the above custom colors.
-  final Map<ColorSwatch<Object>, String> colorsNameMap =
-      <ColorSwatch<Object>, String>{
-    ColorTools.createPrimarySwatch(guidePrimary): 'Guide Purple',
-    ColorTools.createPrimarySwatch(guidePrimaryVariant): 'Guide Purple Variant',
-    ColorTools.createAccentSwatch(guideSecondary): 'Guide Teal',
-    ColorTools.createAccentSwatch(guideSecondaryVariant): 'Guide Teal Variant',
-    ColorTools.createPrimarySwatch(guideError): 'Guide Error',
-    ColorTools.createPrimarySwatch(guideErrorDark): 'Guide Error Dark',
-    ColorTools.createPrimarySwatch(blueBlues): 'Blue blues',
-  };
-
   @override
   void initState() {
-    screenPickerColor = Colors.blue;
-    dialogPickerColor = Colors.red;
     super.initState();
   }
 
@@ -47,86 +32,43 @@ class _DemoPageState extends State<DemoPage> {
       appBar: AppBar(
         title: Text('Flex Color Picker 2.5.0'),
       ),
-      body: Column(
-        children: [
-          // Show the color picker in sized box in a raised card.
-          SizedBox(
-            width: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.all(6),
-              child: Card(
-                elevation: 2,
-                child: ColorPicker(
-                  // Use the screenPickerColor as start color.
-                  color: screenPickerColor,
-
-                  // Update the screenPickerColor using the callback.
-                  onColorChanged: (Color color) =>
-                      setState(() => screenPickerColor = color),
-                  width: 44,
-                  height: 44,
-                  borderRadius: 22,
-                  heading: Text(
-                    'Select color',
-                    style: Theme.of(context).textTheme.headline5,
-                  ),
-                  subheading: Text(
-                    'Select color shade',
-                    style: Theme.of(context).textTheme.subtitle1,
-                  ),
-                ),
+      body: Center(
+        child: ListTile(
+          title: const Text('Click the color to open the color picker.'),
+          subtitle: Text(
+            '${ColorTools.materialName(_selectedColor)}',
+          ),
+          trailing: Stack(
+            children: [
+              ColorIndicator(
+                width: 44,
+                height: 44,
+                borderRadius: 4,
+                color: _selectedColor,
+                onSelectFocus: false,
+                onSelect: () async {
+                  // Store current color before we open the dialog.
+                  final Color colorBeforeDialog = _selectedColor;
+                  // Wait for the picker to close, if dialog was dismissed,
+                  // then restore the color we had before it was opened.
+                  if (!(await colorPickerDialog())) {
+                    setState(() => _selectedColor = colorBeforeDialog);
+                  }
+                },
               ),
-            ),
+            ],
           ),
-
-          ListTile(
-            title: const Text('Select color above to change this color'),
-            subtitle:
-                Text('${ColorTools.materialNameAndCode(screenPickerColor)} '
-                    'aka ${ColorTools.nameThatColor(screenPickerColor)}'),
-            trailing: ColorIndicator(
-              width: 44,
-              height: 44,
-              borderRadius: 22,
-              color: screenPickerColor,
-            ),
-          ),
-          Divider(),
-          ListTile(
-            title: const Text('Click this color to change it in a dialog'),
-            subtitle: Text(
-              '${ColorTools.materialNameAndCode(dialogPickerColor, colorSwatchNameMap: colorsNameMap)} ' +
-                  'aka ${ColorTools.nameThatColor(dialogPickerColor)}',
-            ),
-            trailing: ColorIndicator(
-              //TODO: Write out all methods.
-              width: 44,
-              height: 44,
-              borderRadius: 4,
-              color: dialogPickerColor,
-              onSelectFocus: false,
-              onSelect: () async {
-                // Store current color before we open the dialog.
-                final Color colorBeforeDialog = dialogPickerColor;
-                // Wait for the picker to close, if dialog was dismissed,
-                // then restore the color we had before it was opened.
-                if (!(await colorPickerDialog())) {
-                  setState(() {
-                    dialogPickerColor = colorBeforeDialog;
-                  });
-                }
-              },
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
 
+  /// 63 properties on the ColorPicker widget.
+  /// Skip demonstration for TextStyle widget properties.
   Future<bool> colorPickerDialog() async {
     return ColorPicker(
       /// The active color selection when the color picker is created.
-      color: dialogPickerColor,
+      color: _selectedColor,
 
       /// Required [ValueChanged] callback, called when user selects
       /// a new color with new color value.
@@ -136,8 +78,7 @@ class _DemoPageState extends State<DemoPage> {
       ///
       /// Changing which picker type is viewed does not trigger this callback, it
       /// is not triggered until a color in the viewed picker is selected.
-      onColorChanged: (Color color) =>
-          setState(() => dialogPickerColor = color),
+      onColorChanged: (Color color) => setState(() => _selectedColor = color),
 
       /// Optional [ValueChanged] callback. Called when user starts color selection
       /// with current color value.
@@ -185,7 +126,7 @@ class _DemoPageState extends State<DemoPage> {
       /// color related color swatch of the selected color shown.
       ///
       /// Defaults to true.
-      enableShadesSelection: true,
+      enableShadesSelection: false,
 
       /// There is an extra index [850] used only by grey Material color in Flutter.
       /// If you want to include it in the grey color shades selection, then set
@@ -210,7 +151,7 @@ class _DemoPageState extends State<DemoPage> {
       /// The idea is try to match their width when they are both shown.
       ///
       /// Defaults to false.
-      enableTonalPalette: true,
+      enableTonalPalette: false,
 
       /// Cross axis alignment used to layout the main content of the
       /// color picker in its column layout.
@@ -239,7 +180,7 @@ class _DemoPageState extends State<DemoPage> {
       /// the onColor callbacks.
       ///
       /// Defaults to false.
-      enableOpacity: true,
+      enableOpacity: false,
 
       /// The height of the opacity slider track.
       ///
@@ -272,7 +213,7 @@ class _DemoPageState extends State<DemoPage> {
       /// Defaults to [ColorPickerCopyPasteBehavior] ().
       copyPasteBehavior: const ColorPickerCopyPasteBehavior(
         longPressMenu: true,
-        copyIcon: Icons.face,
+        copyIcon: Icons.check,
       ),
 
       /// Icon data for the icon used to indicate the selected color.
@@ -398,81 +339,82 @@ class _DemoPageState extends State<DemoPage> {
       /// If not provided or null, there is no subheading for the color shades.
       tonalSubheading: Text('Select Material 3 color tone'),
 
-      // /// Subheading widget for the HSV color wheel picker.
-      // ///
-      // /// Typically a Text widget, e.g.
-      // /// `Text('Selected color and its material like shades')`.
-      // ///
-      // /// The color wheel uses a separate subheading widget so that it may have
-      // /// another explanation, since its use case differs from the other subheading
-      // /// cases. If not provided, there is no subheading for the color wheel picker.
-      // final Widget? wheelSubheading;
+      /// Subheading widget for the HSV color wheel picker.
+      ///
+      /// Typically a Text widget, e.g.
+      /// `Text('Selected color and its material like shades')`.
+      ///
+      /// The color wheel uses a separate subheading widget so that it may have
+      /// another explanation, since its use case differs from the other subheading
+      /// cases. If not provided, there is no subheading for the color wheel picker.
+      wheelSubheading: Text('Selected color and its material like shades',
+          textAlign: TextAlign.center),
 
-      // /// Subheading widget for the recently used colors.
-      // ///
-      // /// Typically a Text widget, e.g. `Text('Recent colors')`.
-      // /// If not provided or null, there is no subheading for the recent color.
-      // /// The recently used colors subheading is not shown even if provided, when
-      // /// [showRecentColors] is false.
-      // final Widget? recentColorsSubheading;
+      /// Subheading widget for the recently used colors.
+      ///
+      /// Typically a Text widget, e.g. `Text('Recent colors')`.
+      /// If not provided or null, there is no subheading for the recent color.
+      /// The recently used colors subheading is not shown even if provided, when
+      /// [showRecentColors] is false.
+      recentColorsSubheading: Text('Recent colors'),
 
-      // /// Subheading widget for the opacity slider.
-      // ///
-      // /// Typically a Text widget, e.g. `Text('Opacity')`.
-      // /// If not provided or null, there is no subheading for the opacity slider.
-      // /// The opacity subheading is not shown even if provided, when
-      // /// [enableOpacity] is false.
-      // final Widget? opacitySubheading;
+      /// Subheading widget for the opacity slider.
+      ///
+      /// Typically a Text widget, e.g. `Text('Opacity')`.
+      /// If not provided or null, there is no subheading for the opacity slider.
+      /// The opacity subheading is not shown even if provided, when
+      /// [enableOpacity] is false.
+      opacitySubheading: Text('Opacity'),
 
-      // /// Set to true to show the Material name and index of the selected [color].
-      // ///
-      // /// Defaults to false.
-      // final bool showMaterialName;
+      /// Set to true to show the Material name and index of the selected [color].
+      ///
+      /// Defaults to false.
+      showMaterialName: false,
 
-      // /// Text style for the displayed material color name in the picker.
-      // ///
-      // /// Defaults to `Theme.of(context).textTheme.bodyText2`, if not defined.
-      // final TextStyle? materialNameTextStyle;
+      /// Text style for the displayed material color name in the picker.
+      ///
+      /// Defaults to `Theme.of(context).textTheme.bodyText2`, if not defined.
+      materialNameTextStyle: null,
 
-      // /// Set to true to show an English color name of the selected [color].
-      // ///
-      // /// Uses the [ColorTools.nameThatColor] function to give an English name to
-      // /// any selected color. The function has a list of 1566 color codes and
-      // /// their names, it finds the color that closest matches the given color in
-      // /// the list and returns its color name.
-      // ///
-      // /// Defaults to false.
-      // final bool showColorName;
+      /// Set to true to show an English color name of the selected [color].
+      ///
+      /// Uses the [ColorTools.nameThatColor] function to give an English name to
+      /// any selected color. The function has a list of 1566 color codes and
+      /// their names, it finds the color that closest matches the given color in
+      /// the list and returns its color name.
+      ///
+      /// Defaults to false.
+      showColorName: false,
 
-      // /// Text style for the displayed color name in the picker.
-      // ///
-      // /// Defaults to `Theme.of(context).textTheme.bodyText2`, if not defined.
-      // final TextStyle? colorNameTextStyle;
+      /// Text style for the displayed color name in the picker.
+      ///
+      /// Defaults to `Theme.of(context).textTheme.bodyText2`, if not defined.
+      colorNameTextStyle: null,
 
-      // /// Set to true to show the RGB Hex color code of the selected [color].
-      // ///
-      // /// The color code can be copied with copy icon button or other enabled copy
-      // /// actions in the color picker. On the wheel picker the color code can be
-      // /// edited to enter and select a color of a known RGB hex value. If the
-      // /// property [colorCodeReadOnly] has been set to false the color code field
-      // /// can never be edited directly, it is then only used to display the code
-      // /// of currently selected color.
-      // ///
-      // /// Defaults to false.
-      // final bool showColorCode;
+      /// Set to true to show the RGB Hex color code of the selected [color].
+      ///
+      /// The color code can be copied with copy icon button or other enabled copy
+      /// actions in the color picker. On the wheel picker the color code can be
+      /// edited to enter and select a color of a known RGB hex value. If the
+      /// property [colorCodeReadOnly] has been set to false the color code field
+      /// can never be edited directly, it is then only used to display the code
+      /// of currently selected color.
+      ///
+      /// Defaults to false.
+      showColorCode: false,
 
-      // /// When true, the color code entry field uses the currently selected
-      // /// color as its background color.
-      // ///
-      // /// This makes the color code entry field a large current color indicator
-      // /// area, that changes color as the color value is changed.
-      // /// The text color of the field, will automatically adjust for best contrast,
-      // /// as will the opacity indicator text. Enabling this feature will override
-      // /// any color specified in [colorCodeTextStyle] and [colorCodePrefixStyle],
-      // /// but their styles will otherwise be kept as specified.
-      // ///
-      // /// Defaults to false.
-      // final bool colorCodeHasColor;
+      /// When true, the color code entry field uses the currently selected
+      /// color as its background color.
+      ///
+      /// This makes the color code entry field a large current color indicator
+      /// area, that changes color as the color value is changed.
+      /// The text color of the field, will automatically adjust for best contrast,
+      /// as will the opacity indicator text. Enabling this feature will override
+      /// any color specified in [colorCodeTextStyle] and [colorCodePrefixStyle],
+      /// but their styles will otherwise be kept as specified.
+      ///
+      /// Defaults to false.
+      colorCodeHasColor: true,
 
       // /// Text style for the displayed generic color name in the picker.
       // ///
@@ -489,155 +431,157 @@ class _DemoPageState extends State<DemoPage> {
       */
       colorCodeIcon: null,
 
-      //      /// The TextStyle of the prefix of the color code.
-      // ///
-      // /// The prefix always include the alpha value and may also include a num char
-      // /// '#' or '0x' based on the `ColorPickerCopyPasteBehavior.copyFormat`
-      // /// setting.
-      // ///
-      // /// Defaults to [colorCodeTextStyle], if not defined.
-      // final TextStyle? colorCodePrefixStyle;
+      /// The TextStyle of the prefix of the color code.
+      ///
+      /// The prefix always include the alpha value and may also include a num char
+      /// '#' or '0x' based on the `ColorPickerCopyPasteBehavior.copyFormat`
+      /// setting.
+      ///
+      /// Defaults to [colorCodeTextStyle], if not defined.
+      colorCodePrefixStyle: null,
 
-      // /// When true, the color code field is always read only.
-      // ///
-      // /// If set to true, the color code field cannot be edited. Normally it can
-      // /// be edited when used in a picker that can select and show any color.
-      // /// Setting this to false makes it read only also on such pickers. This
-      // /// currently only applies to the wheel picker, but will also apply to
-      // /// future full color range pickers.
-      // ///
-      // /// Pickers that only offer a fixed palette, that you can just offered colors
-      // /// from always have the color code field in read only mode, this setting
-      // /// does not affect them.
-      // ///
-      // /// Regardless of the picker and [colorCodeReadOnly] value, you can change
-      // /// color value by pasting in a new value, if your copy paste configuration
-      // /// allows it.
-      // ///
-      // /// Defaults to false.
-      // final bool colorCodeReadOnly;
+      /// When true, the color code field is always read only.
+      ///
+      /// If set to true, the color code field cannot be edited. Normally it can
+      /// be edited when used in a picker that can select and show any color.
+      /// Setting this to false makes it read only also on such pickers. This
+      /// currently only applies to the wheel picker, but will also apply to
+      /// future full color range pickers.
+      ///
+      /// Pickers that only offer a fixed palette, that you can just offered colors
+      /// from always have the color code field in read only mode, this setting
+      /// does not affect them.
+      ///
+      /// Regardless of the picker and [colorCodeReadOnly] value, you can change
+      /// color value by pasting in a new value, if your copy paste configuration
+      /// allows it.
+      ///
+      /// Defaults to false.
+      colorCodeReadOnly: true,
 
-      // /// Set to true to show the int [Color.value] of the selected [color].
-      // ///
-      // /// This is a developer feature, showing the int color value can be
-      // /// useful during software development. If enabled the value is shown after
-      // /// the color code. For text style it also uses the [colorCodeTextStyle].
-      // /// There is no copy button for the shown int value, but the value is
-      // /// displayed with a [SelectableText] widget, so it can be select painted
-      // /// and copied if so required.
-      // ///
-      // /// Defaults to false.
-      // final bool showColorValue;
+      /// Set to true to show the int [Color.value] of the selected [color].
+      ///
+      /// This is a developer feature, showing the int color value can be
+      /// useful during software development. If enabled the value is shown after
+      /// the color code. For text style it also uses the [colorCodeTextStyle].
+      /// There is no copy button for the shown int value, but the value is
+      /// displayed with a [SelectableText] widget, so it can be select painted
+      /// and copied if so required.
+      ///
+      /// Defaults to false.
+      showColorValue: false,
 
-      // /// Set to true to a list of recently selected colors selection at the bottom
-      // /// of the picker.
-      // ///
-      // /// When `showRecentColors` is enabled, the color picker shows recently
-      // /// selected colors in a list at the bottom of the color picker. The list
-      // /// uses first-in, first-out to keep min 2 to max 20 colors (defaults to 5)
-      // /// on the recently used colors list, the desired max value can be modified
-      // /// with [maxRecentColors].
-      // ///
-      // /// Defaults to false.
-      // final bool showRecentColors;
+      /// Set to true to a list of recently selected colors selection at the bottom
+      /// of the picker.
+      ///
+      /// When `showRecentColors` is enabled, the color picker shows recently
+      /// selected colors in a list at the bottom of the color picker. The list
+      /// uses first-in, first-out to keep min 2 to max 20 colors (defaults to 5)
+      /// on the recently used colors list, the desired max value can be modified
+      /// with [maxRecentColors].
+      ///
+      /// Defaults to false.
+      showRecentColors: false,
 
-      // /// The maximum numbers of recent colors to show in the list of recent colors.
-      // ///
-      // /// The max recent colors must be from 2 to 20. Defaults to 5.
-      // final int maxRecentColors;
+      /// The maximum numbers of recent colors to show in the list of recent colors.
+      ///
+      /// The max recent colors must be from 2 to 20. Defaults to 5.
+      maxRecentColors: 5,
 
-      // /// A list with the recently select colors.
-      // ///
-      // /// Defaults to an empty list of colors. You can provide a starting
-      // /// set from some stored state if so desired.
-      // final List<Color> recentColors;
+      /// A list with the recently select colors.
+      ///
+      /// Defaults to an empty list of colors. You can provide a starting
+      /// set from some stored state if so desired.
+      recentColors: [],
 
-      // /// Optional callback that returns the current list of recently selected
-      // /// colors.
-      // ///
-      // /// This optional callback is called every time a new color is added to the
-      // /// recent colors list with the complete current list of recently used colors.
-      // ///
-      // /// If the optional callback is not provided, then it is not called. You can
-      // /// use this callback to save and restore the recently used colors. To
-      // /// initialize the list when the color picker is created give it a starting
-      // /// via [recentColors]. This could be a list kept just in state during
-      // /// the current app session, or it could have been persisted and restored
-      // /// from a previous session.
-      // final ValueChanged<List<Color>>? onRecentColorsChanged;
+      /// Optional callback that returns the current list of recently selected
+      /// colors.
+      ///
+      /// This optional callback is called every time a new color is added to the
+      /// recent colors list with the complete current list of recently used colors.
+      ///
+      /// If the optional callback is not provided, then it is not called. You can
+      /// use this callback to save and restore the recently used colors. To
+      /// initialize the list when the color picker is created give it a starting
+      /// via [recentColors]. This could be a list kept just in state during
+      /// the current app session, or it could have been persisted and restored
+      /// from a previous session.
+      onRecentColorsChanged: (List<Color> colors) => null,
 
-      // /// Set to true to enable all tooltips in this widget.
-      // ///
-      // /// When true, it enables all tooltips that are available in the color picker.
-      // /// If the tooltips get in the way you can disable them all by setting this
-      // /// property to `false`. Why not consider providing a setting in your app that
-      // /// allows users to turn ON and OFF the tooltips in the app? FlexColorPicker
-      // /// includes this toggle to make that easy to implement when it comes to its
-      // /// tooltip behavior.
-      // ///
-      // /// Defaults to true.
-      // final bool enableTooltips;
+      /// Set to true to enable all tooltips in this widget.
+      ///
+      /// When true, it enables all tooltips that are available in the color picker.
+      /// If the tooltips get in the way you can disable them all by setting this
+      /// property to `false`. Why not consider providing a setting in your app that
+      /// allows users to turn ON and OFF the tooltips in the app? FlexColorPicker
+      /// includes this toggle to make that easy to implement when it comes to its
+      /// tooltip behavior.
+      ///
+      /// Defaults to true.
+      enableTooltips: true, //TODO: IDK
 
-      // /// The color on the thumb of the slider that shows the selected picker type.
-      // ///
-      // /// If not defined, it defaults to `Color(0xFFFFFFFF)` (white) in light
-      // /// theme and to `Color(0xFF636366)` in dark theme, which are the defaults
-      // /// for the used [CupertinoSlidingSegmentedControl].
-      // ///
-      // /// If you give it a custom color, the color picker will automatically adjust
-      // /// the text color on the selected thumb for best legible text contrast.
-      // final Color? selectedPickerTypeColor;
+      /// The color on the thumb of the slider that shows the selected picker type.
+      ///
+      /// If not defined, it defaults to `Color(0xFFFFFFFF)` (white) in light
+      /// theme and to `Color(0xFF636366)` in dark theme, which are the defaults
+      /// for the used [CupertinoSlidingSegmentedControl].
+      ///
+      /// If you give it a custom color, the color picker will automatically adjust
+      /// the text color on the selected thumb for best legible text contrast.
+      selectedPickerTypeColor: null,
 
-      // /// The TextStyle of the labels in segmented color picker type selector.
-      // ///
-      // /// Defaults to `Theme.of(context).textTheme.caption`, if not defined.
-      // final TextStyle? pickerTypeTextStyle;
+      /// The TextStyle of the labels in segmented color picker type selector.
+      ///
+      /// Defaults to `Theme.of(context).textTheme.caption`, if not defined.
+      pickerTypeTextStyle: null,
 
-      // /// A [ColorPickerType] to String map that contains labels for the picker
-      // /// type selector.
-      // ///
-      // /// If not defined, or omitted in provided mpa, then the following default
-      // /// English labels are used:
-      // ///  * [ColorPickerType.both] : 'Both'
-      // ///  * [ColorPickerType.primary] : 'Primary & Accent'
-      // ///  * [ColorPickerType.accent] : 'Primary'
-      // ///  * [ColorPickerType.bw] : 'Black & White'
-      // ///  * [ColorPickerType.custom] : 'Custom'
-      // ///  * [ColorPickerType.wheel] : 'Wheel'
-      // final Map<ColorPickerType, String> pickerTypeLabels;
+      /// A [ColorPickerType] to String map that contains labels for the picker
+      /// type selector.
+      ///
+      /// If not defined, or omitted in provided mpa, then the following default
+      /// English labels are used:
+      ///  * [ColorPickerType.both] : 'Both'
+      ///  * [ColorPickerType.primary] : 'Primary & Accent'
+      ///  * [ColorPickerType.accent] : 'Primary'
+      ///  * [ColorPickerType.bw] : 'Black & White'
+      ///  * [ColorPickerType.custom] : 'Custom'
+      ///  * [ColorPickerType.wheel] : 'Wheel'
+      pickerTypeLabels: <ColorPickerType, String>{
+        ColorPickerType.both: 'Both',
+        ColorPickerType.primary: 'Primary & Accent',
+        ColorPickerType.accent: 'Primary',
+        ColorPickerType.bw: 'Black & White',
+        ColorPickerType.custom: 'Custom',
+        ColorPickerType.wheel: 'Wheel',
+      },
 
-      // /// Color swatch to name map, with custom swatches and their names.
-      // ///
-      // /// Used to provide custom [ColorSwatch] objects to the custom color picker,
-      // /// including their custom name label. These colors, their swatch shades
-      // /// and names, are shown and used when the picker type
-      // /// [ColorPickerType.custom] option is enabled in the color picker.
-      // ///
-      // /// Defaults to an empty map. If the map is empty, the custom colors picker
-      // /// will not be shown even if it is enabled in [pickersEnabled].
-      // final Map<ColorSwatch<Object>, String> customColorSwatchesAndNames;
-
-      // /// English default label for picker with both primary and accent colors.
-      // static const String _selectBothLabel = 'Primary & Accent';
-
-      // /// English default label for picker with primary colors.
-      // static const String _selectPrimaryLabel = 'Primary';
-
-      // /// English default label for picker with accent colors.
-      // static const String _selectAccentLabel = 'Accent';
-
-      // /// English default label for picker with black and white shades.
-      // static const String _selectBlackWhiteLabel = 'Black & White';
-
-      // /// English default label for picker with custom defined colors.
-      // static const String _selectCustomLabel = 'Custom';
-
-      // /// English default label for the HSV wheel picker that can select any color.
-      // static const String _selectWheelAnyLabel = 'Wheel';
+      /// Color swatch to name map, with custom swatches and their names.
+      ///
+      /// Used to provide custom [ColorSwatch] objects to the custom color picker,
+      /// including their custom name label. These colors, their swatch shades
+      /// and names, are shown and used when the picker type
+      /// [ColorPickerType.custom] option is enabled in the color picker.
+      ///
+      /// Defaults to an empty map. If the map is empty, the custom colors picker
+      /// will not be shown even if it is enabled in [pickersEnabled].
+      customColorSwatchesAndNames: <ColorSwatch<Object>, String>{
+        ColorTools.createPrimarySwatch(guidePrimary): 'Guide Purple',
+        ColorTools.createPrimarySwatch(guidePrimaryVariant):
+            'Guide Purple Variant',
+        ColorTools.createAccentSwatch(guideSecondary): 'Guide Teal',
+        ColorTools.createAccentSwatch(guideSecondaryVariant):
+            'Guide Teal Variant',
+        ColorTools.createPrimarySwatch(guideError): 'Guide Error',
+        ColorTools.createPrimarySwatch(guideErrorDark): 'Guide Error Dark',
+        ColorTools.createPrimarySwatch(blueBlues): 'Blue blues',
+      },
     ).showPickerDialog(
       context,
-      constraints:
-          const BoxConstraints(minHeight: 460, minWidth: 300, maxWidth: 320),
+      constraints: const BoxConstraints(
+        minHeight: 460,
+        minWidth: 300,
+        maxWidth: 320,
+      ),
     );
   }
 }
