@@ -11,16 +11,6 @@ class _DemoPageState extends State<DemoPage> {
   /// Default color for the picker in a dialog using onChanged.
   Color _selectedColor = Colors.red;
 
-  // Define custom colors. The 'guide' color values are from
-  // https://material.io/design/color/the-color-system.html#color-theme-creation
-  static const Color guidePrimary = Color(0xFF6200EE);
-  static const Color guidePrimaryVariant = Color(0xFF3700B3);
-  static const Color guideSecondary = Color(0xFF03DAC6);
-  static const Color guideSecondaryVariant = Color(0xFF018786);
-  static const Color guideError = Color(0xFFB00020);
-  static const Color guideErrorDark = Color(0xFFCF6679);
-  static const Color blueBlues = Color(0xFF174378);
-
   @override
   void initState() {
     super.initState();
@@ -565,15 +555,14 @@ class _DemoPageState extends State<DemoPage> {
       /// Defaults to an empty map. If the map is empty, the custom colors picker
       /// will not be shown even if it is enabled in [pickersEnabled].
       customColorSwatchesAndNames: <ColorSwatch<Object>, String>{
-        ColorTools.createPrimarySwatch(guidePrimary): 'Guide Purple',
-        ColorTools.createPrimarySwatch(guidePrimaryVariant):
+        ColorTools.createPrimarySwatch(Color(0xFF6200EE)): 'Guide Purple',
+        ColorTools.createPrimarySwatch(Color(0xFF3700B3)):
             'Guide Purple Variant',
-        ColorTools.createAccentSwatch(guideSecondary): 'Guide Teal',
-        ColorTools.createAccentSwatch(guideSecondaryVariant):
-            'Guide Teal Variant',
-        ColorTools.createPrimarySwatch(guideError): 'Guide Error',
-        ColorTools.createPrimarySwatch(guideErrorDark): 'Guide Error Dark',
-        ColorTools.createPrimarySwatch(blueBlues): 'Blue blues',
+        ColorTools.createAccentSwatch(Color(0xFF03DAC6)): 'Guide Teal',
+        ColorTools.createAccentSwatch(Color(0xFF018786)): 'Guide Teal Variant',
+        ColorTools.createPrimarySwatch(Color(0xFFB00020)): 'Guide Error',
+        ColorTools.createPrimarySwatch(Color(0xFFCF6679)): 'Guide Error Dark',
+        ColorTools.createPrimarySwatch(Color(0xFF174378)): 'Blue blues',
       },
     ).showPickerDialog(
       context,
