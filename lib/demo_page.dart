@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:patreon/authenticated_page.dart';
+import 'package:patreon/unauthenticated_page.dart';
 
 class DemoPage extends StatefulWidget {
   @override
@@ -6,6 +8,8 @@ class DemoPage extends StatefulWidget {
 }
 
 class _DemoPageState extends State<DemoPage> {
+  bool _isAuthenticated = true;
+
   @override
   void initState() {
     super.initState();
@@ -13,13 +17,6 @@ class _DemoPageState extends State<DemoPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Demo'),
-      ),
-      body: Center(
-        child: Text('Demo Page'),
-      ),
-    );
+    return _isAuthenticated ? AuthenticatedPage() : UnauthenticatedPage();
   }
 }
