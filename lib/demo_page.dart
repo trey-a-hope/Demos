@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:patreon/authenticated_page.dart';
 import 'package:patreon/unauthenticated_page.dart';
+
+import 'services/auth_service.dart';
 
 class DemoPage extends StatefulWidget {
   @override
@@ -8,8 +11,6 @@ class DemoPage extends StatefulWidget {
 }
 
 class _DemoPageState extends State<DemoPage> {
-  bool _isAuthenticated = true;
-
   @override
   void initState() {
     super.initState();
@@ -17,6 +18,15 @@ class _DemoPageState extends State<DemoPage> {
 
   @override
   Widget build(BuildContext context) {
-    return _isAuthenticated ? AuthenticatedPage() : UnauthenticatedPage();
+    return StreamBuilder(
+      stream: AuthService().onAuthStateChanged(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        final User? firebaseUser = snapshot.data;
+
+        if (firebaseUser == null) return UnauthenticatedPage();
+
+        return AuthenticatedPage();
+      },
+    );
   }
 }

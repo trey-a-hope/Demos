@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:patreon/services/auth_service.dart';
 
 class AuthenticatedPage extends StatefulWidget {
   @override
@@ -19,7 +20,13 @@ class _AuthenticatedPageState extends State<AuthenticatedPage> {
       ),
       body: Center(
         child: ElevatedButton(
-          onPressed: () => {},
+          onPressed: () async {
+            try {
+              await AuthService().signOut();
+            } catch (e) {
+              print(e.toString());
+            }
+          },
           child: Text('Sign Out'),
         ),
       ),
