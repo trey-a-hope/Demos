@@ -1,5 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:patreon/services/auth_service.dart';
 
 class AuthenticatedPage extends StatefulWidget {
   @override
@@ -7,6 +7,8 @@ class AuthenticatedPage extends StatefulWidget {
 }
 
 class _AuthenticatedPageState extends State<AuthenticatedPage> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   @override
   void initState() {
     super.initState();
@@ -22,7 +24,7 @@ class _AuthenticatedPageState extends State<AuthenticatedPage> {
         child: ElevatedButton(
           onPressed: () async {
             try {
-              await AuthService().signOut();
+              await _auth.signOut();
             } catch (e) {
               print(e.toString());
             }

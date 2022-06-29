@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:patreon/authenticated_page.dart';
 import 'package:patreon/unauthenticated_page.dart';
 
-import 'services/auth_service.dart';
-
 class DemoPage extends StatefulWidget {
   @override
   _DemoPageState createState() => _DemoPageState();
 }
 
 class _DemoPageState extends State<DemoPage> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   @override
   void initState() {
     super.initState();
@@ -19,7 +19,7 @@ class _DemoPageState extends State<DemoPage> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: AuthService().onAuthStateChanged(),
+      stream: _auth.authStateChanges(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         final User? firebaseUser = snapshot.data;
 

@@ -5,7 +5,9 @@
 
 # Node artifact files
 node_modules/
-dist/
+dist/ 
+build/
+.dart_tool/
 
 # Compiled Java class files
 *.class
