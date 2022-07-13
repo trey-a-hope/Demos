@@ -11,7 +11,7 @@ class DemoPage extends StatefulWidget {
 class _DemoPageState extends State<DemoPage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  bool _requiredVerifiedEmail = true;
+  bool _requireVerifiedEmail = true;
 
   @override
   void initState() {
@@ -25,10 +25,18 @@ class _DemoPageState extends State<DemoPage> {
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         final User? firebaseUser = snapshot.data;
 
-        if (firebaseUser == null || _requiredVerifiedEmail == true)
+        if (firebaseUser == null || _requireVerifiedEmail == true)
           return UnauthenticatedPage();
 
-        return AuthenticatedPage();
+        String title = '';
+
+        if (firebaseUser.phoneNumber != null)
+          title = 'Phone Number';
+        else if (firebaseUser.isAnonymous)
+          title = 'Anonymous';
+        else if (firebaseUser.email != null) title = 'Password';
+
+        return AuthenticatedPage(title: title);
       },
     );
   }

@@ -43,11 +43,14 @@ class _AuthEmailLinkState extends State<AuthEmailLink> {
   Future<void> _sendVerificationEmail() async {
     try {
       final User user = _auth.currentUser!;
-      await user.sendEmailVerification();
 
-      setState(() => _canResendEmail = false);
-      await Future.delayed(Duration(seconds: 5));
-      setState(() => _canResendEmail = true);
+      // If logging in anonymously, follow this flow.
+      if (user.email != null) {
+        await user.sendEmailVerification();
+        setState(() => _canResendEmail = false);
+        await Future.delayed(Duration(seconds: 5));
+        setState(() => _canResendEmail = true);
+      }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -120,7 +123,7 @@ class _AuthEmailLinkState extends State<AuthEmailLink> {
                             actionCodeSettings: ActionCodeSettings(
                               // URL you want to redirect back to. The domain (www.example.com) for this
                               // URL must be whitelisted in the Firebase Console.
-                              url: 'https://demos-6737f.web.app',
+                              url: 'www.demos-6737f.web.app',
 
                               // This must be true
                               handleCodeInApp: true,

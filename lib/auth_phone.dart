@@ -12,6 +12,8 @@ class _AuthPhoneState extends State<AuthPhone> {
   final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _smsCodeController = TextEditingController();
 
+  bool _showSMSCodeTextBox = false;
+
   String? _verificationId;
 
   @override
@@ -66,26 +68,29 @@ class _AuthPhoneState extends State<AuthPhone> {
             hintText: 'Phone Number',
           ),
         ),
-        TextFormField(
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          controller: _smsCodeController,
-          decoration: InputDecoration(
-            prefixIcon: Icon(
-              Icons.code,
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(90.0),
+        if (_showSMSCodeTextBox) ...[
+          TextFormField(
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            controller: _smsCodeController,
+            decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.code,
               ),
-              borderSide: BorderSide.none,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(90.0),
+                ),
+                borderSide: BorderSide.none,
+              ),
+              hintStyle:
+                  TextStyle(color: Colors.grey, fontFamily: "WorkSansLight"),
+              filled: true,
+              fillColor: Colors.white24,
+              hintText: 'SMS Code',
             ),
-            hintStyle:
-                TextStyle(color: Colors.grey, fontFamily: "WorkSansLight"),
-            filled: true,
-            fillColor: Colors.white24,
-            hintText: 'SMS Code',
+            onChanged: (val) => setState(() {}),
           ),
-        ),
+        ],
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -109,6 +114,11 @@ class _AuthPhoneState extends State<AuthPhone> {
                       print('codeAutoRetrievalTimeout');
                     },
                   );
+
+                  //Show the SMS Code text box.
+                  setState(() {
+                    _showSMSCodeTextBox = true;
+                  });
                 } catch (e) {
                   if (e is FirebaseAuthException) {
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -127,28 +137,30 @@ class _AuthPhoneState extends State<AuthPhone> {
               },
               child: Text('Send Verification Code'),
             ),
-            ElevatedButton(
-              onPressed: () async {
-                try {
-                  _verify();
-                } catch (e) {
-                  if (e is FirebaseAuthException) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(e.message!),
-                      ),
-                    );
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text('An unknown error occured.'),
-                      ),
-                    );
+            if (_smsCodeController.text.length == 6) ...[
+              ElevatedButton(
+                onPressed: () async {
+                  try {
+                    _verify();
+                  } catch (e) {
+                    if (e is FirebaseAuthException) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(e.message!),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('An unknown error occured.'),
+                        ),
+                      );
+                    }
                   }
-                }
-              },
-              child: Text('Verify'),
-            ),
+                },
+                child: Text('Verify'),
+              )
+            ]
           ],
         ),
       ],

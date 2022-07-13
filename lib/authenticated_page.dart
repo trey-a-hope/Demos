@@ -2,6 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AuthenticatedPage extends StatefulWidget {
+  AuthenticatedPage({required this.title});
+
+  final String title;
+
   @override
   _AuthenticatedPageState createState() => _AuthenticatedPageState();
 }
@@ -18,7 +22,7 @@ class _AuthenticatedPageState extends State<AuthenticatedPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Authenticated by Email/Password'),
+        title: Text('Authenticated by ${widget.title}'),
       ),
       body: Center(
         child: ElevatedButton(
