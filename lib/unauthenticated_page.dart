@@ -24,8 +24,8 @@ class _UnauthenticatedPageState extends State<UnauthenticatedPage> {
       body: Center(
         child: Column(
           children: [
-            // AuthPassword(),
-            AuthPhone(),
+            AuthPassword(),
+            // AuthPhone(),
             // AuthAnonymous(),
             // AuthGoogle(),
           ],
