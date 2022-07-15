@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:patreon/auth_anonymous.dart';
-import 'package:patreon/auth_email_link.dart';
 import 'package:patreon/auth_google.dart';
 import 'package:patreon/auth_password.dart';
 import 'package:patreon/auth_phone.dart';
@@ -22,19 +21,15 @@ class _UnauthenticatedPageState extends State<UnauthenticatedPage> {
       appBar: AppBar(
         title: Text('Unauthenticated'),
       ),
-      body: Column(
-        children: [
-          AuthPassword(),
-          Divider(),
-          AuthEmailLink(),
-          Divider(),
-          AuthPhone(),
-          Divider(),
-          AuthAnonymous(),
-          Divider(),
-          AuthGoogle(),
-          Divider(),
-        ],
+      body: Center(
+        child: Column(
+          children: [
+            // AuthPassword(),
+            AuthPhone(),
+            // AuthAnonymous(),
+            // AuthGoogle(),
+          ],
+        ),
       ),
     );
   }

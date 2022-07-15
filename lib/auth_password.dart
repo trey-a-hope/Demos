@@ -75,6 +75,7 @@ class _AuthPasswordState extends State<AuthPassword> {
             ElevatedButton(
               onPressed: () {
                 try {
+                  // Tries to create a new user account with the given email address and password.
                   _auth.createUserWithEmailAndPassword(
                     email: _emailController.text,
                     password: _passwordController.text,
@@ -95,6 +96,7 @@ class _AuthPasswordState extends State<AuthPassword> {
             ElevatedButton(
               onPressed: () async {
                 try {
+                  // Attempts to sign in a user with the given email address and password.
                   await _auth.signInWithEmailAndPassword(
                     email: _emailController.text,
                     password: _passwordController.text,

@@ -21,20 +21,21 @@ class _AuthGoogleState extends State<AuthGoogle> {
   }
 
   Future<void> _signInWithGoogle() async {
-    // Trigger the authentication flow
+    // Trigger the authentication flow.
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-    // Obtain the auth details from the request
+    // Obtain the auth details from the request.
     final GoogleSignInAuthentication? googleAuth =
         await googleUser?.authentication;
 
-    // Create a new credential
+    // Create a new credential.
     final credential = GoogleAuthProvider.credential(
       accessToken: googleAuth?.accessToken,
       idToken: googleAuth?.idToken,
     );
 
-    // Once signed in, return the UserCredential
+    // Asynchronously signs in to Firebase with the given 3rd-party credentials
+    // (e.g. a Facebook login Access Token, a Google ID Token/Access Token pair, etc.) and returns additional identity provider data.
     UserCredential userCredential =
         await FirebaseAuth.instance.signInWithCredential(credential);
     return;
@@ -48,14 +49,16 @@ class _AuthGoogleState extends State<AuthGoogle> {
         Padding(
           padding: EdgeInsets.all(10),
           child: Text(
-            'Anonymous',
+            'Google',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
-        ElevatedButton.icon(
-          icon: Icon(Icons.login),
-          onPressed: () => _signInWithGoogle(),
-          label: Text('Google Sign In'),
+        Center(
+          child: ElevatedButton.icon(
+            icon: Icon(Icons.login),
+            onPressed: () => _signInWithGoogle(),
+            label: Text('Google Sign In'),
+          ),
         ),
       ],
     );

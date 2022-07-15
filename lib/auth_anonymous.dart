@@ -21,8 +21,10 @@ class _AuthAnonymousState extends State<AuthAnonymous> {
 
   void _signInAnonymously() async {
     try {
+      // Asynchronously creates and becomes an anonymous user.
+      // If there is already an anonymous user signed in, that user will be returned instead.
+      // If there is any other existing user signed in, that user will be signed out.
       UserCredential userCredential = await _auth.signInAnonymously();
-      print(userCredential);
     } catch (e) {}
   }
 
@@ -38,10 +40,12 @@ class _AuthAnonymousState extends State<AuthAnonymous> {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
-        ElevatedButton.icon(
-          icon: Icon(Icons.login),
-          onPressed: () => _signInAnonymously(),
-          label: Text('Sign In Anonymously'),
+        Center(
+          child: ElevatedButton.icon(
+            icon: Icon(Icons.login),
+            onPressed: () => _signInAnonymously(),
+            label: Text('Sign In Anonymously'),
+          ),
         ),
       ],
     );

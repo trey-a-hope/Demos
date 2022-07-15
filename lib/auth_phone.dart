@@ -14,6 +14,7 @@ class _AuthPhoneState extends State<AuthPhone> {
 
   bool _showSMSCodeTextBox = false;
 
+  // ID of the verification method, used for creating phone credential.
   String? _verificationId;
 
   @override
@@ -27,6 +28,7 @@ class _AuthPhoneState extends State<AuthPhone> {
     try {
       String smsCode = _smsCodeController.text;
 
+      // Create a new [PhoneAuthCredential] from a provided [verificationId] and [smsCode].
       PhoneAuthCredential credential = PhoneAuthProvider.credential(
         verificationId: _verificationId!,
         smsCode: smsCode,
@@ -97,6 +99,12 @@ class _AuthPhoneState extends State<AuthPhone> {
             ElevatedButton(
               onPressed: () async {
                 try {
+                  // Starts a phone number verification process for the given phone number.
+                  // This method is used to verify that the user-provided phone number belongs to the user.
+                  // Firebase sends a code via SMS message to the phone number, where you must then prompt the user
+                  // to enter the code. The code can be combined with the verification ID to create a
+                  // [PhoneAuthProvider.credential] which you can then use to sign the user in, or link with their
+                  // account ( see [signInWithCredential] or [linkWithCredential]).
                   await _auth.verifyPhoneNumber(
                     phoneNumber: '+1${_phoneNumberController.text}',
                     verificationCompleted: (PhoneAuthCredential credential) {
