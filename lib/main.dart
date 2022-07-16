@@ -18,3 +18,14 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+/* 
+
+Note: You need to add this to the Info.plist file.
+
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>This app needs access to location when open.</string>
+<key>NSLocationAlwaysUsageDescription</key>
+<string>This app needs access to location when in the background.</string>
+
+*/
