@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:intl/intl.dart';
 
 class PositionDetailsWidget extends StatefulWidget {
   PositionDetailsWidget({
@@ -30,7 +31,8 @@ class _PositionDetailsWidgetState extends State<PositionDetailsWidget> {
             Text('Is Mocked: ${widget.position.isMocked}'),
             Text('Speed: ${widget.position.speed}'),
             Text('Speed Accuracy: ${widget.position.speedAccuracy}'),
-            Text('Timestamp: ${widget.position.timestamp}'),
+            Text(
+                'Timestamp: ${DateFormat.yMMMd().format(widget.position.timestamp!)}'),
           ],
         ),
       ),
