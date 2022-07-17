@@ -17,6 +17,9 @@ class _DemoPageState extends State<DemoPage> {
 
   Position? _selectedPosition;
 
+  Address? _currentAddress;
+  Address? _selectedAddress;
+
   /// Fires whenever the location services are disabled/enabled in
   /// the notification bar or in the device settings. Returns
   /// ServiceStatus.enabled when location services are enabled and
@@ -36,12 +39,9 @@ class _DemoPageState extends State<DemoPage> {
   /// Used for converting an address into coordinates.
   final GeoCode _geoCoder = GeoCode();
 
-  /// Query submission debouncer.
-  Timer? _debounce;
-
-  String? _selectedAddress;
-
   final NumberFormat _numberFormat = NumberFormat("###,###.##", "en_US");
+
+  bool _isLoading = false;
 
   @override
   void initState() {
@@ -55,6 +55,10 @@ class _DemoPageState extends State<DemoPage> {
 
       // Returns the last known position. Note: getCurrentPosition() causes an app refresh to crash.
       _currentPosition = await Geolocator.getLastKnownPosition();
+
+      _currentAddress = await _geoCoder.reverseGeocoding(
+          latitude: _currentPosition!.latitude,
+          longitude: _currentPosition!.longitude);
 
       // Returns a [Future] containing a [LocationAccuracyStatus] When the user has given
       // permission for approximate location, [LocationAccuracyStatus.reduced] will be returned,
@@ -227,33 +231,48 @@ class _DemoPageState extends State<DemoPage> {
   }
 
   void _submitQuery({required String query}) async {
-    if (_debounce?.isActive ?? false) _debounce!.cancel();
-    _debounce = Timer(
-      const Duration(seconds: 2),
-      () async {
-        try {
-          Coordinates coordinates =
-              await _geoCoder.forwardGeocoding(address: query);
+    try {
+      setState(() {
+        _isLoading = true;
+      });
 
-          _selectedAddress = query;
+      Coordinates coordinates =
+          await _geoCoder.forwardGeocoding(address: query);
 
-          _selectedPosition = Position(
-            longitude: coordinates.longitude!,
-            latitude: coordinates.latitude!,
-            timestamp: DateTime.now(),
-            accuracy: 0,
-            altitude: 0,
-            heading: 0,
-            speed: 0,
-            speedAccuracy: 0,
-          );
+      _selectedAddress = await _geoCoder.reverseGeocoding(
+          latitude: coordinates.latitude!, longitude: coordinates.longitude!);
 
-          setState(() {});
-        } catch (e) {
-          print(e);
-        }
-      },
-    );
+      _selectedPosition = Position(
+        longitude: coordinates.longitude!,
+        latitude: coordinates.latitude!,
+        timestamp: DateTime.now(),
+        accuracy: 0,
+        altitude: 0,
+        heading: 0,
+        speed: 0,
+        speedAccuracy: 0,
+      );
+
+      setState(() {
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            e.toString(),
+          ),
+        ),
+      );
+    }
+  }
+
+  String _convertAddressToString({required Address address}) {
+    return address.streetAddress!;
   }
 
   @override
@@ -262,108 +281,117 @@ class _DemoPageState extends State<DemoPage> {
       appBar: AppBar(
         title: Text('Geolocator & Geocoder'),
       ),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              if (_currentPosition != null) ...[
+      body: SafeArea(
+        child: Column(
+          children: [
+            Row(
+              children: [
+                if (_currentPosition != null && _currentAddress != null) ...[
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(8),
+                          child: Text(
+                            'Current Position: ${_convertAddressToString(address: _currentAddress!)}',
+                            style: TextStyle(fontSize: 16),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        PositionDetailsWidget(position: _currentPosition!),
+                      ],
+                    ),
+                  )
+                ],
                 Expanded(
                   child: Column(
                     children: [
                       Padding(
                         padding: EdgeInsets.all(8),
                         child: Text(
-                          'Current Position',
-                          style: TextStyle(fontSize: 18),
+                          _selectedAddress == null
+                              ? 'Selected Position'
+                              : 'Selected Position: ${_convertAddressToString(address: _selectedAddress!)}',
+                          style: TextStyle(fontSize: 16),
+                          textAlign: TextAlign.center,
                         ),
                       ),
-                      PositionDetailsWidget(position: _currentPosition!),
+                      _isLoading
+                          ? Center(child: CircularProgressIndicator())
+                          : _selectedPosition == null
+                              ? Text('Please Select a location...')
+                              : PositionDetailsWidget(
+                                  position: _selectedPosition!),
                     ],
                   ),
                 )
               ],
-              Expanded(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Text(
-                        _selectedAddress ?? 'Selected Position',
-                        style: TextStyle(fontSize: 18),
-                        textAlign: TextAlign.center,
-                      ),
+            ),
+            Spacer(),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: TextField(
+                controller: _aPositionAddressController,
+                decoration: InputDecoration(
+                  hintText: 'Enter address for location',
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.send),
+                    onPressed: () => _submitQuery(
+                      query: _aPositionAddressController.text,
                     ),
-                    _selectedPosition == null
-                        ? Text('Please Select a location...')
-                        : PositionDetailsWidget(position: _selectedPosition!),
-                  ],
-                ),
-              )
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              controller: _aPositionAddressController,
-              decoration: InputDecoration(
-                hintText: 'Enter address for location',
-                suffixIcon: IconButton(
-                  icon: Icon(Icons.send),
-                  onPressed: () => _submitQuery(
-                    query: _aPositionAddressController.text,
                   ),
                 ),
               ),
             ),
-          ),
-          if (_accuracy != null) ...[
-            ListTile(
-              leading: Icon(Icons.check),
-              title: Text(_accuracy.toString()),
-              subtitle: Text('Accuracy'),
-            ),
-          ],
-          if (_selectedPosition != null) ...[
-            ListTile(
-              leading: Icon(Icons.check),
-              title: Builder(builder: (context) {
-                double distanceMiles = _getDistanceBetween(
-                  a: _currentPosition!,
-                  b: _selectedPosition!,
-                );
-
-                return Text(
-                    '${_numberFormat.format(distanceMiles)} meters / ${_numberFormat.format(distanceMiles / 1609.344)} miles');
-              }),
-              subtitle: Text('Distance'),
-            ),
-            ListTile(
-              leading: Icon(Icons.check),
-              title: Builder(builder: (context) {
-                double bearingMiles = _getBearingBetween(
-                  a: _currentPosition!,
-                  b: _selectedPosition!,
-                );
-
-                return Text('${_numberFormat.format(bearingMiles)}');
-              }),
-              subtitle: Text('Bearing'),
-            ),
-          ],
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ElevatedButton(
-                onPressed: () => Geolocator.openAppSettings(),
-                child: Text('Open App Settings'),
-              ),
-              ElevatedButton(
-                onPressed: () => Geolocator.openLocationSettings(),
-                child: Text('Open Location Settings'),
+            if (_accuracy != null) ...[
+              ListTile(
+                leading: Icon(Icons.check),
+                title: Text(_accuracy.toString()),
+                subtitle: Text('Accuracy'),
               ),
             ],
-          ),
-        ],
+            if (_selectedPosition != null) ...[
+              ListTile(
+                leading: Icon(Icons.check),
+                title: Builder(builder: (context) {
+                  double distanceMiles = _getDistanceBetween(
+                    a: _currentPosition!,
+                    b: _selectedPosition!,
+                  );
+
+                  return Text(
+                      '${_numberFormat.format(distanceMiles)} meters / ${_numberFormat.format(distanceMiles / 1609.344)} miles');
+                }),
+                subtitle: Text('Distance'),
+              ),
+              ListTile(
+                leading: Icon(Icons.check),
+                title: Builder(builder: (context) {
+                  double bearingMiles = _getBearingBetween(
+                    a: _currentPosition!,
+                    b: _selectedPosition!,
+                  );
+
+                  return Text('${_numberFormat.format(bearingMiles)}');
+                }),
+                subtitle: Text('Bearing'),
+              ),
+            ],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ElevatedButton(
+                  onPressed: () => Geolocator.openAppSettings(),
+                  child: Text('Open App Settings'),
+                ),
+                ElevatedButton(
+                  onPressed: () => Geolocator.openLocationSettings(),
+                  child: Text('Open Location Settings'),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

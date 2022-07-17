@@ -23,14 +23,23 @@ class _PositionDetailsWidgetState extends State<PositionDetailsWidget> {
         child: Column(
           children: [
             Text('Accuracy: ${widget.position.accuracy}'),
+            Divider(),
             Text('Latitude: ${widget.position.latitude}'),
+            Divider(),
             Text('Longitude: ${widget.position.longitude}'),
+            Divider(),
             Text('Altitude: ${widget.position.altitude}'),
+            Divider(),
             Text('Floor: ${widget.position.floor}'),
+            Divider(),
             Text('Heading: ${widget.position.heading}'),
+            Divider(),
             Text('Is Mocked: ${widget.position.isMocked}'),
+            Divider(),
             Text('Speed: ${widget.position.speed}'),
+            Divider(),
             Text('Speed Accuracy: ${widget.position.speedAccuracy}'),
+            Divider(),
             Text(
                 'Timestamp: ${DateFormat.yMMMd().format(widget.position.timestamp!)}'),
           ],
