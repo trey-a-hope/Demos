@@ -74,9 +74,7 @@ class _DemoPageState extends State<DemoPage> {
     return ListTile(
       leading: Icon(Icons.check),
       title: Text(title),
-      subtitle: Text(
-        subtitle,
-      ),
+      subtitle: Text(subtitle),
     );
   }
 }

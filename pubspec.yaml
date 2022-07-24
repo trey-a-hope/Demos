@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  package_info_plus: ^1.4.2 
+  package_info_plus: ^1.4.3
 
 dev_dependencies:
   flutter_test:
