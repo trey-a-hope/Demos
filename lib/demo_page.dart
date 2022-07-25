@@ -1,6 +1,5 @@
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class DemoPage extends StatefulWidget {
   @override
@@ -11,6 +10,13 @@ class _DemoPageState extends State<DemoPage> {
   /// Default color for the picker in a dialog using onChanged.
   Color _selectedColor = Colors.red;
 
+  /// Box constraints for the color picker.
+  BoxConstraints _constraints = BoxConstraints(
+    minHeight: 460,
+    minWidth: 300,
+    maxWidth: 320,
+  );
+
   @override
   void initState() {
     super.initState();
@@ -20,7 +26,7 @@ class _DemoPageState extends State<DemoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flex Color Picker 2.5.0'),
+        title: Text('Flex Color Picker'),
       ),
       body: Center(
         child: ListTile(
@@ -39,6 +45,7 @@ class _DemoPageState extends State<DemoPage> {
                 onSelect: () async {
                   // Store current color before we open the dialog.
                   final Color colorBeforeDialog = _selectedColor;
+
                   // Wait for the picker to close, if dialog was dismissed,
                   // then restore the color we had before it was opened.
                   if (!(await colorPickerDialog())) {
@@ -53,8 +60,7 @@ class _DemoPageState extends State<DemoPage> {
     );
   }
 
-  /// 63 properties on the ColorPicker widget.
-  /// Skip demonstration for TextStyle widget properties.
+  /// 62 PROPERTIES : NO STYLING PROPERTIES EXPLAINED
   Future<bool> colorPickerDialog() async {
     return ColorPicker(
       /// The active color selection when the color picker is created.
@@ -77,7 +83,7 @@ class _DemoPageState extends State<DemoPage> {
       /// selected new value was clicked is returned. It is also called
       /// with the current start color when user starts the interaction on the
       /// color wheel or on a color or transparency slider.
-      onColorChangeStart: (Color color) => null,
+      onColorChangeStart: (Color color) => debugPrint('onColorChangeStart'),
 
       /// Optional [ValueChanged] callback. Called when user ends color selection
       /// with the new color value.
@@ -85,7 +91,7 @@ class _DemoPageState extends State<DemoPage> {
       /// When clicking a new color on color items, the clicked color is returned.
       /// It is also called with the resulting color value when user ends the
       /// interaction on the color wheel or on a color or transparency slider.
-      onColorChangeEnd: (Color color) => null,
+      onColorChangeEnd: (Color color) => debugPrint('onColorChangeEnd'),
 
       /// A [ColorPickerType] to bool map. Defines which pickers are enabled in the
       /// color picker's sliding selector and thus available as color pickers.
@@ -147,17 +153,17 @@ class _DemoPageState extends State<DemoPage> {
       /// color picker in its column layout.
       ///
       /// Defaults to CrossAxisAlignment.center.
-      crossAxisAlignment: CrossAxisAlignment.center,
+      /// crossAxisAlignment: CrossAxisAlignment.center,
 
       /// Padding around the entire color picker content.
       ///
       /// Defaults to const EdgeInsets.all(16).
-      padding: EdgeInsets.all(16),
+      /// padding: EdgeInsets.all(16),
 
       /// Vertical spacing between items in the color picker column.
       ///
       /// Defaults to 8 dp. Must be from 0 to 300 dp.
-      columnSpacing: 8.0,
+      /// columnSpacing: 8.0,
 
       /// Enable the opacity control for the color value.
       ///
@@ -175,18 +181,18 @@ class _DemoPageState extends State<DemoPage> {
       /// The height of the opacity slider track.
       ///
       /// Defaults to 36 dp. Must be between 8 - 50.
-      opacityTrackHeight: 36,
+      /// opacityTrackHeight: 36,
 
       /// The width of the opacity slider track.
       ///
       /// If null, the slider fills to expand available width of the picker.
       /// If not null, it must be >= 150 dp.
-      opacityTrackWidth: null,
+      /// opacityTrackWidth: null,
 
       /// The radius of the thumb on the opacity slider.
       ///
       /// Defaults to 16 dp. Must be between 12 - 30.
-      opacityThumbRadius: 16,
+      /// opacityThumbRadius: 16,
 
       /// Used to configure action buttons for the color picker dialog.
       ///
@@ -218,23 +224,23 @@ class _DemoPageState extends State<DemoPage> {
       /// Width of the color indicator items.
       ///
       /// Defaults to 40 dp. Must be from 15 to 150 dp.
-      width: 40,
+      /// width: 40,
 
       /// Height of the color indicator items.
       ///
       /// Defaults to 40 dp. Must be from 15 to 150 dp.
-      height: 40,
+      /// height: 40,
 
       /// The horizontal spacing between the color picker indicator items.
       ///
       /// Defaults to 4 dp. Must be from 0 to 50 dp.
-      spacing: 4,
+      /// spacing: 4,
 
       /// The space between the color picker color item rows, when they need to
       /// be wrapped to multiple rows.
       ///
       /// Defaults to 4 dp. Must be from 0 to 50 dp.
-      runSpacing: 4,
+      /// runSpacing: 4,
 
       /// The Material elevation of the color indicator items.
       ///
@@ -264,12 +270,12 @@ class _DemoPageState extends State<DemoPage> {
       /// Diameter of the HSV based color wheel picker.
       ///
       /// Defaults to 190 dp. Must be from 100 to maximum 500 dp.
-      wheelDiameter: 190,
+      /// wheelDiameter: 190,
 
       /// The stroke width of the color wheel circle.
       ///
       /// Defaults to 16 dp. Must be from 4 to maximum 50 dp.
-      wheelWidth: 16,
+      /// wheelWidth: 16,
 
       /// Padding between shade square inside the hue wheel and inner
       /// side of the wheel.
@@ -278,7 +284,7 @@ class _DemoPageState extends State<DemoPage> {
       /// from 0 to 20 are recommended.
       ///
       /// Defaults to 0 dp.
-      wheelSquarePadding: 20,
+      /// wheelSquarePadding: 20,
 
       /// Border radius of the shade square inside the hue wheel.
       ///
@@ -289,7 +295,7 @@ class _DemoPageState extends State<DemoPage> {
       /// Recommended values 0 to 16.
       ///
       /// Defaults to 4 dp.
-      wheelSquareBorderRadius: 4,
+      // wheelSquareBorderRadius: 4,
 
       /// Set to true to show a 1 dp border around the color wheel.
       ///
@@ -364,7 +370,7 @@ class _DemoPageState extends State<DemoPage> {
       /// Text style for the displayed material color name in the picker.
       ///
       /// Defaults to `Theme.of(context).textTheme.bodyText2`, if not defined.
-      materialNameTextStyle: null,
+      /// materialNameTextStyle: null,
 
       /// Set to true to show an English color name of the selected [color].
       ///
@@ -379,7 +385,7 @@ class _DemoPageState extends State<DemoPage> {
       /// Text style for the displayed color name in the picker.
       ///
       /// Defaults to `Theme.of(context).textTheme.bodyText2`, if not defined.
-      colorNameTextStyle: null,
+      /// colorNameTextStyle: null,
 
       /// Set to true to show the RGB Hex color code of the selected [color].
       ///
@@ -406,21 +412,6 @@ class _DemoPageState extends State<DemoPage> {
       /// Defaults to false.
       colorCodeHasColor: true,
 
-      // /// Text style for the displayed generic color name in the picker.
-      // ///
-      // /// Defaults to `Theme.of(context).textTheme.bodyText2`, if not defined.
-      // final TextStyle? colorCodeTextStyle;
-
-      /// Old property, no longer in use. This property is now set via
-      /// property [copyPasteBehavior] and [ColorPickerCopyPasteBehavior.copyIcon]
-      /* 
-      @Deprecated('This property is deprecated and no longer has any function. '
-      'It was removed in v2.0.0. To modify the copy icon on the color code '
-      'entry field, define the `ColorPickerCopyPasteBehavior(copyIcon: '
-      'myIcon)` and provide it via the `copyPasteBehavior` property.')
-      */
-      colorCodeIcon: null,
-
       /// The TextStyle of the prefix of the color code.
       ///
       /// The prefix always include the alpha value and may also include a num char
@@ -428,7 +419,7 @@ class _DemoPageState extends State<DemoPage> {
       /// setting.
       ///
       /// Defaults to [colorCodeTextStyle], if not defined.
-      colorCodePrefixStyle: null,
+      /// colorCodePrefixStyle: null,
 
       /// When true, the color code field is always read only.
       ///
@@ -508,7 +499,7 @@ class _DemoPageState extends State<DemoPage> {
       /// tooltip behavior.
       ///
       /// Defaults to true.
-      enableTooltips: true, //TODO: IDK
+      enableTooltips: true,
 
       /// The color on the thumb of the slider that shows the selected picker type.
       ///
@@ -523,7 +514,7 @@ class _DemoPageState extends State<DemoPage> {
       /// The TextStyle of the labels in segmented color picker type selector.
       ///
       /// Defaults to `Theme.of(context).textTheme.caption`, if not defined.
-      pickerTypeTextStyle: null,
+      /// pickerTypeTextStyle: null,
 
       /// A [ColorPickerType] to String map that contains labels for the picker
       /// type selector.
@@ -566,11 +557,7 @@ class _DemoPageState extends State<DemoPage> {
       },
     ).showPickerDialog(
       context,
-      constraints: const BoxConstraints(
-        minHeight: 460,
-        minWidth: 300,
-        maxWidth: 320,
-      ),
+      constraints: _constraints,
     );
   }
 }
