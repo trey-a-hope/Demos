@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 class DemoPage extends StatefulWidget {
   @override
@@ -18,7 +19,21 @@ class _DemoPageState extends State<DemoPage> {
         title: Text('Demo'),
       ),
       body: Center(
-        child: Text('Demo Page'),
+        child: ToggleSwitch(
+          /// Initial label index, set to null for no chosen initial value (all options inactive).
+          initialLabelIndex: 0,
+
+          /// Total number of switches
+          totalSwitches: 3,
+
+          /// List of labels
+          labels: ['America', 'Canada', 'Mexico'],
+
+          /// OnToggle function
+          onToggle: (index) {
+            print('switched to: $index');
+          },
+        ),
       ),
     );
   }
