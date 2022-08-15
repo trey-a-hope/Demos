@@ -9,7 +9,7 @@ class DemoPage extends StatefulWidget {
 }
 
 class _DemoPageState extends State<DemoPage> {
-  final List<String> _labels = ['Apple', 'Banana', 'Orange'];
+  final List<String> _labels = ['Apple', 'Banana', 'Orange', 'Kiwi'];
 
   @override
   void initState() {
@@ -24,20 +24,19 @@ class _DemoPageState extends State<DemoPage> {
       ),
       body: Center(
         child: ToggleSwitch(
-          /// Border color.
-          borderColor: null,
+          /* Top 20 Properties */
 
           /// Divider color.
-          dividerColor: Colors.black,
+          dividerColor: Colors.purple,
 
           /// Active background color.
-          activeBgColor: null,
+          activeBgColor: [Colors.green],
 
           /// Active foreground color.
-          activeFgColor: null,
+          activeFgColor: Colors.black,
 
-          /// Inactive background color
-          inactiveBgColor: null,
+          /// Inactive background color.
+          inactiveBgColor: Colors.cyan,
 
           /// Inactive foreground color.
           inactiveFgColor: Colors.black,
@@ -49,7 +48,7 @@ class _DemoPageState extends State<DemoPage> {
           totalSwitches: _labels.length,
 
           /// List of icons.
-          icons: null,
+          // icons: _labels.map((label) => Icons.computer).toList(),
 
           /// List of active foreground colors.
           activeBgColors: _labels
@@ -58,18 +57,6 @@ class _DemoPageState extends State<DemoPage> {
                         .withOpacity(1.0)
                   ])
               .toList(),
-
-          /// List of custom text styles.
-          customTextStyles: null,
-
-          /// List of custom icons.
-          customIcons: null,
-
-          /// List of custom widths.
-          customWidths: null,
-
-          /// List of custom heights.
-          customHeights: null,
 
           /// Minimum switch width.
           minWidth: 100,
@@ -86,19 +73,54 @@ class _DemoPageState extends State<DemoPage> {
           /// Icon size.
           iconSize: 21,
 
-          /// Divider margin.
-          dividerMargin: 8,
-
-          /// Border width.
-          borderWidth: null,
-
           /// OnToggle function.
           onToggle: (index) {
-            print('switched to: $index');
+            debugPrint('$index');
           },
 
           /// Change selection on tap.
           changeOnTap: true,
+
+          /// Confirm if text direction is set right-to-left.
+          textDirectionRTL: false,
+
+          /// Initial label index, set to null for no chosen initial value (all options inactive).
+          initialLabelIndex: 0,
+
+          /// Tap active switch to de-activate/de-select.
+          doubleTapDisable: true,
+
+          /// Use toggle switch vertically.
+          isVertical: true,
+
+          /* Other 10 */
+
+          /// Border color.
+          borderColor: null,
+
+          /// Border width.
+          borderWidth: null,
+
+          /// List of custom text styles.
+          customTextStyles: null,
+
+          /// List of custom icons.
+          customIcons: null,
+
+          /// List of custom widths.
+          customWidths: null,
+
+          /// List of custom heights.
+          customHeights: null,
+
+          /// Set a border only to the active toggle component.
+          activeBorders: null,
+
+          /// Set radius style.
+          radiusStyle: false,
+
+          /// Animation curve.
+          curve: Curves.easeIn,
 
           /// Set animation.
           animate: true,
@@ -106,26 +128,8 @@ class _DemoPageState extends State<DemoPage> {
           /// Set animation duration.
           animationDuration: 1,
 
-          /// Set radius style.
-          radiusStyle: false,
-
-          /// Confirm if text direction is set right-to-left.
-          textDirectionRTL: false,
-
-          /// Animation curve
-          curve: Curves.easeIn,
-
-          /// Initial label index, set to null for no chosen initial value (all options inactive).
-          initialLabelIndex: 0,
-
-          /// Tap active switch to de-activate/de-select.
-          doubleTapDisable: false,
-
-          /// Use toggle switch vertically.
-          isVertical: false,
-
-          /// Set a border only to the active toggle component.
-          activeBorders: null,
+          /// Divider margin.
+          dividerMargin: 8.0,
         ),
       ),
     );
