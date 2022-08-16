@@ -1,11 +1,15 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:patreon/demo_page.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
+  await Future.delayed(Duration(seconds: 5));
+
+  FlutterNativeSplash.remove();
 
   runApp(MyApp());
 }
@@ -18,3 +22,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+//https://pub.dev/packages/flutter_native_splash
