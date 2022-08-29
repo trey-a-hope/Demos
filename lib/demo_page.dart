@@ -1,8 +1,6 @@
 import 'package:dual_screen/dual_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'page_widget.dart';
-
 class DemoPage extends StatefulWidget {
   @override
   _DemoPageState createState() => _DemoPageState();
@@ -39,20 +37,19 @@ class _DemoPageState extends State<DemoPage> {
         title: Text('Foldable & Dual Screen Devices Demo'),
       ),
       body: TwoPane(
+        // The first pane.
         startPane: Column(
           children: [
-            PageWidget(title: 'A'),
+            Text('Pane A'),
             if (_showBothPanes) ...[
               Slider(
                 value: _paneProportion,
                 min: _minPaneProportion,
                 max: _maxPaneProportion,
                 onChanged: (double value) {
-                  // if (value > 30 && value < 70) {
                   setState(
                     () => _paneProportion = value,
                   );
-                  // }
                 },
               ),
               Text((_paneProportion * 100).round().toString() + '%'),
@@ -66,9 +63,10 @@ class _DemoPageState extends State<DemoPage> {
             ),
           ],
         ),
+        // The second pane.
         endPane: Column(
           children: [
-            PageWidget(title: 'B'),
+            Text('Pane B'),
             SwitchListTile(
               title: Text(
                   'Direction is ${_directionIsHorizontal ? 'Horizontal' : 'Vertical'}'),
@@ -89,10 +87,15 @@ class _DemoPageState extends State<DemoPage> {
             ]
           ],
         ),
+        // Proportion of the available space occupied by the first pane.
         paneProportion: _paneProportion,
+        // Whether to show only one pane and which one, or both.
         panePriority:
             _showBothPanes ? TwoPanePriority.both : TwoPanePriority.start,
+        // Direction of the panes.
         direction: _directionIsHorizontal ? Axis.horizontal : Axis.vertical,
+
+        // Order of the panes when in vertical direction.
         verticalDirection: _verticalDirectionIsUp
             ? VerticalDirection.up
             : VerticalDirection.down,
@@ -100,5 +103,3 @@ class _DemoPageState extends State<DemoPage> {
     );
   }
 }
-
-//TODO: Add all sliders and switches to be outside of TwoPane widget, (that way the widgets are jumping everywhere).
