@@ -22,6 +22,7 @@ dist/
 # Maven
 target/
 dist/
+build/
 
 # JetBrains IDE
 .idea/
@@ -48,3 +49,30 @@ Thumbs.db
 *.mov
 *.wmv
 
+.flutter-plugins-dependencies
+.flutter-plugins
+.dart_tool/version
+.dart_tool/package_config_subset
+.dart_tool/package_config.json
+.dart_tool/flutter_build/2be8d9db6c98b6cf4574c70e18bc0bfa/outputs.json
+.dart_tool/flutter_build/2be8d9db6c98b6cf4574c70e18bc0bfa/kernel_snapshot.stamp
+.dart_tool/flutter_build/2be8d9db6c98b6cf4574c70e18bc0bfa/kernel_snapshot.d
+.dart_tool/flutter_build/2be8d9db6c98b6cf4574c70e18bc0bfa/gen_localizations.stamp
+.dart_tool/flutter_build/2be8d9db6c98b6cf4574c70e18bc0bfa/gen_dart_plugin_registrant.stamp
+.dart_tool/flutter_build/2be8d9db6c98b6cf4574c70e18bc0bfa/flutter_assets.d
+.dart_tool/flutter_build/2be8d9db6c98b6cf4574c70e18bc0bfa/debug_android_application.stamp
+.dart_tool/flutter_build/2be8d9db6c98b6cf4574c70e18bc0bfa/app.dill
+.dart_tool/flutter_build/2be8d9db6c98b6cf4574c70e18bc0bfa/.filecache
+.dart_tool/flutter_build/22c3e7fbfd5034b9d8a2aa8d5ae68fa4/outputs.json
+.dart_tool/flutter_build/22c3e7fbfd5034b9d8a2aa8d5ae68fa4/kernel_snapshot.stamp
+.dart_tool/flutter_build/22c3e7fbfd5034b9d8a2aa8d5ae68fa4/kernel_snapshot.d
+.dart_tool/flutter_build/22c3e7fbfd5034b9d8a2aa8d5ae68fa4/gen_localizations.stamp
+.dart_tool/flutter_build/22c3e7fbfd5034b9d8a2aa8d5ae68fa4/gen_dart_plugin_registrant.stamp
+.dart_tool/flutter_build/22c3e7fbfd5034b9d8a2aa8d5ae68fa4/flutter_assets.d
+.dart_tool/flutter_build/22c3e7fbfd5034b9d8a2aa8d5ae68fa4/debug_android_application.stamp
+.dart_tool/flutter_build/22c3e7fbfd5034b9d8a2aa8d5ae68fa4/app.dill
+.dart_tool/flutter_build/22c3e7fbfd5034b9d8a2aa8d5ae68fa4/.filecache
+.dart_tool/version
+.dart_tool/package_config_subset
+.dart_tool/package_config.json
+.dart_tool/version

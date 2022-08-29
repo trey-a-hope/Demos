@@ -1,4 +1,4 @@
-package com.example.patreon
+package com.example.demos
 
 import io.flutter.embedding.android.FlutterActivity
 

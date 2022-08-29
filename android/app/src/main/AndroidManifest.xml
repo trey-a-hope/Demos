@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.patreon">
+    package="com.example.demos">
    <application
         android:label="patreon"
         android:icon="@mipmap/ic_launcher">
