@@ -30,22 +30,33 @@ class _DemoPageState extends State<DemoPage> {
         child: StreamBuilder<DocumentSnapshot>(
           stream: _translationDocRef.snapshots(),
           builder: (context, snapshot) {
+            // Display circular progress indicator if snapshot is waiting.
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());
             }
 
+            // Convert the snapshot to a map.
             Map translation = snapshot.data!.data() as Map<String, dynamic>;
 
             return Column(
               children: [
-                TranslationListTile(
-                    country: 'English', text: translation['input']),
-                TranslationListTile(
-                    country: 'German', text: translation['translated']['de']),
-                TranslationListTile(
-                    country: 'Spanish', text: translation['translated']['es']),
-                TranslationListTile(
-                    country: 'French', text: translation['translated']['fr']),
+                ListTile(
+                  title: Text(translation['input']),
+                  subtitle: Text('English'),
+                ),
+                Divider(),
+                ListTile(
+                  title: Text(translation['translated']['de']),
+                  subtitle: Text('German'),
+                ),
+                ListTile(
+                  title: Text(translation['translated']['es']),
+                  subtitle: Text('Spanish'),
+                ),
+                ListTile(
+                  title: Text(translation['translated']['fr']),
+                  subtitle: Text('French'),
+                ),
                 Spacer(),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -56,10 +67,12 @@ class _DemoPageState extends State<DemoPage> {
                       suffixIcon: IconButton(
                         icon: Icon(Icons.send, color: Colors.blue),
                         onPressed: () async {
+                          // Update the input field on the translation document.
                           await _translationDocRef.update(
                             {'input': _textController.text},
                           );
 
+                          // Clear the text field to prepare for next input.
                           _textController.clear();
                         },
                       ),
@@ -73,21 +86,4 @@ class _DemoPageState extends State<DemoPage> {
       ),
     );
   }
-}
-
-class TranslationListTile extends StatelessWidget {
-  const TranslationListTile({
-    Key? key,
-    required this.country,
-    required this.text,
-  }) : super(key: key);
-
-  final String country;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) => ListTile(
-        title: Text('"$text"'),
-        subtitle: Text(country),
-      );
 }
