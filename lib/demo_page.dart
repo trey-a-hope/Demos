@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class DemoPage extends StatefulWidget {
   @override
@@ -7,10 +8,9 @@ class DemoPage extends StatefulWidget {
 }
 
 class _DemoPageState extends State<DemoPage> {
-  /// Cloud Firestore table that holds the translation info.
-  final DocumentReference _translationDocRef = FirebaseFirestore.instance
-      .collection('translations')
-      .doc('ufWEv06nWjSuZZw2lQYB');
+  /// The collection referrence for the comments.
+  static final CollectionReference _commentsColRef =
+      FirebaseFirestore.instance.collection('comments');
 
   /// Controller for updating translation input text.
   final TextEditingController _textController = TextEditingController();
@@ -24,55 +24,75 @@ class _DemoPageState extends State<DemoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Translate Text'),
+        title: Text('Analyze Toxicity'),
+        backgroundColor: Colors.red,
       ),
       body: SafeArea(
-        child: StreamBuilder<DocumentSnapshot>(
-          stream: _translationDocRef.snapshots(),
+        child: StreamBuilder<QuerySnapshot>(
+          stream:
+              _commentsColRef.orderBy('created', descending: true).snapshots(),
           builder: (context, snapshot) {
             // Display circular progress indicator if snapshot is waiting.
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());
             }
 
-            // Convert the snapshot to a map.
-            Map translation = snapshot.data!.data() as Map<String, dynamic>;
+            // Convert snapshot data into list of map objects.
+            List<Map> comments = snapshot.data!.docs.map((doc) {
+              Map comment = doc.data() as Map<String, dynamic>;
+
+              return comment;
+            }).toList();
 
             return Column(
               children: [
-                ListTile(
-                  title: Text(translation['input']),
-                  subtitle: Text('English'),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: comments.length,
+                    itemBuilder: (_, index) {
+                      // Convert created value to timestamp object.
+                      Timestamp timestamp =
+                          comments[index]['created'] as Timestamp;
+
+                      // Convert timestamp to datetime.
+                      DateTime created = DateTime.fromMicrosecondsSinceEpoch(
+                          timestamp.microsecondsSinceEpoch);
+
+                      return ListTile(
+                        title: Text(comments[index]['input']),
+                        subtitle:
+                            Text('Posted @ ${DateFormat.jm().format(created)}'),
+                        trailing: Icon(
+                          Icons.thumb_down,
+                          color: Colors.red,
+                        ),
+                      );
+                    },
+                  ),
                 ),
                 Divider(),
-                ListTile(
-                  title: Text(translation['translated']['de']),
-                  subtitle: Text('German'),
-                ),
-                ListTile(
-                  title: Text(translation['translated']['es']),
-                  subtitle: Text('Spanish'),
-                ),
-                ListTile(
-                  title: Text(translation['translated']['fr']),
-                  subtitle: Text('French'),
-                ),
-                Spacer(),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: TextField(
+                    maxLines: 5,
                     controller: _textController,
                     decoration: InputDecoration(
-                      hintText: 'Input',
+                      hintText: 'Leave comment here...',
                       suffixIcon: IconButton(
                         icon: Icon(Icons.send, color: Colors.blue),
                         onPressed: () async {
-                          // Update the input field on the translation document.
-                          await _translationDocRef.update(
-                            {'input': _textController.text},
+                          // Create new comment.
+                          DocumentReference _documentReference =
+                              _commentsColRef.doc();
+
+                          _documentReference.set(
+                            {
+                              'input': _textController.text,
+                              'created': DateTime.now(),
+                            },
                           );
 
-                          // Clear the text field to prepare for next input.
+                          // Clear the text field.
                           _textController.clear();
                         },
                       ),
