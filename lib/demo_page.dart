@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:patreon/attribute_score_listtile.dart';
-import 'package:patreon/comment_model.dart';
-
-import 'comment_score_listtile.dart';
+import 'package:patreon/models/comment_model.dart';
+import 'package:patreon/widgets/attribute_score_list_tile.dart';
+import 'package:patreon/widgets/comment_score_list_tile.dart';
 
 class DemoPage extends StatefulWidget {
   @override
@@ -57,54 +56,48 @@ class _DemoPageState extends State<DemoPage> {
 
             return Column(
               children: [
-                Expanded(
-                  child: Column(
-                    children: [
-                      CommentScoreListTile(
-                        title: '"${comment.text}"',
-                        value:
-                            _getCommentAverageAttributeScore(comment: comment),
-                      ),
-                      Divider(),
-                      if (comment.identityAttack != null) ...[
-                        AttributeScoreListTile(
-                          title: 'Identity Attack',
-                          value: comment.identityAttack!,
-                        )
-                      ],
-                      if (comment.insult != null) ...[
-                        AttributeScoreListTile(
-                          title: 'Insult',
-                          value: comment.insult!,
-                        )
-                      ],
-                      if (comment.profanity != null) ...[
-                        AttributeScoreListTile(
-                          title: 'Profanity',
-                          value: comment.profanity!,
-                        )
-                      ],
-                      if (comment.severeToxicity != null) ...[
-                        AttributeScoreListTile(
-                          title: 'Severe Toxicity',
-                          value: comment.severeToxicity!,
-                        )
-                      ],
-                      if (comment.threat != null) ...[
-                        AttributeScoreListTile(
-                          title: 'Threat',
-                          value: comment.threat!,
-                        )
-                      ],
-                      if (comment.toxicity != null) ...[
-                        AttributeScoreListTile(
-                          title: 'Toxicity',
-                          value: comment.toxicity!,
-                        )
-                      ],
-                    ],
-                  ),
+                CommentScoreListTile(
+                  title: '"${comment.text}"',
+                  value: _getCommentAverageAttributeScore(comment: comment),
                 ),
+                Divider(),
+                if (comment.identityAttack != null) ...[
+                  AttributeScoreListTile(
+                    title: 'Identity Attack',
+                    value: comment.identityAttack!,
+                  )
+                ],
+                if (comment.insult != null) ...[
+                  AttributeScoreListTile(
+                    title: 'Insult',
+                    value: comment.insult!,
+                  )
+                ],
+                if (comment.profanity != null) ...[
+                  AttributeScoreListTile(
+                    title: 'Profanity',
+                    value: comment.profanity!,
+                  )
+                ],
+                if (comment.severeToxicity != null) ...[
+                  AttributeScoreListTile(
+                    title: 'Severe Toxicity',
+                    value: comment.severeToxicity!,
+                  )
+                ],
+                if (comment.threat != null) ...[
+                  AttributeScoreListTile(
+                    title: 'Threat',
+                    value: comment.threat!,
+                  )
+                ],
+                if (comment.toxicity != null) ...[
+                  AttributeScoreListTile(
+                    title: 'Toxicity',
+                    value: comment.toxicity!,
+                  )
+                ],
+                Spacer(),
                 Divider(),
                 Padding(
                   padding: const EdgeInsets.all(16.0),

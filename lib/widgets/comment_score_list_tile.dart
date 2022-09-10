@@ -25,7 +25,7 @@ class CommentScoreListTile extends StatelessWidget {
               style: TextStyle(color: Colors.red),
             )
           : Text(
-              'This comment is good.',
+              'This comment is safe.',
               style: TextStyle(color: Colors.green),
             ),
       trailing: value > 0.2
