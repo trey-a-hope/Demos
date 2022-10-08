@@ -8,8 +8,8 @@ class DemoPage extends StatefulWidget {
 
 class _DemoPageState extends State<DemoPage> {
   final DocumentReference _docRef = FirebaseFirestore.instance
-      .collection('comments')
-      .doc('4whLwksJlXOoWoWRb1k0');
+      .collection('cf-data')
+      .doc('YAi6rlV6FkYG1fFRqCE7');
 
   @override
   void initState() {
@@ -24,8 +24,29 @@ class _DemoPageState extends State<DemoPage> {
       appBar: AppBar(
         title: Text('Demo'),
       ),
-      body: Center(
-        child: Text('Demo Page'),
+      body: SafeArea(
+        child: StreamBuilder<DocumentSnapshot>(
+          stream: _docRef.snapshots(),
+          builder: (context, snapshot) {
+            // Display circular progress indicator if snapshot is waiting.
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: CircularProgressIndicator());
+            }
+
+            Map<String, dynamic> data =
+                snapshot.data!.data() as Map<String, dynamic>;
+
+            return Center(
+              child: Text(
+                'Coins: ${data['coins']}',
+                style: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
