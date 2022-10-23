@@ -1,5 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DemoPage extends StatefulWidget {
   @override
@@ -7,25 +7,53 @@ class DemoPage extends StatefulWidget {
 }
 
 class _DemoPageState extends State<DemoPage> {
-  final DocumentReference _docRef = FirebaseFirestore.instance
-      .collection('comments')
-      .doc('4whLwksJlXOoWoWRb1k0');
+  /// Flutter home page url.
+  final Uri _webUrl = Uri.parse('https://flutter.dev');
 
-  @override
-  void initState() {
-    super.initState();
+  //TODO
+  final Uri _emailUrl =
+      Uri.parse('mailto:smith@example.org?subject=News&body=New%20plugin');
+
+  //TODO
+  final Uri _phoneUrl = Uri.parse('tel:+1-937-305-2027');
+
+  //TODO
+  final Uri _smsUrl = Uri.parse('sms:9371234567');
+
+  //TODO
+  final Uri _fileUrl = Uri.parse('file:/home');
+
+  /// Launch the URL.
+  Future<void> _launchUrl({required Uri uri}) async {
+    if (!await launchUrl(uri)) {
+      throw 'Could not launch $uri';
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    debugPrint(_docRef.toString());
-
     return Scaffold(
       appBar: AppBar(
-        title: Text('Demo'),
+        title: Text('URL Launcher'),
       ),
       body: Center(
-        child: Text('Demo Page'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () => _launchUrl(uri: _webUrl),
+              child: Text(
+                'Open Webview',
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () => _launchUrl(uri: _emailUrl),
+              child: Text(
+                'Open Email',
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
