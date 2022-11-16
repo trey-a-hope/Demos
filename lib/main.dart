@@ -1,5 +1,6 @@
-import 'package:demos/demo_page.dart';
+import 'package:demos/my_game.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -7,16 +8,11 @@ void main() async {
 
   await Firebase.initializeApp();
 
-  runApp(const MyApp());
+  final MyGame game = MyGame();
+
+  runApp(
+    GameWidget(game: game),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: DemoPage(),
-    );
-  }
-}
+//https://docs.flame-engine.org/1.4.0/flame/router.html

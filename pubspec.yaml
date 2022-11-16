@@ -10,10 +10,10 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   cloud_firestore: ^4.0.5
   cupertino_icons: ^1.0.2
   firebase_core: ^2.2.0 
+  flame: ^1.4.0
 
 dev_dependencies:
   flutter_test:
