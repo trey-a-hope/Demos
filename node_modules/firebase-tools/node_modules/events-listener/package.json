@@ -1,0 +1,33 @@
+{
+  "name": "events-listener",
+  "version": "1.1.0",
+  "description": "Listen to events from a Node.js EventEmitter.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "mocha",
+    "prepublishOnly": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwalton/node-events-listener.git"
+  },
+  "keywords": [
+    "events",
+    "EventEmitter",
+    "listenTo",
+    "node",
+    "node.js",
+    "stopListening"
+  ],
+  "author": "Jason Walton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jwalton/node-events-listener/issues"
+  },
+  "homepage": "https://github.com/jwalton/node-events-listener#readme",
+  "devDependencies": {
+    "mocha": "^5.1.1",
+    "sinon": "^4.5.0"
+  }
+}

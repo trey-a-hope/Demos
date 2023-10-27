@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class DemoPage extends StatefulWidget {
@@ -9,10 +8,6 @@ class DemoPage extends StatefulWidget {
 }
 
 class DemoPageState extends State<DemoPage> {
-  final DocumentReference _docRef = FirebaseFirestore.instance
-      .collection('comments')
-      .doc('4whLwksJlXOoWoWRb1k0');
-
   @override
   void initState() {
     super.initState();
@@ -20,14 +15,12 @@ class DemoPageState extends State<DemoPage> {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint(_docRef.toString());
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Demo'),
+        title: const Text('Shaders'),
       ),
       body: const Center(
-        child: Text('Demo Page'),
+        child: Text('Shaders'),
       ),
     );
   }
