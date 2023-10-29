@@ -1,4 +1,4 @@
-import 'package:demos/demo_page.dart';
+import 'package:demos/shader_home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -11,9 +11,7 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: DemoPage(),
-    );
-  }
+  Widget build(BuildContext context) => const MaterialApp(
+        home: ShaderHomePage(),
+      );
 }
