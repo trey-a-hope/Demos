@@ -22,7 +22,6 @@ vec3 palette(float t) {
    vec3 c = vec3(1., 1., .5);
    vec3 d = vec3(.8, .9, .3);
    
-   
    return a + b * cos(6.28318 * (c * t + d));
 }
 
