@@ -1,3 +1,4 @@
+import 'package:demos/local_type.dart';
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
@@ -19,10 +20,15 @@ class DemoPageState extends State<DemoPage> {
     super.initState();
   }
 
-  ListTile _builtTimeagoListTile(DateTime date) => ListTile(
-        title: const Text('English'),
+  ListTile _builtTimeagoListTile(DateTime date, LocaleType localeType) =>
+      ListTile(
+        title: Text(localeType.name),
         subtitle: Text(
-          timeago.format(date, allowFromNow: true),
+          timeago.format(
+            date,
+            allowFromNow: true,
+            locale: localeType.locale,
+          ),
         ),
       );
 
@@ -34,8 +40,11 @@ class DemoPageState extends State<DemoPage> {
       ),
       body: Column(
         children: [
-          _builtTimeagoListTile(fifteenMinsAgo),
-          _builtTimeagoListTile(fifteenMinsBefore),
+          for (int i = 0; i < LocaleType.values.length; i++) ...[
+            _builtTimeagoListTile(fifteenMinsAgo, LocaleType.values[i]),
+            _builtTimeagoListTile(fifteenMinsBefore, LocaleType.values[i]),
+            const Divider(),
+          ]
         ],
       ),
     );
