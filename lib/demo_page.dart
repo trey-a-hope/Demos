@@ -18,6 +18,12 @@ class DemoPageState extends State<DemoPage> {
   @override
   void initState() {
     super.initState();
+    _initTimeago();
+  }
+
+  void _initTimeago() {
+    // Add the French locale.
+    timeago.setLocaleMessages(LocaleType.fr.locale, timeago.FrMessages());
   }
 
   ListTile _builtTimeagoListTile(DateTime date, LocaleType localeType) =>
