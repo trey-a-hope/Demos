@@ -14,6 +14,7 @@ class DemoPage extends StatefulWidget {
 class DemoPageState extends State<DemoPage> {
   final fifteenMinsAgo = DateTime.now().subtract(const Duration(minutes: 15));
   final fifteenMinsBefore = DateTime.now().add(const Duration(minutes: 15));
+  final oneMinAgo = DateTime.now().subtract(const Duration(minutes: 1));
 
   @override
   void initState() {
@@ -34,6 +35,7 @@ class DemoPageState extends State<DemoPage> {
             date,
             allowFromNow: true,
             locale: localeType.locale,
+            clock: oneMinAgo,
           ),
         ),
       );
