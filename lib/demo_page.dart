@@ -1,4 +1,5 @@
 import 'package:demos/local_type.dart';
+import 'package:demos/my_custom_messages.dart';
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
@@ -25,6 +26,9 @@ class DemoPageState extends State<DemoPage> {
   void _initTimeago() {
     // Add the French locale.
     timeago.setLocaleMessages(LocaleType.fr.locale, timeago.FrMessages());
+
+    // Add my custom message locale.
+    timeago.setLocaleMessages(LocaleType.cl.locale, MyCustomMessages());
   }
 
   ListTile _builtTimeagoListTile(DateTime date, LocaleType localeType) =>

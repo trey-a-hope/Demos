@@ -1,7 +1,8 @@
 enum LocaleType {
   en('en', 'English'),
   es('es', 'Spanish'),
-  fr('fr', 'French');
+  fr('fr', 'French'),
+  cl('cl', 'Custom Locale');
 
   const LocaleType(this.locale, this.name);
 
