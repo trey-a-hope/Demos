@@ -12,6 +12,7 @@ class DemoPage extends StatefulWidget {
 
 class DemoPageState extends State<DemoPage> {
   final fifteenMinsAgo = DateTime.now().subtract(const Duration(minutes: 15));
+  final fifteenMinsBefore = DateTime.now().add(const Duration(minutes: 15));
 
   @override
   void initState() {
@@ -20,7 +21,9 @@ class DemoPageState extends State<DemoPage> {
 
   ListTile _builtTimeagoListTile(DateTime date) => ListTile(
         title: const Text('English'),
-        subtitle: Text(timeago.format(date)),
+        subtitle: Text(
+          timeago.format(date, allowFromNow: true),
+        ),
       );
 
   @override
@@ -32,6 +35,7 @@ class DemoPageState extends State<DemoPage> {
       body: Column(
         children: [
           _builtTimeagoListTile(fifteenMinsAgo),
+          _builtTimeagoListTile(fifteenMinsBefore),
         ],
       ),
     );
