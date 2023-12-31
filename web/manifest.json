@@ -1,6 +1,6 @@
 {
-    "name": "demos",
-    "short_name": "demos",
+    "name": "instagram_clone_flutter",
+    "short_name": "instagram_clone_flutter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
