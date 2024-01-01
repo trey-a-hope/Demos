@@ -1,33 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:demos/extensions/_extensions.dart';
 import 'package:flutter/material.dart';
 
 class DemoPage extends StatefulWidget {
   const DemoPage({super.key});
   @override
   State createState() => _DemoPageState();
-}
-
-extension OptionalInfixAddition<T extends num> on T? {
-  T? operator +(T? other) {
-    final shadow = this;
-    if (shadow != null) {
-      return shadow + (other ?? 0) as T;
-    } else {
-      return null;
-    }
-  }
-}
-
-extension BooleanMultiplication on bool {
-  bool operator *(bool other) {
-    final shadow = this;
-
-    if ((shadow && other) || (!shadow && !other)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
 }
 
 class _DemoPageState extends State<DemoPage> {
