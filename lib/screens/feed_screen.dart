@@ -56,7 +56,9 @@ class _FeedScreenState extends State<FeedScreen> {
               return const Text('Press button to start.');
             case ConnectionState.active:
             case ConnectionState.waiting:
-              return const Text('Awaiting result...');
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
             case ConnectionState.done:
               if (snapshot.hasError) return Text('Error: ${snapshot.error}');
 
