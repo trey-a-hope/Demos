@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_fcm_wrapper/flutter_fcm_wrapper.dart';
 import 'package:instagram_clone_flutter/resources/auth_methods.dart';
 import 'package:instagram_clone_flutter/utils/colors.dart';
 import 'package:instagram_clone_flutter/utils/global_variable.dart';
@@ -22,14 +21,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   int _page = 0;
   late PageController pageController; // for tabs animation
 
-  String? _token;
   final _fcm = FirebaseMessaging.instance;
-
-  FlutterFCMWrapper flutterFCMWrapper = const FlutterFCMWrapper(
-    apiKey: apiKey,
-    enableLog: true,
-    enableServerRespondLog: true,
-  );
 
   @override
   void initState() {
@@ -61,9 +53,6 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
 
     //Fetch the fcm token for this device.
     String? token = await _fcm.getToken();
-
-    // Update the global token value.
-    _token = token;
 
     // Update the token in the database.
     await AuthMethods().updateUserDetails(data: {'token': token});
@@ -139,7 +128,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
               backgroundColor: primaryColor),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.favorite,
+              Icons.notification_add,
               color: (_page == 3) ? primaryColor : secondaryColor,
             ),
             label: '',

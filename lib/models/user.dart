@@ -9,6 +9,7 @@ class User {
   final List followers;
   final List following;
   final String? token;
+  final bool online;
 
   const User({
     required this.username,
@@ -19,6 +20,7 @@ class User {
     required this.followers,
     required this.following,
     this.token,
+    required this.online,
   });
 
   static User fromSnap(DocumentSnapshot snap) {
@@ -33,6 +35,7 @@ class User {
       followers: snapshot["followers"],
       following: snapshot["following"],
       token: snapshot["token"],
+      online: snapshot["online"],
     );
   }
 
@@ -45,5 +48,6 @@ class User {
         "followers": followers,
         "following": following,
         "token": token,
+        "online": online,
       };
 }

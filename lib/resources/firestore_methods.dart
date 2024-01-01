@@ -21,7 +21,7 @@ class FireStoreMethods {
         username: username,
         likes: [],
         postId: postId,
-        datePublished: DateTime.now(),
+        datePublished: Timestamp.now(),
         postUrl: photoUrl,
         profImage: profImage,
       );

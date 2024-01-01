@@ -8,6 +8,8 @@ class AuthMethods {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  String getCurrentUid() => _auth.currentUser!.uid;
+
   // get user details
   Future<model.User> getUserDetails() async {
     User currentUser = _auth.currentUser!;
@@ -65,6 +67,7 @@ class AuthMethods {
           bio: bio,
           followers: [],
           following: [],
+          online: true,
         );
 
         // adding user in our database
