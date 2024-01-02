@@ -54,7 +54,10 @@ class _NotifyGangScreenState extends State<NotifyGangScreen> {
 
       await flutterFCMWrapper.sendMessageByTokenID(
         userRegistrationTokens: userRegistrationTokens,
+        title: 'Ay Gang!',
+        body: 'Just posted, show some luv!',
       );
+
       setState(() => _sendingNotification = false);
       showSnackbar(context, message: 'Gang notified.', label: 'Send Again?');
     } catch (e) {
