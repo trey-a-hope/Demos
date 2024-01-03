@@ -1,6 +1,7 @@
-import 'package:demos/demo_page.dart';
+import 'package:demos/home_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // https://github.com/vandadnp/youtube-riverpodcourse-public/tree/main
 
@@ -9,16 +10,23 @@ void main() async {
 
   await Firebase.initializeApp();
 
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: DemoPage(),
+    return MaterialApp(
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.dark,
+      debugShowCheckedModeBanner: false,
+      home: const HomePage(),
     );
   }
 }
