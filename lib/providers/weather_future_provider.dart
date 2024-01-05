@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 const unknownWeatherEmoji = '🤷';
 
-final weatherProvider = FutureProvider<WeatherEmoji>((ref) {
+final weatherFutureProvider = FutureProvider<WeatherEmoji>((ref) {
   final city = ref.watch(currentCityStateProvider);
   if (city != null) {
     return getWeather(city);

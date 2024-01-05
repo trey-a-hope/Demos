@@ -1,4 +1,5 @@
 import 'package:demos/pages/home_page.dart';
+import 'package:demos/pages/time_page.dart';
 import 'package:demos/pages/weather_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
   static const pages = [
     HomePage(),
     WeatherPage(),
+    TimePage(),
   ];
 
   @override
@@ -40,6 +42,7 @@ class MyApp extends StatelessWidget {
               tabs: [
                 Tab(text: 'Home'),
                 Tab(text: 'Weather'),
+                Tab(text: 'Time'),
               ],
             ),
             title: const Text('Riverpod Demo'),
