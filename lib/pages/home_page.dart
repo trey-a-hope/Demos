@@ -1,4 +1,6 @@
-import 'package:demos/extensions/_extensions.dart';
+import 'package:demos/extensions/num_extensions.dart';
+import 'package:demos/extensions/bool_extensions.dart';
+
 import 'package:demos/providers/counter_state_notifier_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -23,8 +25,9 @@ class HomePage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Consumer(
+          // Using the local "ref" and Consumer to prevent unnecessary rebuilds of the entire Scaffold.
           builder: (context, ref, child) {
-            final count = ref.watch(counterStateNotifierProvider);
+            final int? count = ref.watch(counterStateNotifierProvider);
             final text = count == null ? 'Press the button' : count.toString();
             return Text(text);
           },

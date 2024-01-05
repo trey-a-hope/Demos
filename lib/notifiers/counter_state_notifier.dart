@@ -1,5 +1,5 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:demos/extensions/_extensions.dart';
+import 'package:demos/extensions/num_extensions.dart';
 
 class CounterStateNotifier extends StateNotifier<int?> {
   CounterStateNotifier(super.state);

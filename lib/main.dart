@@ -1,4 +1,5 @@
-import 'package:demos/home_page.dart';
+import 'package:demos/pages/home_page.dart';
+import 'package:demos/pages/weather_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -20,13 +21,32 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  static const pages = [
+    HomePage(),
+    WeatherPage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       darkTheme: ThemeData.dark(),
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      home: DefaultTabController(
+        length: pages.length,
+        child: Scaffold(
+          appBar: AppBar(
+            bottom: const TabBar(
+              tabs: [
+                Tab(text: 'Home'),
+                Tab(text: 'Weather'),
+              ],
+            ),
+            title: const Text('Riverpod Demo'),
+          ),
+          body: const TabBarView(children: pages),
+        ),
+      ),
     );
   }
 }

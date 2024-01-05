@@ -1,3 +1,5 @@
+// https://docs.bongthorn.dev/pl/learn-dart-first-step-to-flutter/operators/an-introduction-to-operators
+// Infix Operators
 extension OptionalInfixAddition<T extends num> on T? {
   T? operator +(T? other) {
     final shadow = this;
