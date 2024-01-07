@@ -1,3 +1,4 @@
+import 'package:demos/pages/files_page.dart';
 import 'package:demos/pages/person_page.dart';
 import 'package:demos/pages/home_page.dart';
 import 'package:demos/pages/time_page.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
     WeatherPage(),
     TimePage(),
     PersonPage(),
+    FilmsPage(),
   ];
 
   @override
@@ -46,6 +48,7 @@ class MyApp extends StatelessWidget {
                 Tab(text: 'Weather'),
                 Tab(text: 'Time'),
                 Tab(text: 'People'),
+                Tab(text: 'Films'),
               ],
             ),
             title: const Text('Riverpod Demo'),
