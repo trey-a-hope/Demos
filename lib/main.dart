@@ -1,18 +1,15 @@
-import 'package:demos/pages/files_page.dart';
-import 'package:demos/pages/person_page.dart';
-import 'package:demos/pages/home_page.dart';
-import 'package:demos/pages/time_page.dart';
-import 'package:demos/pages/weather_page.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:demos/example_1/home_page.dart';
+import 'package:demos/example_2/weather_page.dart';
+import 'package:demos/example_5/films_page.dart';
+import 'package:demos/example_4/person_page.dart';
+import 'package:demos/example_3/time_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-// https://github.com/vandadnp/youtube-riverpodcourse-public/tree/main
+// https://www.youtube.com/watch?v=vtGCteFYs4M&list=RDCMUC8NpGP0AOQ0kX9ZRcohiPeQ&start_radio=1
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  await Firebase.initializeApp();
 
   runApp(
     const ProviderScope(
@@ -43,12 +40,13 @@ class MyApp extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             bottom: const TabBar(
+              isScrollable: true,
               tabs: [
-                Tab(text: 'Home'),
-                Tab(text: 'Weather'),
-                Tab(text: 'Time'),
-                Tab(text: 'People'),
-                Tab(text: 'Films'),
+                Tab(text: 'Home Example'),
+                Tab(text: 'Weather Example'),
+                Tab(text: 'Time Example'),
+                Tab(text: 'People Example'),
+                Tab(text: 'Films Example'),
               ],
             ),
             title: const Text('Riverpod Demo'),
