@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class DemoPage extends StatefulWidget {
@@ -8,9 +7,6 @@ class DemoPage extends StatefulWidget {
 }
 
 class _DemoPageState extends State<DemoPage> {
-  final pushNotificationsDataColRef =
-      FirebaseFirestore.instance.collection('push_notifications_data');
-
   @override
   void initState() {
     super.initState();
@@ -20,12 +16,7 @@ class _DemoPageState extends State<DemoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Demo'),
-      ),
-      body: const SafeArea(
-        child: Center(
-          child: Text('Demo Page'),
-        ),
+        title: const Text('Arkit Plugin'),
       ),
     );
   }

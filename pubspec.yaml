@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-
+  arkit_plugin: ^1.0.7
   cloud_firestore: ^4.0.5
   cupertino_icons: ^1.0.2
   firebase_core: ^2.2.0  
