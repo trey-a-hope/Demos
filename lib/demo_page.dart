@@ -27,6 +27,7 @@ import 'package:demos/examples/tap_page.dart';
 import 'package:demos/examples/video_page.dart';
 import 'package:demos/examples/widget_projection.dart';
 import 'package:demos/utils/constants/globals.dart';
+import 'package:demos/utils/extensions/vector_3_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart';
 
@@ -238,13 +239,15 @@ class _DemoPageState extends State<DemoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: samples.map((s) => SampleItem(item: s)).toList(),
-      ),
+      body:
 
-      // ARKitSceneView(
-      //   onARKitViewCreated: onARKitViewCreated,
-      // ),
+          //  ListView(
+          //   children: samples.map((s) => SampleItem(item: s)).toList(),
+          // ),
+
+          ARKitSceneView(
+        onARKitViewCreated: onARKitViewCreated,
+      ),
     );
   }
 
@@ -265,7 +268,11 @@ class CityViewNode extends ARKitNode {
               )
             ],
           ),
-          position: Vector3.zero(),
+          position: Vector3.zero().arKitNodePosition(
+            metersLeft: 3,
+            metersUp: 2,
+            metersForward: 10,
+          ),
         );
 }
 
