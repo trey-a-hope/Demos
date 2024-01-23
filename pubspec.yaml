@@ -1,6 +1,6 @@
 name: demos
 description: A new Flutter project.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.2+2
 
 environment:
@@ -13,7 +13,7 @@ dependencies:
   arkit_plugin: ^1.0.7
   cloud_firestore: ^4.0.5
   cupertino_icons: ^1.0.2
-  firebase_core: ^2.2.0  
+  firebase_core: ^2.2.0
 
 dev_dependencies:
   flutter_test:
@@ -22,8 +22,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
-
   uses-material-design: true
 
   assets:
-    - assets/images/city_view.jpg
+    - assets/images/
