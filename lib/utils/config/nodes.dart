@@ -1,16 +1,19 @@
 import 'package:arkit_plugin/arkit_plugin.dart';
 import 'package:demos/utils/config/planets.dart';
-import 'package:demos/utils/config/builders.dart';
+import 'package:vector_math/vector_math_64.dart';
 
-const _metersForward = 1000.0;
-const _metersUp = 5.0;
-const _metersSolarSystemStart = 500.0;
+const _metersForward = 1.0;
+const _metersUp = 1.0;
+const _sizeMultiplier = 0.05;
+
+// TODO: Make space between planets dynamic based on size.
 
 class _EarthNode extends ARKitNode {
   _EarthNode()
       : super(
+          name: 'Earth',
           geometry: ARKitSphere(
-            radius: Planets.earth.size,
+            radius: Planets.earth.size * _sizeMultiplier,
             materials: [
               ARKitMaterial(
                 diffuse: ARKitMaterialProperty.image(Planets.earth.imgPath),
@@ -18,8 +21,8 @@ class _EarthNode extends ARKitNode {
               )
             ],
           ),
-          position: Builders.buildARKitNodePosition(
-            metersLeft: 1,
+          position: buildARKitNodePosition(
+            metersLeft: 1.5,
             metersUp: _metersUp,
             metersForward: _metersForward,
           ),
@@ -29,8 +32,9 @@ class _EarthNode extends ARKitNode {
 class _JupiterNode extends ARKitNode {
   _JupiterNode()
       : super(
+          name: 'Jupiter',
           geometry: ARKitSphere(
-            radius: Planets.jupiter.size,
+            radius: Planets.jupiter.size * _sizeMultiplier,
             materials: [
               ARKitMaterial(
                 diffuse: ARKitMaterialProperty.image(Planets.jupiter.imgPath),
@@ -38,8 +42,8 @@ class _JupiterNode extends ARKitNode {
               )
             ],
           ),
-          position: Builders.buildARKitNodePosition(
-            metersLeft: 30,
+          position: buildARKitNodePosition(
+            metersLeft: 0.7,
             metersUp: _metersUp,
             metersForward: _metersForward,
           ),
@@ -49,8 +53,9 @@ class _JupiterNode extends ARKitNode {
 class _MarsNode extends ARKitNode {
   _MarsNode()
       : super(
+          name: 'Mars',
           geometry: ARKitSphere(
-            radius: Planets.mars.size,
+            radius: Planets.mars.size * _sizeMultiplier,
             materials: [
               ARKitMaterial(
                 diffuse: ARKitMaterialProperty.image(Planets.mars.imgPath),
@@ -58,8 +63,8 @@ class _MarsNode extends ARKitNode {
               )
             ],
           ),
-          position: Builders.buildARKitNodePosition(
-            metersLeft: 60,
+          position: buildARKitNodePosition(
+            metersLeft: 1.3,
             metersUp: _metersUp,
             metersForward: _metersForward,
           ),
@@ -69,8 +74,9 @@ class _MarsNode extends ARKitNode {
 class _MercuryNode extends ARKitNode {
   _MercuryNode()
       : super(
+          name: 'Mercury',
           geometry: ARKitSphere(
-            radius: Planets.mercury.size,
+            radius: Planets.mercury.size * _sizeMultiplier,
             materials: [
               ARKitMaterial(
                 diffuse: ARKitMaterialProperty.image(Planets.mercury.imgPath),
@@ -78,8 +84,9 @@ class _MercuryNode extends ARKitNode {
               )
             ],
           ),
-          position: Builders.buildARKitNodePosition(
-            metersLeft: 300,
+          rotation: Vector4(1.0, 0.0, 0.0, 0.0),
+          position: buildARKitNodePosition(
+            metersLeft: 2.5,
             metersUp: _metersUp,
             metersForward: _metersForward,
           ),
@@ -89,8 +96,9 @@ class _MercuryNode extends ARKitNode {
 class _NeptuneNode extends ARKitNode {
   _NeptuneNode()
       : super(
+          name: 'Neptune',
           geometry: ARKitSphere(
-            radius: Planets.neptune.size,
+            radius: Planets.neptune.size * _sizeMultiplier,
             materials: [
               ARKitMaterial(
                 diffuse: ARKitMaterialProperty.image(Planets.neptune.imgPath),
@@ -98,8 +106,8 @@ class _NeptuneNode extends ARKitNode {
               )
             ],
           ),
-          position: Builders.buildARKitNodePosition(
-            metersLeft: 60,
+          position: buildARKitNodePosition(
+            metersRight: 2,
             metersUp: _metersUp,
             metersForward: _metersForward,
           ),
@@ -109,8 +117,9 @@ class _NeptuneNode extends ARKitNode {
 class _SaturnNode extends ARKitNode {
   _SaturnNode()
       : super(
+          name: 'Saturn',
           geometry: ARKitSphere(
-            radius: Planets.saturn.size,
+            radius: Planets.saturn.size * _sizeMultiplier,
             materials: [
               ARKitMaterial(
                 diffuse: ARKitMaterialProperty.image(Planets.saturn.imgPath),
@@ -118,8 +127,8 @@ class _SaturnNode extends ARKitNode {
               )
             ],
           ),
-          position: Builders.buildARKitNodePosition(
-            metersLeft: _metersSolarSystemStart,
+          position: buildARKitNodePosition(
+            metersRight: 0.5,
             metersUp: _metersUp,
             metersForward: _metersForward,
           ),
@@ -129,8 +138,9 @@ class _SaturnNode extends ARKitNode {
 class _SunNode extends ARKitNode {
   _SunNode()
       : super(
+          name: 'Sun',
           geometry: ARKitSphere(
-            radius: Planets.sun.size,
+            radius: Planets.sun.size * _sizeMultiplier,
             materials: [
               ARKitMaterial(
                 diffuse: ARKitMaterialProperty.image(Planets.sun.imgPath),
@@ -138,8 +148,8 @@ class _SunNode extends ARKitNode {
               )
             ],
           ),
-          position: Builders.buildARKitNodePosition(
-            metersLeft: _metersSolarSystemStart,
+          position: buildARKitNodePosition(
+            metersLeft: 500,
             metersUp: _metersUp,
             metersForward: _metersForward,
           ),
@@ -149,8 +159,9 @@ class _SunNode extends ARKitNode {
 class _UranusNode extends ARKitNode {
   _UranusNode()
       : super(
+          name: 'Uranus',
           geometry: ARKitSphere(
-            radius: Planets.uranus.size,
+            radius: Planets.uranus.size * _sizeMultiplier,
             materials: [
               ARKitMaterial(
                 diffuse: ARKitMaterialProperty.image(Planets.uranus.imgPath),
@@ -158,8 +169,8 @@ class _UranusNode extends ARKitNode {
               )
             ],
           ),
-          position: Builders.buildARKitNodePosition(
-            metersLeft: _metersSolarSystemStart,
+          position: buildARKitNodePosition(
+            metersRight: 1.5,
             metersUp: _metersUp,
             metersForward: _metersForward,
           ),
@@ -169,8 +180,9 @@ class _UranusNode extends ARKitNode {
 class _VenusNode extends ARKitNode {
   _VenusNode()
       : super(
+          name: 'Venus',
           geometry: ARKitSphere(
-            radius: Planets.venus.size,
+            radius: Planets.venus.size * _sizeMultiplier,
             materials: [
               ARKitMaterial(
                 diffuse: ARKitMaterialProperty.image(Planets.venus.imgPath),
@@ -178,8 +190,8 @@ class _VenusNode extends ARKitNode {
               )
             ],
           ),
-          position: Builders.buildARKitNodePosition(
-            metersLeft: _metersSolarSystemStart,
+          position: buildARKitNodePosition(
+            metersLeft: 2,
             metersUp: _metersUp,
             metersForward: _metersForward,
           ),
@@ -196,4 +208,32 @@ class Nodes {
   static final saturnNode = _SaturnNode();
   static final uranusNode = _UranusNode();
   static final neptuneNode = _NeptuneNode();
+}
+
+/// Generates a Vector3 position for ARKitNode.
+/// x negative left; x positive right
+/// z negative forward; z positive backward
+/// y negative down; y positive up
+Vector3 buildARKitNodePosition({
+  double metersLeft = 0,
+  double metersRight = 0,
+  double metersUp = 0,
+  double metersDown = 0,
+  double metersForward = 0,
+  double metersBackward = 0,
+}) {
+  assert(!(metersRight > 0) || !(metersLeft > 0),
+      'Only one horizontal direction can be greater than 0.');
+
+  assert(!(metersUp > 0) || !(metersDown > 0),
+      'Only one vertical direction can be greater than 0.');
+
+  assert(!(metersForward > 0) || !(metersBackward > 0),
+      'Only one projection direction can be greater than 0.');
+
+  double x = metersRight > 0 ? metersRight : -metersLeft;
+  double y = metersUp > 0 ? metersUp : -metersDown;
+  double z = metersBackward > 0 ? metersBackward : -metersForward;
+
+  return Vector3(x, y, z);
 }

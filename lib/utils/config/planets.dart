@@ -13,8 +13,6 @@ class _Planet {
     required this.size,
     required this.imgPath,
   });
-
-  double get radius => size / 2;
 }
 
 class _Earth extends _Planet {

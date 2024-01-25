@@ -26,6 +26,8 @@ class _DemoPageState extends State<DemoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ARKitSceneView(
+        enableTapRecognizer: true,
+        enableRotationRecognizer: true,
         onARKitViewCreated: onARKitViewCreated,
       ),
     );
@@ -33,14 +35,33 @@ class _DemoPageState extends State<DemoPage> {
 
   void onARKitViewCreated(ARKitController arkitController) {
     _arkitController = arkitController;
+
+    _arkitController.onNodeTap = onNodeTap;
+
     _arkitController.add(Nodes.sunNode);
     _arkitController.add(Nodes.mercuryNode);
-    // _arkitController.add(Nodes.venusNode);
-    // _arkitController.add(Nodes.earthNode);
-    // _arkitController.add(Nodes.marsNode);
-    // _arkitController.add(Nodes.jupiterNode);
-    // _arkitController.add(Nodes.saturnNode);
-    // _arkitController.add(Nodes.uranusNode);
-    // _arkitController.add(Nodes.neptuneNode);
+    _arkitController.add(Nodes.venusNode);
+    _arkitController.add(Nodes.earthNode);
+    _arkitController.add(Nodes.marsNode);
+    _arkitController.add(Nodes.jupiterNode);
+    _arkitController.add(Nodes.saturnNode);
+    _arkitController.add(Nodes.uranusNode);
+    _arkitController.add(Nodes.neptuneNode);
+  }
+
+  /// Displays the planets name when tapped.
+  void onNodeTap(List<String> name) {
+    final c = ScaffoldMessenger.of(context);
+    c.showMaterialBanner(
+      MaterialBanner(
+        content: Text(name[0]),
+        actions: [
+          TextButton(
+            onPressed: () => c.hideCurrentMaterialBanner(),
+            child: const Text('DISMISS'),
+          ),
+        ],
+      ),
+    );
   }
 }
