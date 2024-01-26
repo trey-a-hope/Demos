@@ -3,7 +3,7 @@ import 'package:demos/utils/config/planets.dart';
 import 'package:vector_math/vector_math_64.dart';
 
 const _metersForward = 1.0;
-const _metersUp = 1.0;
+const _metersUp = 0.0;
 const _sizeMultiplier = 0.05;
 
 // TODO: Make space between planets dynamic based on size.
@@ -11,6 +11,7 @@ const _sizeMultiplier = 0.05;
 class _EarthNode extends ARKitNode {
   _EarthNode()
       : super(
+          eulerAngles: Vector3(100, 0, 0),
           name: 'Earth',
           geometry: ARKitSphere(
             radius: Planets.earth.size * _sizeMultiplier,
@@ -149,7 +150,7 @@ class _SunNode extends ARKitNode {
             ],
           ),
           position: buildARKitNodePosition(
-            metersLeft: 500,
+            metersLeft: 0,
             metersUp: _metersUp,
             metersForward: _metersForward,
           ),

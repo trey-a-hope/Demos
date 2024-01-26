@@ -36,28 +36,39 @@ class _DemoPageState extends State<DemoPage> {
   void onARKitViewCreated(ARKitController arkitController) {
     _arkitController = arkitController;
 
-    _arkitController.onNodeTap = onNodeTap;
+    _arkitController.onNodeTap = _onNodeTap;
 
+    // Add the planets to the scene.
     _arkitController.add(Nodes.sunNode);
-    _arkitController.add(Nodes.mercuryNode);
-    _arkitController.add(Nodes.venusNode);
-    _arkitController.add(Nodes.earthNode);
-    _arkitController.add(Nodes.marsNode);
-    _arkitController.add(Nodes.jupiterNode);
-    _arkitController.add(Nodes.saturnNode);
-    _arkitController.add(Nodes.uranusNode);
-    _arkitController.add(Nodes.neptuneNode);
+
+    // Called once per frame
+    _arkitController.updateAtTime = (time) {
+      // Rotate the sun.
+      _rotateNode(Nodes.sunNode, 0.01);
+    };
+  }
+
+  /*
+    Determines the receiver's euler angles. The order of components in this vector matches the axes of rotation:
+
+    Pitch (the x component) is the rotation about the node's x-axis (in radians)
+    Yaw (the y component) is the rotation about the node's y-axis (in radians)
+    Roll (the z component) is the rotation about the node's z-axis (in radians)
+  */
+  void _rotateNode(ARKitNode node, double pitch) {
+    // Rotate the node on its x-axis by pitch value.
+    node.eulerAngles = node.eulerAngles..x += pitch;
   }
 
   /// Displays the planets name when tapped.
-  void onNodeTap(List<String> name) {
-    final c = ScaffoldMessenger.of(context);
-    c.showMaterialBanner(
+  void _onNodeTap(List<String> name) {
+    final scaffoldMessengerState = ScaffoldMessenger.of(context);
+    scaffoldMessengerState.showMaterialBanner(
       MaterialBanner(
         content: Text(name[0]),
         actions: [
           TextButton(
-            onPressed: () => c.hideCurrentMaterialBanner(),
+            onPressed: () => scaffoldMessengerState.hideCurrentMaterialBanner(),
             child: const Text('DISMISS'),
           ),
         ],

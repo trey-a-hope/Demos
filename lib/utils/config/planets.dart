@@ -73,7 +73,7 @@ class _Sun extends _Planet {
   _Sun()
       : super(
           name: 'Sun',
-          size: 218,
+          size: 1, // 218
           imgPath: Globals.sunImage,
         );
 }
