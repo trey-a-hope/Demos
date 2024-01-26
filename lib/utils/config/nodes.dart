@@ -2,19 +2,18 @@ import 'package:arkit_plugin/arkit_plugin.dart';
 import 'package:demos/utils/config/planets.dart';
 import 'package:vector_math/vector_math_64.dart';
 
+// TODO: Get rid of these values.
 const _metersForward = 1.0;
 const _metersUp = 0.0;
 const _sizeMultiplier = 0.05;
 
 // TODO: Make space between planets dynamic based on size.
-
-class _EarthNode extends ARKitNode {
-  _EarthNode()
+class _EarthParentNode extends ARKitNode {
+  _EarthParentNode()
       : super(
-          eulerAngles: Vector3(100, 0, 0),
-          name: 'Earth',
+          name: '${Planets.earth} Parent',
           geometry: ARKitSphere(
-            radius: Planets.earth.size * _sizeMultiplier,
+            radius: Planets.earth.size,
             materials: [
               ARKitMaterial(
                 diffuse: ARKitMaterialProperty.image(Planets.earth.imgPath),
@@ -23,17 +22,35 @@ class _EarthNode extends ARKitNode {
             ],
           ),
           position: buildARKitNodePosition(
-            metersLeft: 1.5,
+            metersLeft: 0,
             metersUp: _metersUp,
-            metersForward: _metersForward,
+            metersForward: 0.5,
           ),
+        );
+}
+
+class _EarthChildNode extends ARKitNode {
+  _EarthChildNode()
+      : super(
+          name: '${Planets.earth} Child',
+          geometry: ARKitSphere(
+            radius: Planets.earth.size *
+                1.01, // Slightly bigger than parent to hide interal rotation.
+            materials: [
+              ARKitMaterial(
+                diffuse: ARKitMaterialProperty.image(Planets.earth.imgPath),
+                doubleSided: true,
+              )
+            ],
+          ),
+          position: Vector3.zero(),
         );
 }
 
 class _JupiterNode extends ARKitNode {
   _JupiterNode()
       : super(
-          name: 'Jupiter',
+          name: Planets.jupiter.name,
           geometry: ARKitSphere(
             radius: Planets.jupiter.size * _sizeMultiplier,
             materials: [
@@ -54,7 +71,7 @@ class _JupiterNode extends ARKitNode {
 class _MarsNode extends ARKitNode {
   _MarsNode()
       : super(
-          name: 'Mars',
+          name: Planets.mars.name,
           geometry: ARKitSphere(
             radius: Planets.mars.size * _sizeMultiplier,
             materials: [
@@ -75,7 +92,7 @@ class _MarsNode extends ARKitNode {
 class _MercuryNode extends ARKitNode {
   _MercuryNode()
       : super(
-          name: 'Mercury',
+          name: Planets.mercury.name,
           geometry: ARKitSphere(
             radius: Planets.mercury.size * _sizeMultiplier,
             materials: [
@@ -97,7 +114,7 @@ class _MercuryNode extends ARKitNode {
 class _NeptuneNode extends ARKitNode {
   _NeptuneNode()
       : super(
-          name: 'Neptune',
+          name: Planets.neptune.name,
           geometry: ARKitSphere(
             radius: Planets.neptune.size * _sizeMultiplier,
             materials: [
@@ -118,7 +135,7 @@ class _NeptuneNode extends ARKitNode {
 class _SaturnNode extends ARKitNode {
   _SaturnNode()
       : super(
-          name: 'Saturn',
+          name: Planets.saturn.name,
           geometry: ARKitSphere(
             radius: Planets.saturn.size * _sizeMultiplier,
             materials: [
@@ -139,9 +156,9 @@ class _SaturnNode extends ARKitNode {
 class _SunNode extends ARKitNode {
   _SunNode()
       : super(
-          name: 'Sun',
+          name: Planets.sun.name,
           geometry: ARKitSphere(
-            radius: Planets.sun.size * _sizeMultiplier,
+            radius: Planets.sun.size,
             materials: [
               ARKitMaterial(
                 diffuse: ARKitMaterialProperty.image(Planets.sun.imgPath),
@@ -160,7 +177,7 @@ class _SunNode extends ARKitNode {
 class _UranusNode extends ARKitNode {
   _UranusNode()
       : super(
-          name: 'Uranus',
+          name: Planets.uranus.name,
           geometry: ARKitSphere(
             radius: Planets.uranus.size * _sizeMultiplier,
             materials: [
@@ -181,7 +198,7 @@ class _UranusNode extends ARKitNode {
 class _VenusNode extends ARKitNode {
   _VenusNode()
       : super(
-          name: 'Venus',
+          name: Planets.venus.name,
           geometry: ARKitSphere(
             radius: Planets.venus.size * _sizeMultiplier,
             materials: [
@@ -203,7 +220,8 @@ class Nodes {
   static final sunNode = _SunNode();
   static final mercuryNode = _MercuryNode();
   static final venusNode = _VenusNode();
-  static final earthNode = _EarthNode();
+  static final earthParentNode = _EarthParentNode();
+  static final earthChildNode = _EarthChildNode();
   static final marsNode = _MarsNode();
   static final jupiterNode = _JupiterNode();
   static final saturnNode = _SaturnNode();

@@ -19,7 +19,7 @@ class _Earth extends _Planet {
   _Earth()
       : super(
           name: 'Earth',
-          size: 1.0,
+          size: 0.1,
           imgPath: Globals.earthImage,
         );
 }
@@ -73,7 +73,7 @@ class _Sun extends _Planet {
   _Sun()
       : super(
           name: 'Sun',
-          size: 1, // 218
+          size: 0.3, // 218
           imgPath: Globals.sunImage,
         );
 }
