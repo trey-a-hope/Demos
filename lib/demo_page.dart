@@ -135,7 +135,7 @@ class _DemoPageState extends State<DemoPage> {
       name: sun.name,
       size: sun.size,
       imgPath: sun.imgPath,
-      position: vector.Vector3(0, -0.5, -4),
+      position: vector.Vector3(0, -1, -6),
     );
     _arkitController.add(sunNode);
 

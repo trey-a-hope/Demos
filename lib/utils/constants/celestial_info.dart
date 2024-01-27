@@ -17,52 +17,121 @@ class _CelestialInfo {
 }
 
 class _SunInfo extends _CelestialInfo {
-  _SunInfo() : super('Sun', 0.3, Globals.sunDiffuse, 0.02, null);
+  _SunInfo()
+      : super(
+          'Sun',
+          0.3,
+          Globals.sunDiffuse,
+          0.02,
+          null,
+        );
 }
 
 class _MercuryInfo extends _CelestialInfo {
-  _MercuryInfo() : super('Mercury', 0.1, Globals.mercuryDiffuse, 0.02, 0.02);
+  _MercuryInfo()
+      : super(
+          'Mercury',
+          0.1,
+          Globals.mercuryDiffuse,
+          0.02,
+          0.02,
+        );
 }
 
 class _VenusInfo extends _CelestialInfo {
-  _VenusInfo() : super('Venus', 0.15, Globals.venusDiffuse, 0.02, 0.01);
+  _VenusInfo()
+      : super(
+          'Venus',
+          0.15,
+          Globals.venusDiffuse,
+          0.02,
+          0.01,
+        );
 }
 
 class _EarthInfo extends _CelestialInfo {
-  _EarthInfo() : super('Earth', 0.15, Globals.earthDiffuse, 0.02, 0.005);
+  _EarthInfo()
+      : super(
+          'Earth',
+          0.15,
+          Globals.earthDiffuse,
+          0.02,
+          0.005,
+        );
 }
 
 class _MoonInfo extends _CelestialInfo {
-  _MoonInfo() : super('Moon', 0.05, Globals.moonDiffuse, null, null);
+  _MoonInfo()
+      : super(
+          'Moon',
+          0.05,
+          Globals.moonDiffuse,
+          null,
+          null,
+        );
 }
 
 class _MarsInfo extends _CelestialInfo {
-  _MarsInfo() : super('Mars', 0.1, Globals.marsDiffuse, 0.02, 0.0025);
+  _MarsInfo()
+      : super(
+          'Mars',
+          0.1,
+          Globals.marsDiffuse,
+          0.02,
+          0.0025,
+        );
 }
 
 class _JupiterInfo extends _CelestialInfo {
-  _JupiterInfo() : super('Jupiter', 0.2, Globals.jupiterDiffuse, 0.02, 0.00125);
+  _JupiterInfo()
+      : super(
+          'Jupiter',
+          0.2,
+          Globals.jupiterDiffuse,
+          0.02,
+          0.00125,
+        );
 }
 
 class _SaturnInfo extends _CelestialInfo {
-  _SaturnInfo() : super('Saturn', 0.2, Globals.jupiterDiffuse, 0.02, 0.000625);
+  _SaturnInfo()
+      : super(
+          'Saturn',
+          0.2,
+          Globals.saturnDiffuse,
+          0.02,
+          0.000625,
+        );
 }
 
 class _UranusInfo extends _CelestialInfo {
   _UranusInfo()
-      : super('Uranus', 0.175, Globals.uranusDiffuse, 0.02, 0.0003125);
+      : super(
+          'Uranus',
+          0.175,
+          Globals.uranusDiffuse,
+          0.02,
+          0.0003125,
+        );
 }
 
 class _NeptuneInfo extends _CelestialInfo {
   _NeptuneInfo()
-      : super('Neptune', 0.175, Globals.uranusDiffuse, 0.02, 0.000015625);
+      : super(
+          'Neptune',
+          0.175,
+          Globals.neptuneDiffuse,
+          0.02,
+          0.000015625,
+        );
 }
 
 class CelestialInfo {
-  // Mulitipliers.
+  // Mulitipliers
   static const double anchorMultiplier = 1.01;
   static const double pipeRadius = 0.01;
 
+  // Celestial bodies
   static final sun = _SunInfo();
   static final mercury = _MercuryInfo();
   static final venus = _VenusInfo();
