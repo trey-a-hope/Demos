@@ -3,14 +3,15 @@ class Globals {
 
   //https://nasa3d.arc.nasa.gov/images
 
-  // Images
-  static const earthImage = 'assets/images/earth.jpeg';
-  static const jupiterImage = 'assets/images/jupiter.jpeg';
-  static const marsImage = 'assets/images/mars.jpeg';
-  static const mercuryImage = 'assets/images/mercury.jpeg';
-  static const neptuneImage = 'assets/images/neptune.jpeg';
-  static const saturnImage = 'assets/images/saturn.jpeg';
-  static const sunImage = 'assets/images/sun.jpeg';
-  static const uranusImage = 'assets/images/uranus.jpeg';
-  static const venusImage = 'assets/images/venus.jpeg';
+  // Diffuses
+  static const earthDiffuse = 'assets/images/earth.jpeg';
+  static const jupiterDiffuse = 'assets/images/jupiter.jpeg';
+  static const marsDiffuse = 'assets/images/mars.jpeg';
+  static const mercuryDiffuse = 'assets/images/mercury.jpeg';
+  static const moonDiffuse = 'assets/images/moon.jpg';
+  static const neptuneDiffuse = 'assets/images/neptune.jpeg';
+  static const saturnDiffuse = 'assets/images/saturn.jpeg';
+  static const sunDiffuse = 'assets/images/sun.jpeg';
+  static const uranusDiffuse = 'assets/images/uranus.jpeg';
+  static const venusDiffuse = 'assets/images/venus.jpeg';
 }

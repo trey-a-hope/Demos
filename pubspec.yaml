@@ -1,7 +1,7 @@
 name: demos
 description: A new Flutter project.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
-version: 1.0.4+4
+version: 1.0.5+5
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
@@ -11,9 +11,8 @@ dependencies:
     sdk: flutter
 
   arkit_plugin: ^1.0.7
-  cloud_firestore: ^4.0.5
   cupertino_icons: ^1.0.2
-  firebase_core: ^2.2.0
+  tuple: ^2.0.2
   vector_math: ^2.1.4
 
 dev_dependencies:

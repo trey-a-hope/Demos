@@ -1,6 +1,8 @@
 import 'package:arkit_plugin/arkit_plugin.dart';
-import 'package:demos/utils/config/nodes.dart';
+import 'package:demos/utils/constants/celestial_info.dart';
 import 'package:flutter/material.dart';
+import 'package:vector_math/vector_math_64.dart' as vector;
+import 'package:tuple/tuple.dart';
 
 class DemoPage extends StatefulWidget {
   const DemoPage({super.key});
@@ -9,6 +11,7 @@ class DemoPage extends StatefulWidget {
 }
 
 class _DemoPageState extends State<DemoPage> {
+  /// Controller for the ARKitView.
   late ARKitController _arkitController;
 
   @override
@@ -23,15 +26,101 @@ class _DemoPageState extends State<DemoPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: ARKitSceneView(
-        enableTapRecognizer: true,
-        enableRotationRecognizer: true,
-        onARKitViewCreated: onARKitViewCreated,
-      ),
+  Widget build(BuildContext context) => Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => setState(
+            () => _arkitController.dispose(),
+          ),
+          child: const Icon(Icons.refresh),
+        ),
+        body: ARKitSceneView(
+          key: UniqueKey(),
+          enableTapRecognizer: true,
+          enableRotationRecognizer: true,
+          onARKitViewCreated: onARKitViewCreated,
+        ),
+      );
+
+  /// Builds the ARKitSphere for a planet, moon, or sun.
+  ARKitNode _buildCelestialBody({
+    required String name,
+    required double size,
+    required vector.Vector3 position,
+    String? imgPath,
+  }) =>
+      ARKitNode(
+        name: name,
+        geometry: ARKitSphere(
+          radius: size,
+          materials: [
+            ARKitMaterial(
+              diffuse:
+                  imgPath == null ? null : ARKitMaterialProperty.image(imgPath),
+              doubleSided: true,
+            )
+          ],
+        ),
+        position: position,
+      );
+
+  /// Returns two nodes, the planet and its anchor inside the root.
+  Tuple2<ARKitNode, ARKitNode> _buildNodeConnection({
+    required String name,
+    required String rootNodeName,
+    required double distanceFromRootNode,
+    required double size,
+    required String imgPath,
+  }) {
+    final nodeSunAnchor = _buildCelestialBody(
+      name: '$name Sun Anchor',
+      size: CelestialInfo.sun.size / CelestialInfo.anchorMultiplier,
+      position: vector.Vector3.zero(),
     );
+    _arkitController.add(nodeSunAnchor, parentNodeName: rootNodeName);
+
+    final nodeAnchor = _buildCelestialBody(
+      name: '$name Anchor',
+      size: size,
+      position: vector.Vector3(0, 0, -distanceFromRootNode),
+    );
+    _arkitController.add(nodeAnchor, parentNodeName: nodeSunAnchor.name);
+
+    final node = _buildCelestialBody(
+      name: name,
+      size: size * CelestialInfo.anchorMultiplier,
+      imgPath: imgPath,
+      position: vector.Vector3.zero(),
+    );
+    _arkitController.add(node, parentNodeName: nodeAnchor.name);
+
+    final nodeOrbit = _buildOrbitPath(
+      ringRadius: nodeAnchor.position.z.abs(),
+      pipeRadius: CelestialInfo.pipeRadius,
+      color: Colors.white,
+    );
+    _arkitController.add(nodeOrbit, parentNodeName: rootNodeName);
+
+    return Tuple2<ARKitNode, ARKitNode>(node, nodeSunAnchor);
   }
+
+  /// Builds the ARKitTorus for a ring.
+  ARKitNode _buildOrbitPath({
+    required double ringRadius, // How wide the ring is.
+    required double pipeRadius, // How thick the ring is.
+    required Color color,
+  }) =>
+      ARKitNode(
+        geometry: ARKitTorus(
+          ringRadius: ringRadius,
+          pipeRadius: pipeRadius,
+          materials: [
+            ARKitMaterial(
+              diffuse: ARKitMaterialProperty.color(color),
+            )
+          ],
+        ),
+        position: vector.Vector3.zero(),
+      );
 
   void onARKitViewCreated(ARKitController arkitController) {
     _arkitController = arkitController;
@@ -39,29 +128,135 @@ class _DemoPageState extends State<DemoPage> {
     // Set onTap listener.
     _arkitController.onNodeTap = _onNodeTap;
 
-    // Add the Sun.
-    _arkitController.add(Nodes.sunNode);
+    /* SUN */
 
-    // Add Earth as a child of the Sun, to rotate the Sun.
-    _arkitController.add(Nodes.earthParentNode,
-        parentNodeName: Nodes.sunNode.name);
+    final sun = CelestialInfo.sun;
+    final sunNode = _buildCelestialBody(
+      name: sun.name,
+      size: sun.size,
+      imgPath: sun.imgPath,
+      position: vector.Vector3(0, -0.5, -4),
+    );
+    _arkitController.add(sunNode);
 
-    // Add Earth as child of itself, to rotate itself.
-    _arkitController.add(Nodes.earthChildNode,
-        parentNodeName: Nodes.earthParentNode.name);
+    /* MERCURY */
+    final mercury = CelestialInfo.mercury;
+    final mercuryNodes = _buildNodeConnection(
+      name: mercury.name,
+      rootNodeName: sunNode.name,
+      distanceFromRootNode: -0.5,
+      size: mercury.size,
+      imgPath: mercury.imgPath,
+    );
 
-    // Called once per frame.
+    /* VENUS */
+    final venus = CelestialInfo.venus;
+    final venusNodes = _buildNodeConnection(
+      name: venus.name,
+      rootNodeName: sunNode.name,
+      distanceFromRootNode: -1,
+      size: venus.size,
+      imgPath: venus.imgPath,
+    );
+
+    /* EARTH */
+    final earth = CelestialInfo.earth;
+    final earthNodes = _buildNodeConnection(
+      name: earth.name,
+      rootNodeName: sunNode.name,
+      distanceFromRootNode: -1.5,
+      size: earth.size,
+      imgPath: earth.imgPath,
+    );
+
+    /* MOON */
+    final moonAnchor = _buildCelestialBody(
+      name: 'Moon Anchor',
+      size: CelestialInfo.moon.size,
+      position: vector.Vector3(0, 0, -0.25),
+    );
+    _arkitController.add(moonAnchor, parentNodeName: earthNodes.item1.name);
+
+    final moon = _buildCelestialBody(
+      name: 'Moon',
+      size: CelestialInfo.moon.size * CelestialInfo.anchorMultiplier,
+      imgPath: CelestialInfo.moon.imgPath,
+      position: vector.Vector3.zero(),
+    );
+    _arkitController.add(moon, parentNodeName: moonAnchor.name);
+
+    /* MARS */
+    final mars = CelestialInfo.mars;
+    final marsNodes = _buildNodeConnection(
+      name: mars.name,
+      rootNodeName: sunNode.name,
+      distanceFromRootNode: -2,
+      size: mars.size,
+      imgPath: mars.imgPath,
+    );
+
+    /* JUPITER */
+    final jupiter = CelestialInfo.jupiter;
+    final jupiterNodes = _buildNodeConnection(
+      name: jupiter.name,
+      rootNodeName: sunNode.name,
+      distanceFromRootNode: -2.5,
+      size: jupiter.size,
+      imgPath: jupiter.imgPath,
+    );
+
+    /* SATURN */
+    final saturn = CelestialInfo.saturn;
+    final saturnNodes = _buildNodeConnection(
+      name: saturn.name,
+      rootNodeName: sunNode.name,
+      distanceFromRootNode: -3,
+      size: saturn.size,
+      imgPath: saturn.imgPath,
+    );
+
+    /* URANUS */
+    final uranus = CelestialInfo.uranus;
+    final uranusNodes = _buildNodeConnection(
+      name: uranus.name,
+      rootNodeName: sunNode.name,
+      distanceFromRootNode: -3.5,
+      size: uranus.size,
+      imgPath: uranus.imgPath,
+    );
+
+    /* NEPTUNE */
+    final neptune = CelestialInfo.neptune;
+    final neptuneNodes = _buildNodeConnection(
+      name: neptune.name,
+      rootNodeName: sunNode.name,
+      distanceFromRootNode: -4,
+      size: neptune.size,
+      imgPath: neptune.imgPath,
+    );
+
+    /// Called once per frame; rotate all nodes.
+    /// Rotate node and nodeSunAnchor.
     _arkitController.updateAtTime = (time) {
-      // Rotate the sun.
-      _rotateNodeOnXAxis(Nodes.sunNode, 0.01);
-      // Rotate the earth around the sun, (same speed as the sun's rotation).
-      _rotateNodeOnXAxis(Nodes.earthParentNode, 0.01);
-      // Rotate the earth on its own axis, (slower speed than its parent and the Sun).
-      _rotateNodeOnXAxis(Nodes.earthChildNode, 0.001);
+      _rotateNodeOnXAxis(sunNode, sun.spinSpeed!);
+      _rotateNodeOnXAxis(mercuryNodes.item1, mercury.spinSpeed!);
+      _rotateNodeOnXAxis(mercuryNodes.item2, mercury.orbitSpeed!);
+      _rotateNodeOnXAxis(venusNodes.item1, venus.spinSpeed!);
+      _rotateNodeOnXAxis(venusNodes.item2, venus.orbitSpeed!);
+      _rotateNodeOnXAxis(earthNodes.item1, earth.spinSpeed!);
+      _rotateNodeOnXAxis(earthNodes.item2, earth.orbitSpeed!);
+      _rotateNodeOnXAxis(marsNodes.item1, mars.spinSpeed!);
+      _rotateNodeOnXAxis(marsNodes.item2, mars.orbitSpeed!);
+      _rotateNodeOnXAxis(jupiterNodes.item1, jupiter.spinSpeed!);
+      _rotateNodeOnXAxis(jupiterNodes.item2, jupiter.orbitSpeed!);
+      _rotateNodeOnXAxis(saturnNodes.item1, saturn.spinSpeed!);
+      _rotateNodeOnXAxis(saturnNodes.item2, saturn.orbitSpeed!);
+      _rotateNodeOnXAxis(uranusNodes.item1, neptune.spinSpeed!);
+      _rotateNodeOnXAxis(uranusNodes.item2, neptune.orbitSpeed!);
+      _rotateNodeOnXAxis(neptuneNodes.item1, neptune.spinSpeed!);
+      _rotateNodeOnXAxis(neptuneNodes.item2, neptune.orbitSpeed!);
     };
   }
-
-  //TODO: YouTube Video Stopped @ 31:14
 
   /*
     Determines the receiver's euler angles. The order of components in this vector matches the axes of rotation:
