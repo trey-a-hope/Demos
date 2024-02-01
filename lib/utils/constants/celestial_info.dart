@@ -1,13 +1,13 @@
 import 'package:demos/utils/constants/globals.dart';
 
-class _CelestialInfo {
+class CelestialInfo {
   final String name;
   final double size;
   final String imgPath;
   final double? spinSpeed;
   final double? orbitSpeed;
 
-  _CelestialInfo(
+  CelestialInfo(
     this.name,
     this.size,
     this.imgPath,
@@ -16,7 +16,7 @@ class _CelestialInfo {
   );
 }
 
-class _SunInfo extends _CelestialInfo {
+class _SunInfo extends CelestialInfo {
   _SunInfo()
       : super(
           'Sun',
@@ -27,7 +27,7 @@ class _SunInfo extends _CelestialInfo {
         );
 }
 
-class _MercuryInfo extends _CelestialInfo {
+class _MercuryInfo extends CelestialInfo {
   _MercuryInfo()
       : super(
           'Mercury',
@@ -38,7 +38,7 @@ class _MercuryInfo extends _CelestialInfo {
         );
 }
 
-class _VenusInfo extends _CelestialInfo {
+class _VenusInfo extends CelestialInfo {
   _VenusInfo()
       : super(
           'Venus',
@@ -49,7 +49,7 @@ class _VenusInfo extends _CelestialInfo {
         );
 }
 
-class _EarthInfo extends _CelestialInfo {
+class _EarthInfo extends CelestialInfo {
   _EarthInfo()
       : super(
           'Earth',
@@ -60,7 +60,7 @@ class _EarthInfo extends _CelestialInfo {
         );
 }
 
-class _MoonInfo extends _CelestialInfo {
+class _MoonInfo extends CelestialInfo {
   _MoonInfo()
       : super(
           'Moon',
@@ -71,7 +71,7 @@ class _MoonInfo extends _CelestialInfo {
         );
 }
 
-class _MarsInfo extends _CelestialInfo {
+class _MarsInfo extends CelestialInfo {
   _MarsInfo()
       : super(
           'Mars',
@@ -82,7 +82,7 @@ class _MarsInfo extends _CelestialInfo {
         );
 }
 
-class _JupiterInfo extends _CelestialInfo {
+class _JupiterInfo extends CelestialInfo {
   _JupiterInfo()
       : super(
           'Jupiter',
@@ -93,7 +93,7 @@ class _JupiterInfo extends _CelestialInfo {
         );
 }
 
-class _SaturnInfo extends _CelestialInfo {
+class _SaturnInfo extends CelestialInfo {
   _SaturnInfo()
       : super(
           'Saturn',
@@ -104,7 +104,7 @@ class _SaturnInfo extends _CelestialInfo {
         );
 }
 
-class _UranusInfo extends _CelestialInfo {
+class _UranusInfo extends CelestialInfo {
   _UranusInfo()
       : super(
           'Uranus',
@@ -115,7 +115,7 @@ class _UranusInfo extends _CelestialInfo {
         );
 }
 
-class _NeptuneInfo extends _CelestialInfo {
+class _NeptuneInfo extends CelestialInfo {
   _NeptuneInfo()
       : super(
           'Neptune',
@@ -126,12 +126,10 @@ class _NeptuneInfo extends _CelestialInfo {
         );
 }
 
-class CelestialInfo {
-  // Mulitipliers
-  static const double anchorMultiplier = 1.01;
-  static const double pipeRadius = 0.01;
+const double anchorMultiplier = 0.99;
+const double pipeRadius = 0.01;
 
-  // Celestial bodies
+class Planets {
   static final sun = _SunInfo();
   static final mercury = _MercuryInfo();
   static final venus = _VenusInfo();
