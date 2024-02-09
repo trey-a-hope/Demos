@@ -4,7 +4,7 @@ class CelestialInfo {
   final String name;
   final double size;
   final String imgPath;
-  final double? spinSpeed;
+  final double spinSpeed;
   final double? orbitSpeed;
 
   CelestialInfo(
@@ -56,18 +56,7 @@ class _EarthInfo extends CelestialInfo {
           0.15,
           Globals.earthDiffuse,
           0.02,
-          0.005,
-        );
-}
-
-class _MoonInfo extends CelestialInfo {
-  _MoonInfo()
-      : super(
-          'Moon',
-          0.05,
-          Globals.moonDiffuse,
-          null,
-          null,
+          0.009,
         );
 }
 
@@ -78,7 +67,7 @@ class _MarsInfo extends CelestialInfo {
           0.1,
           Globals.marsDiffuse,
           0.02,
-          0.0025,
+          0.0085,
         );
 }
 
@@ -89,7 +78,7 @@ class _JupiterInfo extends CelestialInfo {
           0.2,
           Globals.jupiterDiffuse,
           0.02,
-          0.00125,
+          0.0080,
         );
 }
 
@@ -100,7 +89,7 @@ class _SaturnInfo extends CelestialInfo {
           0.2,
           Globals.saturnDiffuse,
           0.02,
-          0.000625,
+          0.0075,
         );
 }
 
@@ -111,7 +100,7 @@ class _UranusInfo extends CelestialInfo {
           0.175,
           Globals.uranusDiffuse,
           0.02,
-          0.0003125,
+          0.0070,
         );
 }
 
@@ -122,7 +111,7 @@ class _NeptuneInfo extends CelestialInfo {
           0.175,
           Globals.neptuneDiffuse,
           0.02,
-          0.000015625,
+          0.0065,
         );
 }
 
@@ -134,7 +123,6 @@ class Planets {
   static final mercury = _MercuryInfo();
   static final venus = _VenusInfo();
   static final earth = _EarthInfo();
-  static final moon = _MoonInfo();
   static final mars = _MarsInfo();
   static final jupiter = _JupiterInfo();
   static final saturn = _SaturnInfo();
