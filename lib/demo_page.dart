@@ -4,10 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:tuple/tuple.dart';
 import 'package:vector_math/vector_math_64.dart' as vm;
 
-/*
-  OUTLINE
-  - Add FloatingActionButton To Reset Scene
-*/
 class DemoPage extends StatefulWidget {
   const DemoPage({super.key});
   @override
