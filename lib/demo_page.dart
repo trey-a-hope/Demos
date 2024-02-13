@@ -20,12 +20,7 @@ class _DemoPageState extends State<DemoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Demo'),
-      ),
-      body: const SafeArea(
-        child: Center(
-          child: Text('Demo Page'),
-        ),
+        title: const Text('Gemini'),
       ),
     );
   }
