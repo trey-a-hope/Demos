@@ -1,4 +1,6 @@
-import 'package:demos/demo_page.dart';
+import 'package:demos/home_page.dart';
+import 'package:demos/login_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -7,16 +9,31 @@ void main() async {
 
   await Firebase.initializeApp();
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final _auth = FirebaseAuth.instance;
+
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: DemoPage(),
+    return MaterialApp(
+      home: StreamBuilder<User?>(
+        stream: _auth.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          } else {
+            if (snapshot.hasData && snapshot.data != null) {
+              return HomePage(user: snapshot.data!);
+            } else {
+              return const LoginPage();
+            }
+          }
+        },
+      ),
     );
   }
 }
