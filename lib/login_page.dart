@@ -10,7 +10,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _auth = FirebaseAuth.instance;
   bool _loading = false;
 
   @override
@@ -18,25 +17,37 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login Page'),
+        actions: [
+          IconButton(
+            onPressed: () async {
+              setState(() => _loading = true);
+              // Sign the user in anonymously.
+              await FirebaseAuth.instance.signInAnonymously();
+              setState(() => _loading = false);
+            },
+            icon: const Icon(Icons.login),
+          ),
+        ],
       ),
-      body: Center(
-        child: _loading
-            ? const CircularProgressIndicator()
-            : ElevatedButton(
-                onPressed: () async {
-                  setState(() {
-                    _loading = true;
-                  });
-
-                  await _auth.signInAnonymously();
-
-                  setState(() {
-                    _loading = false;
-                  });
-                },
-                child: const Text('Sign In As Guest'),
+      body: _loading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : FlutterLogin(
+              title: 'Alicia\'s Keyz',
+              theme: LoginTheme(
+                accentColor: Colors.white,
               ),
-      ),
+              onSignup: (signupData) async {
+                return null;
+              },
+              onRecoverPassword: (email) {
+                return null;
+              },
+              onLogin: (loginData) {
+                return null;
+              },
+            ),
     );
   }
 }

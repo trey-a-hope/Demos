@@ -9,19 +9,17 @@ void main() async {
 
   await Firebase.initializeApp();
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final _auth = FirebaseAuth.instance;
-
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: StreamBuilder<User?>(
-        stream: _auth.authStateChanges(),
+        stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const CircularProgressIndicator();
