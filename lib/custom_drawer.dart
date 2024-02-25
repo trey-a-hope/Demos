@@ -1,5 +1,5 @@
+import 'package:demos/extra/profile.dart';
 import 'package:demos/globals.dart';
-import 'package:demos/profile_page.dart';
 import 'package:demos/settings_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

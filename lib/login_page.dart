@@ -1,3 +1,4 @@
+import 'package:demos/globals.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
@@ -34,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
               child: CircularProgressIndicator(),
             )
           : FlutterLogin(
-              logo: const AssetImage('assets/images/key-chain.png'),
+              logo: const AssetImage(Globals.keyChainLogo),
               title: 'Alicia\'s Keyz',
               theme: LoginTheme(
                 accentColor: Colors.white,

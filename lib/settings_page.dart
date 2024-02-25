@@ -23,90 +23,138 @@ class _SettingsPageState extends State<SettingsPage> {
       appBar: AppBar(
         title: const Text('Settings'),
       ),
-      body: Column(
-        children: <Widget>[
-          ListTile(
-            leading: Icon(
-              MdiIcons.email,
-              color: Colors.orange.shade900,
-            ),
-            title: const Text('Link Email/Password'),
-            onTap: () async {
-              // Get email credential.
-              final emailCredential = EmailAuthProvider.credential(
-                email: 'johndoe@gmail.com',
-                password: '123456',
-              );
+      body: Container(
+        color: const Color(0xff121421),
+        child: Column(
+          children: <Widget>[
+            ListTile(
+              leading: Icon(
+                MdiIcons.email,
+                color: Colors.orange.shade900,
+              ),
+              title: Text(
+                'Link Email/Password',
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      color: Colors.white,
+                    ),
+              ),
+              onTap: () async {
+                // Get email credential.
+                final emailCredential = EmailAuthProvider.credential(
+                  email: 'johndoe@gmail.com',
+                  password: '123456',
+                );
 
-              // Link email account to this anonymous account.
-              await user.linkWithCredential(emailCredential);
-            },
-          ),
-          ListTile(
-            leading: Icon(
-              MdiIcons.google,
-              color: Colors.green,
+                // Link email account to this anonymous account.
+                await user.linkWithCredential(emailCredential);
+              },
             ),
-            title: const Text('Link Google'),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Icon(
-              MdiIcons.facebook,
-              color: Colors.blue.shade900,
+            ListTile(
+              leading: Icon(
+                MdiIcons.google,
+                color: Colors.green,
+              ),
+              title: Text(
+                'Link Google',
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      color: Colors.white,
+                    ),
+              ),
+              onTap: () {},
             ),
-            title: const Text('Link Facebook'),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Icon(
-              MdiIcons.apple,
-              color: Colors.red,
+            ListTile(
+              leading: Icon(
+                MdiIcons.facebook,
+                color: Colors.blue.shade900,
+              ),
+              title: Text(
+                'Link Facebook',
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      color: Colors.white,
+                    ),
+              ),
+              onTap: () {},
             ),
-            title: const Text('Link Apple'),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Icon(
-              MdiIcons.twitter,
-              color: Colors.lightBlue,
+            ListTile(
+              leading: Icon(
+                MdiIcons.apple,
+                color: Colors.red,
+              ),
+              title: Text(
+                'Link Apple',
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      color: Colors.white,
+                    ),
+              ),
+              onTap: () {},
             ),
-            title: const Text('Link Twitter'),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Icon(
-              MdiIcons.phone,
-              color: Colors.grey,
+            ListTile(
+              leading: Icon(
+                MdiIcons.twitter,
+                color: Colors.lightBlue,
+              ),
+              title: Text(
+                'Link Twitter',
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      color: Colors.white,
+                    ),
+              ),
+              onTap: () {},
             ),
-            title: const Text('Link Phone'),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Icon(
-              MdiIcons.microsoft,
-              color: Colors.red,
+            ListTile(
+              leading: Icon(
+                MdiIcons.phone,
+                color: Colors.grey,
+              ),
+              title: Text(
+                'Link Phone',
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      color: Colors.white,
+                    ),
+              ),
+              onTap: () {},
             ),
-            title: const Text('Link Microsoft'),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Icon(
-              MdiIcons.yahoo,
-              color: Colors.purple,
+            ListTile(
+              leading: Icon(
+                MdiIcons.microsoft,
+                color: Colors.red,
+              ),
+              title: Text(
+                'Link Microsoft',
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      color: Colors.white,
+                    ),
+              ),
+              onTap: () {},
             ),
-            title: const Text('Link Yahoo'),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Icon(
-              MdiIcons.github,
-              color: Colors.black,
+            ListTile(
+              leading: Icon(
+                MdiIcons.yahoo,
+                color: Colors.purple,
+              ),
+              title: Text(
+                'Link Yahoo',
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      color: Colors.white,
+                    ),
+              ),
+              onTap: () {},
             ),
-            title: const Text('Link GitHub'),
-            onTap: () {},
-          ),
-        ],
+            ListTile(
+              leading: Icon(
+                MdiIcons.github,
+                color: Colors.grey,
+              ),
+              title: Text(
+                'Link GitHub',
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      color: Colors.white,
+                    ),
+              ),
+              onTap: () {},
+            ),
+          ],
+        ),
       ),
     );
   }

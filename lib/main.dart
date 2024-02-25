@@ -1,4 +1,4 @@
-import 'package:demos/home_page.dart';
+import 'package:demos/extra/discover_page.dart';
 import 'package:demos/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             return const CircularProgressIndicator();
           } else {
             if (snapshot.hasData && snapshot.data != null) {
-              return HomePage(user: snapshot.data!);
+              return DiscoverPage(user: snapshot.data!);
             } else {
               return const LoginPage();
             }
