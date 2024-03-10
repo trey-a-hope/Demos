@@ -1,6 +1,6 @@
 name: demos
 description: A new Flutter project.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
@@ -10,12 +10,12 @@ dependencies:
   flutter:
     sdk: flutter
 
-
-  cloud_firestore: ^4.0.5
   cupertino_icons: ^1.0.2
-  firebase_core: ^2.2.0  
-  flutter_gemini: ^2.0.1
+  gap: ^3.0.1
+  flutter_gemini: ^2.0.3
   flutter_riverpod: ^2.3.6
+  google_fonts: ^6.2.0
+  lottie: ^3.1.0
 
 dev_dependencies:
   flutter_test:
@@ -24,5 +24,4 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
-
   uses-material-design: true
