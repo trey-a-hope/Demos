@@ -14,22 +14,26 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const emptyUrl = Globals.dummyProfileImageUrl;
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
+            // If displayName is null...
             accountName: Text(
               user.displayName ?? 'No Display Name',
             ),
-            // If email is null, show 'No Email'.
+            // If email is null...
             accountEmail: Text(
               user.email ?? 'No Email',
             ),
+            // If photoUrl is null...
             currentAccountPicture: CircleAvatar(
-                backgroundImage: Image.network(
-              user.photoURL ?? Globals.dummyProfileImageUrl,
-            ).image),
+              backgroundImage: Image.network(
+                user.photoURL ?? emptyUrl,
+              ).image,
+            ),
           ),
           ListTile(
             leading: const Icon(Icons.home),

@@ -1,5 +1,6 @@
 import 'package:demos/globals.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 
@@ -22,8 +23,9 @@ class _LoginPageState extends State<LoginPage> {
           IconButton(
             onPressed: () async {
               setState(() => _loading = true);
+              final auth = FirebaseAuth.instance;
               // Sign the user in anonymously.
-              await FirebaseAuth.instance.signInAnonymously();
+              await auth.signInAnonymously();
               setState(() => _loading = false);
             },
             icon: const Icon(Icons.login),

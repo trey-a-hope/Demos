@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+typedef Email = EmailAuthProvider;
+
 class SettingsPage extends StatefulWidget {
   final User user;
 
@@ -40,13 +42,16 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               onTap: () async {
                 // Get email credential.
-                final emailCredential = EmailAuthProvider.credential(
+                final credential = Email.credential(
                   email: 'johndoe@gmail.com',
                   password: '123456',
                 );
 
-                // Link email account to this anonymous account.
-                await user.linkWithCredential(emailCredential);
+                // Link email account to this
+                // anonymous account.
+                await user.linkWithCredential(
+                  credential,
+                );
               },
             ),
             ListTile(

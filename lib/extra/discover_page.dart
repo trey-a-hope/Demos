@@ -55,10 +55,14 @@ class _DiscoverPageState extends State<DiscoverPage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      /* 
+                        If user is anonymous,
+                        show "No Display Name".
+                      */
                       Text(
                         user.isAnonymous
                             ? 'No Display Name'
-                            : user.displayName!,
+                            : user.displayName ?? '',
                         style: const TextStyle(
                           color: Colors.grey,
                           fontSize: 26,
@@ -67,21 +71,6 @@ class _DiscoverPageState extends State<DiscoverPage> {
                       ),
                     ],
                   )
-                  // InkWell(
-                  //   borderRadius: BorderRadius.circular(360),
-                  //   onTap: onSearchIconTapped,
-                  //   child: Container(
-                  //     height: 35,
-                  //     width: 35,
-                  //     child: Center(
-                  //       child: SvgAsset(
-                  //         assetName: AssetName.search,
-                  //         height: 24,
-                  //         width: 24,
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
                 ],
               ),
             ),
