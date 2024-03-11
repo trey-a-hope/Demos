@@ -42,8 +42,6 @@ class ResultView extends ConsumerWidget {
               const Gap(32),
               ElevatedButton(
                 onPressed: () {
-                  ref.read(Providers.selectedFruitNotifier.notifier).reset;
-
                   ref
                       .read(Providers.questionStateNotifier.notifier)
                       .updateState(QuestionState.notStarted);

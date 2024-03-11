@@ -22,14 +22,13 @@ class Globals {
     )
   ];
 
-  /// Lottie Files - Extra
+  /// Lottie Files - Fruit
   static final lottieFruitBasket = Lottie.asset(
     'assets/fruit_basket.json',
     width: 300,
     height: 300,
   );
 
-  /// Lottie Files - Fruit
   static final lottieBanana = Lottie.asset(
     'assets/banana.json',
     width: 300,

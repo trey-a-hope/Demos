@@ -20,7 +20,7 @@ class DemoPage extends ConsumerWidget {
         return Expanded(
           child: ElevatedButton(
             onPressed: start,
-            child: const Text('Start'),
+            child: const Text('Let\'s Get Started!'),
           ),
         );
 
@@ -39,7 +39,7 @@ class DemoPage extends ConsumerWidget {
             child: TextField(
               controller: controller,
               decoration: InputDecoration(
-                labelText: 'What fruit is this rap about?',
+                labelText: 'Which fruit is this rap about?',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30.0),
                 ),
@@ -72,6 +72,20 @@ class DemoPage extends ConsumerWidget {
     final questionState = ref.watch(Providers.questionStateNotifier);
     final selectedFruit = ref.watch(Providers.selectedFruitNotifier);
 
+    if (questionState == QuestionState.correct) {
+      return ResultView(
+        fruit: selectedFruit!,
+        correct: true,
+      );
+    }
+
+    if (questionState == QuestionState.incorrect) {
+      return ResultView(
+        fruit: selectedFruit!,
+        correct: false,
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -87,78 +101,63 @@ class DemoPage extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              if (questionState == QuestionState.correct) ...[
-                ResultView(
-                  fruit: selectedFruit!,
-                  correct: true,
-                )
-              ],
-              if (questionState == QuestionState.incorrect) ...[
-                ResultView(
-                  fruit: selectedFruit!,
-                  correct: false,
-                )
-              ],
-              if (questionState != QuestionState.correct &&
-                  questionState != QuestionState.incorrect) ...[
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: SingleChildScrollView(
-                      child: GeminiResponseTypeView(
-                        builder: (context, child, response, loading) {
-                          if (loading) {
-                            return Globals.lottieFruitBasket;
-                          }
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(32.0),
+                  child: SingleChildScrollView(
+                    child: GeminiResponseTypeView(
+                      builder: (context, child, response, loading) {
+                        if (loading) {
+                          return Globals.lottieFruitBasket;
+                        }
 
-                          if (response != null) {
-                            return Text(
-                              response,
-                              style: const TextStyle(fontSize: 20),
-                            );
-                          } else {
-                            return const Text('Let\'s Get Started!');
-                          }
-                        },
-                      ),
+                        if (response != null) {
+                          return Text(
+                            response,
+                            style: const TextStyle(fontSize: 20),
+                          );
+                        }
+
+                        return const SizedBox();
+                      },
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Row(
-                    children: [
-                      _buildButtonLayout(
-                        controller: controller,
-                        questionState: questionState,
-                        start: () {
-                          // Set to loading state.
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                child: Row(
+                  children: [
+                    _buildButtonLayout(
+                      controller: controller,
+                      questionState: questionState,
+                      start: () {
+                        // Set to loading state.
+                        ref
+                            .read(Providers.questionStateNotifier.notifier)
+                            .updateState(QuestionState.loading);
+
+                        // Get a random fruit.
+                        ref
+                            .read(Providers.selectedFruitNotifier.notifier)
+                            .getRandomFruit();
+                      },
+                      submit: () {
+                        final choiceFruit = controller.text;
+                        if (selectedFruit!.name == choiceFruit) {
                           ref
                               .read(Providers.questionStateNotifier.notifier)
-                              .updateState(QuestionState.loading);
-
-                          // Get a random fruit.
+                              .updateState(QuestionState.correct);
+                        } else {
                           ref
-                              .read(Providers.selectedFruitNotifier.notifier)
-                              .getRandomFruit();
-                        },
-                        submit: () {
-                          final choiceFruit = controller.text;
-                          if (selectedFruit!.name == choiceFruit) {
-                            ref
-                                .read(Providers.questionStateNotifier.notifier)
-                                .updateState(QuestionState.correct);
-                          } else {
-                            ref
-                                .read(Providers.questionStateNotifier.notifier)
-                                .updateState(QuestionState.incorrect);
-                          }
-                        },
-                      ),
-                    ],
-                  ),
+                              .read(Providers.questionStateNotifier.notifier)
+                              .updateState(QuestionState.incorrect);
+                        }
+                      },
+                    ),
+                  ],
                 ),
-              ]
+              ),
             ],
           ),
         ),
