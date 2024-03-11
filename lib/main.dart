@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: const DemoPage(),
         theme: ThemeData(
           textTheme: GoogleFonts.comfortaaTextTheme(),

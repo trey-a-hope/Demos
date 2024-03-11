@@ -1,3 +1,4 @@
+import 'package:demos/models/fruit.dart';
 import 'package:demos/notifiers/selected_fruit_notifier.dart';
 import 'package:demos/notifiers/question_state_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,7 +10,7 @@ class Providers {
   );
 
   static final selectedFruitNotifier =
-      NotifierProvider<SelectedFruitNotifier, String?>(
+      NotifierProvider<SelectedFruitNotifier, Fruit?>(
     SelectedFruitNotifier.new,
   );
 }

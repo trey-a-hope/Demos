@@ -1,3 +1,4 @@
+import 'package:demos/constants/globals.dart';
 import 'package:demos/providers.dart';
 import 'package:demos/notifiers/question_state_notifier.dart';
 import 'package:demos/widgets/result_view.dart';
@@ -59,7 +60,6 @@ class DemoPage extends ConsumerWidget {
           ),
         );
       case QuestionState.correct:
-        return const SizedBox();
       case QuestionState.incorrect:
         return const SizedBox();
     }
@@ -99,7 +99,6 @@ class DemoPage extends ConsumerWidget {
                   correct: false,
                 )
               ],
-
               if (questionState != QuestionState.correct &&
                   questionState != QuestionState.incorrect) ...[
                 Expanded(
@@ -107,23 +106,18 @@ class DemoPage extends ConsumerWidget {
                     padding: const EdgeInsets.all(16.0),
                     child: SingleChildScrollView(
                       child: GeminiResponseTypeView(
-                        key: UniqueKey(),
                         builder: (context, child, response, loading) {
                           if (loading) {
-                            //TODO: Add lottie animation...
-                            /// show loading animation or use CircularProgressIndicator();
-                            // return Lottie.asset('assets/lottie/ai.json');
-                            return const CircularProgressIndicator();
+                            return Globals.lottieFruitBasket;
                           }
 
                           if (response != null) {
-                            return Text(response,
-                                style: TextStyle(fontSize: 20));
-                          } else {
-                            //TODO: Add lottie animation...
-                            return const Center(
-                              child: Text('Search something!'),
+                            return Text(
+                              response,
+                              style: const TextStyle(fontSize: 20),
                             );
+                          } else {
+                            return const Text('Let\'s Get Started!');
                           }
                         },
                       ),
@@ -143,15 +137,14 @@ class DemoPage extends ConsumerWidget {
                               .read(Providers.questionStateNotifier.notifier)
                               .updateState(QuestionState.loading);
 
-                          // Send first question.
-
+                          // Get a random fruit.
                           ref
                               .read(Providers.selectedFruitNotifier.notifier)
                               .getRandomFruit();
                         },
                         submit: () {
                           final choiceFruit = controller.text;
-                          if (selectedFruit == choiceFruit) {
+                          if (selectedFruit!.name == choiceFruit) {
                             ref
                                 .read(Providers.questionStateNotifier.notifier)
                                 .updateState(QuestionState.correct);
@@ -166,38 +159,6 @@ class DemoPage extends ConsumerWidget {
                   ),
                 ),
               ]
-
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //   children: [
-              //     ElevatedButton(
-              //       onPressed: () {
-              //         ref
-              //             .read(
-              //                 Providers.questionStateNotifier.notifier)
-              //             .updateState(QuestionState.confirming);
-              //       },
-              //       child: Text(correctPrompt!),
-              //     ),
-              //     // for (int i = 0;
-              //     //     i <
-              //     //         ref
-              //     //             .read(Providers.answerNotifier.notifier)
-              //     //             .wrongAnswers()
-              //     //             .length;
-              //     //     i++) ...[
-              //     //   ElevatedButton(
-              //     //     onPressed: () {
-              //     //       ref
-              //     //           .read(Providers
-              //     //               .questionStateNotifier.notifier)
-              //     //           .updateState(QuestionState.confirming);
-              //     //     },
-              //     //     child: Text('${i + 1}'),
-              //     //   )
-              //     // ]
-              //   ],
-              // )
             ],
           ),
         ),
