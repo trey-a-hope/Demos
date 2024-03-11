@@ -11,9 +11,9 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  gap: ^3.0.1
   flutter_gemini: ^2.0.3
   flutter_riverpod: ^2.3.6
+  gap: ^3.0.1
   google_fonts: ^6.2.0
   lottie: ^3.1.0
 
