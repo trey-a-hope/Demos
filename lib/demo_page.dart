@@ -4,6 +4,7 @@ import 'package:demos/constants/globals.dart';
 import 'package:demos/models/fruit.dart';
 import 'package:demos/notifiers/ui_state_notifier.dart';
 import 'package:demos/providers.dart';
+import 'package:demos/widgets/results_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,6 +19,7 @@ class DemoPage extends ConsumerStatefulWidget {
 class _DemoPageState extends ConsumerState<DemoPage> {
   final gemini = Gemini.instance;
   final controller = TextEditingController();
+
   late Fruit fruit;
 
   Widget _buildButton(UIState uiState) {
@@ -65,6 +67,8 @@ class _DemoPageState extends ConsumerState<DemoPage> {
                         .read(Providers.uiStateNotifier.notifier)
                         .updateState(UIState.incorrect);
                   }
+
+                  controller.clear();
                 },
                 icon: const Icon(
                   Icons.send,
@@ -84,11 +88,17 @@ class _DemoPageState extends ConsumerState<DemoPage> {
     final uiState = ref.watch(Providers.uiStateNotifier);
 
     if (uiState == UIState.correct) {
-      return const Center(child: Text('Correct'));
+      return ResultsView(
+        correct: true,
+        fruit: fruit,
+      );
     }
 
     if (uiState == UIState.incorrect) {
-      return const Center(child: Text('Incorrect'));
+      return ResultsView(
+        correct: false,
+        fruit: fruit,
+      );
     }
 
     return Scaffold(
