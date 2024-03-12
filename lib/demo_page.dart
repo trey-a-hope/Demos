@@ -63,7 +63,12 @@ class DemoPage extends ConsumerWidget {
         temperature: 1,
         maxOutputTokens: 500,
       ),
-      safetySettings: [],
+      safetySettings: [
+        SafetySetting(
+          category: SafetyCategory.hateSpeech,
+          threshold: SafetyThreshold.blockLowAndAbove,
+        ),
+      ],
     ).listen((event) {});
   }
 }
