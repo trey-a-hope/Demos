@@ -2,6 +2,7 @@ import 'package:demos/constants/globals.dart';
 import 'package:demos/demo_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() async {
@@ -13,7 +14,9 @@ void main() async {
   );
 
   runApp(
-    const MyApp(),
+    const ProviderScope(
+      child: MyApp(),
+    ),
   );
 }
 
