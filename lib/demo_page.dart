@@ -1,17 +1,26 @@
+import 'dart:math';
+
 import 'package:demos/constants/globals.dart';
+import 'package:demos/models/fruit.dart';
 import 'package:demos/notifiers/ui_state_notifier.dart';
 import 'package:demos/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class DemoPage extends ConsumerWidget {
-  DemoPage({super.key});
+class DemoPage extends ConsumerStatefulWidget {
+  const DemoPage({super.key});
 
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() => _DemoPageState();
+}
+
+class _DemoPageState extends ConsumerState<DemoPage> {
   final gemini = Gemini.instance;
   final controller = TextEditingController();
+  late Fruit fruit;
 
-  Widget _buildButton(WidgetRef ref) {
+  Widget _buildButton() {
     final uiState = ref.watch(Providers.uiStateNotifier);
 
     switch (uiState) {
@@ -22,7 +31,7 @@ class DemoPage extends ConsumerWidget {
                 .read(Providers.uiStateNotifier.notifier)
                 .updateState(UIState.loading);
 
-            _streamGenerateContent(ref);
+            _streamGenerateContent();
           },
           child: const Text('Let\'s Get Started'),
         );
@@ -48,7 +57,13 @@ class DemoPage extends ConsumerWidget {
                 ),
               ),
               suffix: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  if (controller.text == fruit.name) {
+                    debugPrint('Correct');
+                  } else {
+                    debugPrint('Incorrect');
+                  }
+                },
                 icon: const Icon(
                   Icons.send,
                 ),
@@ -60,7 +75,7 @@ class DemoPage extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -96,16 +111,18 @@ class DemoPage extends ConsumerWidget {
                 ),
               ),
             ),
-            _buildButton(ref),
+            _buildButton(),
           ],
         ),
       ),
     );
   }
 
-  void _streamGenerateContent(WidgetRef ref) {
+  void _streamGenerateContent() {
+    fruit = Globals.fruits[Random().nextInt(Globals.fruits.length)];
+
     final prompt =
-        'Give me a short rap about the fruit Cherry, but do not use the word Cherry in the rap.';
+        'Give me a short rap about the fruit ${fruit.name}, but do not use the word ${fruit.name} in the rap.';
 
     gemini.streamGenerateContent(
       prompt,
