@@ -20,9 +20,7 @@ class _DemoPageState extends ConsumerState<DemoPage> {
   final controller = TextEditingController();
   late Fruit fruit;
 
-  Widget _buildButton() {
-    final uiState = ref.watch(Providers.uiStateNotifier);
-
+  Widget _buildButton(UIState uiState) {
     switch (uiState) {
       case UIState.notStarted:
         return ElevatedButton(
@@ -59,9 +57,13 @@ class _DemoPageState extends ConsumerState<DemoPage> {
               suffix: IconButton(
                 onPressed: () {
                   if (controller.text == fruit.name) {
-                    debugPrint('Correct');
+                    ref
+                        .read(Providers.uiStateNotifier.notifier)
+                        .updateState(UIState.correct);
                   } else {
-                    debugPrint('Incorrect');
+                    ref
+                        .read(Providers.uiStateNotifier.notifier)
+                        .updateState(UIState.incorrect);
                   }
                 },
                 icon: const Icon(
@@ -71,11 +73,24 @@ class _DemoPageState extends ConsumerState<DemoPage> {
             ),
           ),
         );
+      case UIState.correct:
+      case UIState.incorrect:
+        return const SizedBox();
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final uiState = ref.watch(Providers.uiStateNotifier);
+
+    if (uiState == UIState.correct) {
+      return const Center(child: Text('Correct'));
+    }
+
+    if (uiState == UIState.incorrect) {
+      return const Center(child: Text('Incorrect'));
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -111,7 +126,7 @@ class _DemoPageState extends ConsumerState<DemoPage> {
                 ),
               ),
             ),
-            _buildButton(),
+            _buildButton(uiState),
           ],
         ),
       ),

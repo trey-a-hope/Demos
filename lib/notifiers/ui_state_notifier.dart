@@ -4,6 +4,8 @@ enum UIState {
   notStarted,
   loading,
   loaded,
+  correct,
+  incorrect,
 }
 
 class UIStateNotifier extends Notifier<UIState> {
