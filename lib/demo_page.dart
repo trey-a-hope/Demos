@@ -16,11 +16,11 @@ class _DemoPageState extends State<DemoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Demo'),
+        title: const Text('Spider'),
       ),
       body: const SafeArea(
         child: Center(
-          child: Text('Demo Page'),
+          child: Text('Spider'),
         ),
       ),
     );
