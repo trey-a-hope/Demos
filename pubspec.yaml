@@ -10,9 +10,9 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cloud_firestore: ^4.0.5
   cupertino_icons: ^1.0.2
-  firebase_core: ^2.2.0  
+  signature: ^5.5.0
+  gap: ^3.0.1
 
 dev_dependencies:
   flutter_test:
