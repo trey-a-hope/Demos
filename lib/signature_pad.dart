@@ -8,6 +8,13 @@ class SignaturePad extends StatefulWidget {
 }
 
 class _SignaturePadState extends State<SignaturePad> {
+  // 1. Display a Signature widget.
+  // 2. Clear a signature.
+  // 3. Save signatures.
+  // 4. Load a saved signature.
+  // 5. Undo a stroke.
+  // 6. Redo a stroke.
+
   @override
   void initState() {
     super.initState();
