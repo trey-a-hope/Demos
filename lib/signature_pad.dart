@@ -10,10 +10,11 @@ class SignaturePad extends StatefulWidget {
 class _SignaturePadState extends State<SignaturePad> {
   // 1. Display a Signature widget.
   // 2. Clear a signature.
-  // 3. Save signatures.
-  // 4. Load a saved signature.
-  // 5. Undo a stroke.
-  // 6. Redo a stroke.
+  // 3. Save signature.
+  // 4. Display button for each saved drawing.
+  // 5. Load a saved signature.
+  // 6. Undo a stroke.
+  // 7. Redo a stroke.
 
   @override
   void initState() {
@@ -24,6 +25,7 @@ class _SignaturePadState extends State<SignaturePad> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: const Text('Signature Pad'),
+          centerTitle: false,
         ),
         body: const SafeArea(
           child: Center(),
