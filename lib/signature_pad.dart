@@ -12,13 +12,13 @@ class SignaturePad extends StatefulWidget {
 class _SignaturePadState extends State<SignaturePad> {
   late SignatureController _controller;
 
+  static const _strokeStartIndex = -1;
   final List<List<List<Point>>> _savedDrawings = [];
   List<List<Point>> _strokeHistory = [];
+  int _currentStrokeIndex = _strokeStartIndex;
+  List<Point> _currentPoints = [];
 
-  static const _strokeIndexStart = -1;
-
-  int _currentStrokeIndex = _strokeIndexStart;
-  bool get canUndo => _currentStrokeIndex > _strokeIndexStart;
+  bool get canUndo => _currentStrokeIndex > _strokeStartIndex;
   bool get canRedo => _currentStrokeIndex < _strokeHistory.length - 1;
 
   @override
@@ -26,33 +26,32 @@ class _SignaturePadState extends State<SignaturePad> {
     super.initState();
 
     _controller = SignatureController(
-      penStrokeWidth: 5,
       penColor: Colors.black,
+      penStrokeWidth: 5,
       onDrawStart: () => setState(
         () {},
       ),
-      onDrawEnd: () {
-        setState(
-          () {
-            _currentStrokeIndex++;
+      onDrawEnd: () => setState(
+        () {
+          _currentStrokeIndex++;
 
-            final stroke = _controller.points;
+          final stroke = _controller.points
+              .where((p) => !_currentPoints.contains(p))
+              .toList();
 
-            _strokeHistory = _strokeHistory.sublist(0, _currentStrokeIndex);
+          _currentPoints = List<Point>.from(_controller.points);
 
-            _strokeHistory.add(
-              List<Point>.from(stroke),
-            );
-          },
-        );
-      },
+          _strokeHistory = _strokeHistory.sublist(0, _currentStrokeIndex);
+
+          _strokeHistory.add(List<Point>.from(stroke));
+        },
+      ),
     );
   }
 
   @override
   void dispose() {
     super.dispose();
-
     _controller.dispose();
   }
 
@@ -70,34 +69,28 @@ class _SignaturePadState extends State<SignaturePad> {
                   ),
                 ),
                 icon: const Icon(Icons.save),
-              )
+              ),
             ],
             if (canUndo) ...[
               IconButton(
-                onPressed: () => setState(
-                  () => undo(),
-                ),
+                onPressed: () => undo(),
                 icon: const Icon(Icons.undo),
-              )
+              ),
             ],
             if (canRedo) ...[
               IconButton(
-                onPressed: () => setState(
-                  () => redo(),
-                ),
+                onPressed: () => redo(),
                 icon: const Icon(Icons.redo),
-              )
+              ),
             ],
           ],
         ),
         floatingActionButton: _controller.isNotEmpty
             ? FloatingActionButton.extended(
-                onPressed: () => setState(
-                  () {
-                    _currentStrokeIndex = -1;
-                    _controller.clear();
-                  },
-                ),
+                onPressed: () => setState(() {
+                  _controller.clear();
+                  _currentStrokeIndex = _strokeStartIndex;
+                }),
                 label: const Text('Clear'),
                 icon: const Icon(Icons.clear),
               )
@@ -113,31 +106,30 @@ class _SignaturePadState extends State<SignaturePad> {
               child: Column(
                 children: [
                   if (_savedDrawings.isNotEmpty) ...[
-                    for (int i = 0; i < _savedDrawings.length; i++) ...[
+                    for (int j = 0; j <= _savedDrawings.length - 1; j++) ...[
                       GestureDetector(
-                        onTap: () {
-                          setState(
-                            () {
-                              _controller.clear();
+                        onTap: () => setState(
+                          () {
+                            _controller.clear();
 
-                              _strokeHistory =
-                                  List<List<Point>>.from(_savedDrawings[i]);
+                            _strokeHistory = List<List<Point>>.from(
+                              _savedDrawings[j],
+                            );
 
-                              _currentStrokeIndex = _strokeHistory.length - 1;
+                            _currentStrokeIndex = _strokeHistory.length - 1;
 
-                              for (int j = 0; j < _strokeHistory.length; j++) {
-                                final stroke = _strokeHistory[j];
-                                for (final point in stroke) {
-                                  _controller.addPoint(point);
-                                }
+                            for (int i = 0; i <= _currentStrokeIndex; i++) {
+                              final stroke = _strokeHistory[i];
+                              for (final point in stroke) {
+                                _controller.addPoint(point);
                               }
-                            },
-                          );
-                        },
+                            }
+                          },
+                        ),
                         child: CircleAvatar(
                           backgroundColor: Colors.black,
                           child: Text(
-                            '${i + 1}',
+                            '${j + 1}',
                             style: const TextStyle(
                               color: Colors.white,
                             ),
@@ -145,27 +137,13 @@ class _SignaturePadState extends State<SignaturePad> {
                         ),
                       ),
                       const Gap(8),
-                    ],
+                    ]
                   ]
                 ],
               ),
-            )
+            ),
           ],
         ),
-      );
-
-  void redo() => setState(
-        () {
-          if (_currentStrokeIndex == _strokeIndexStart) {
-            _currentStrokeIndex = _strokeHistory.length - 1;
-          } else {
-            _currentStrokeIndex++;
-          }
-
-          for (final point in _strokeHistory[_currentStrokeIndex]) {
-            _controller.addPoint(point);
-          }
-        },
       );
 
   void undo() => setState(
@@ -180,6 +158,20 @@ class _SignaturePadState extends State<SignaturePad> {
             for (final point in stroke) {
               _controller.addPoint(point);
             }
+          }
+        },
+      );
+
+  void redo() => setState(
+        () {
+          if (_currentStrokeIndex == _strokeStartIndex) {
+            _currentStrokeIndex = _strokeHistory.length - 1;
+          } else {
+            _currentStrokeIndex++;
+          }
+
+          for (final point in _strokeHistory[_currentStrokeIndex]) {
+            _controller.addPoint(point);
           }
         },
       );
