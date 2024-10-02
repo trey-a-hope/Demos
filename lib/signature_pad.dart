@@ -51,8 +51,8 @@ class _SignaturePadState extends State<SignaturePad> {
 
   @override
   void dispose() {
-    super.dispose();
     _controller.dispose();
+    super.dispose();
   }
 
   @override
