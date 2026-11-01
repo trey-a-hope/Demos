@@ -1,16 +1,24 @@
-# demos
+# Demos
 
-A new Flutter project.
+A blank Flutter starting point for quick experiments. It boots Firebase and shows a single placeholder `DemoPage`, so a new idea can be tried against Firestore without setting up a project from scratch.
 
-## Getting Started
+## What's in it
 
-This project is a starting point for a Flutter application.
+- `lib/main.dart`: initializes Firebase (`Firebase.initializeApp()`) and opens `DemoPage`.
+- `lib/demo_page.dart`: an empty `Scaffold` titled "Demo"; replace its body with whatever you're trying out.
+- `cloud_firestore` is already a dependency.
 
-A few resources to get you started if this is your first Flutter project:
+## Running it
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. iOS already has a `GoogleService-Info.plist`; for Android add `android/app/google-services.json` from your Firebase project (or run `flutterfire configure`).
+2. Then:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```sh
+flutter pub get
+flutter run
+```
+
+## Tech stack
+
+- Flutter, Dart `>=2.17.6 <3.0.0` (pre-Dart 3, so use Flutter 3.7.x or older)
+- `firebase_core`, `cloud_firestore`
